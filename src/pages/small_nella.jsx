@@ -395,7 +395,7 @@ function Small_nella(){
                     
                 }}>
                     <FaBookOpen color={q==3? "black": "gray"} size={25}/>
-                    <div style={{fontSize:"12px",color:q==3? "black": "gray"}}>QR Menu{/*"/Price List"*/}</div>
+                    <div style={{fontSize:"12px",color:q==3? "black": "gray"}}>QR Menu</div>
                 </Link>
                 <div style={{width:"20%",height:"90%",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     set_logout(true);
