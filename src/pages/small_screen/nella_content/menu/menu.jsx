@@ -373,11 +373,11 @@ function Menu(){
                 <div>Please add new items to see them listed here.</div>
             </div> */}
              <div style={{width:"100%",position:"relative",height:`${ht.second}%`,display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}} onScroll={(e)=>{
-                if(e.target.scrollTop >= 30){
+                if(e.target.scrollTop >= 20){
                     set_ht({
-                        first:20,
-                        second: 80,
-                        add1: 70,
+                        first:10,
+                        second: 90,
+                        add1: 100,
                         search1: "none",
                         filter1: "none"
                     })

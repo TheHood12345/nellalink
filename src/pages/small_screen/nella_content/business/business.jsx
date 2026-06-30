@@ -401,11 +401,11 @@ function Business({prop_set_q}){
             </div>
             {/* ....... */}
              <div style={{width:"100%",height:`${ht.second}%`,transition:"all 0.3s linear",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll",backgroundColor:"white",opacity:"1"}} onScroll={(e)=>{
-                if(e.target.scrollTop >= 30){
+                if(e.target.scrollTop >= 20){
                     set_ht({
-                        first:20,
-                        second: 80,
-                        add1: 70,
+                        first:10,
+                        second: 90,
+                        add1: 100,
                         search1: "none",
                         filter1: "none"
                     })
