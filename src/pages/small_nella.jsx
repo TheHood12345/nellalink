@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaLock } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
 import Business from "./small_screen/nella_content/business/business";
 import Home from "./small_screen/nella_content/home/home";
@@ -283,13 +283,14 @@ function Small_nella(){
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold",color:"black"}}>
                         <div style={{fontSize:"12px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
+                        {/* <div>{localStorage.getItem("email")}</div> */}
                         {
-                            localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                           <div style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"orange":"aqua",color:"white",width:"60%",borderRadius:"2px"}} onClick={()=>{
+                           localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
+                           <div style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"#fd7e14":"aqua",color:"white",width:"80%",height:"50%",borderRadius:"10px"}} onClick={()=>{
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
                         }}>{v_text}</div>:
-                           <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
+                           <div style={{display:"flex",alignItems:"center",justifyContent:"center",fontSize:"14px"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     
@@ -320,8 +321,8 @@ function Small_nella(){
                         {/* </div> */}
                         
                         <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                           <FaRegBell size={24} color={"gray"} style={{margin:"0px",padding:"0px"}}/>
-                           <div style={{color:"white",backgroundColor:"red",width:"50%",height:"40%",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-10%",right:"-10%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
+                           <FaRegBell size={25} color={"gray"} style={{margin:"0px",padding:"0px"}}/>
+                           <div style={{color:"red",backgroundColor:"white",fontSize:"20px",fontWeight:"bolder",width:"50%",height:"40%",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-10%",right:"-10%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
                         </div>
                         
                         <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
@@ -329,7 +330,7 @@ function Small_nella(){
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
                         }}/> */}
-                        <FaGear size={24} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
+                        <FaGear size={26} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
                             set_col3(!col3);
                             set_col1(false);
                             set_drawer1(!drawer1);
@@ -357,7 +358,7 @@ function Small_nella(){
             <Outlet/>
 
             {/* Bottom nav bar */}
-            <div style={{width:"100%",height:"15%",border:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",boxShadow:"0px -1px 2px gray",fontSize:"10px"}}>
+            <div style={{width:"100%",height:"15%",border:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",boxShadow:"0px -1px 10px rgb(240,240,240)",fontSize:"10px"}}>
                 <Link to={"/home"} style={{width:"20%",textDecoration:"none",cursor:"pointer",height:"90%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     
                     set_q(1);
@@ -430,31 +431,31 @@ function Small_nella(){
                 </div>
             }
 
-            <div style={{width:"100%",backgroundColor:"rgba(18,22,28,0.4)",height:drawer1==false?"0%":"90%",position:"absolute",top:"10%",right:"0",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"flex-start",overflow:"hidden"}}>
+            <div style={{width:"100%",backgroundColor:"rgba(255,255,255,0.3)",height:drawer1==false?"0%":"85%",position:"absolute",top:"15%",right:"0",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"flex-start",overflow:"hidden"}}>
                 
                 <div style={{width:"100%",height:"40%",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"start",fontSize:"12px",justifyContent:"end"}}>
-                    <div style={{width:"50%",height:"100%",backgroundColor:"rgba(0,0,0,0.9)"}} onClick={()=>{
+                    <div style={{width:"50%",height:"100%",backgroundColor:"rgba(255,255,255,0.1)"}} onClick={()=>{
                         set_drawer1(false);
                     }}></div>
-                    <div style={{width:"50%",height:"100%",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"start",fontSize:"12px",justifyContent:"space-evenly",backgroundColor:"rgba(0,0,0,0.9)"}}>
+                    <div style={{width:"50%",height:"100%",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"start",fontSize:"12px",justifyContent:"space-evenly",backgroundColor:"rgba(255,255,255,0.1)"}}>
                     {/* <div style={{height:"10%",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",fontSize:"12px"}}>HELLO, {localStorage.getItem("name").toUpperCase()}</div> */}
                     <div style={{height:"80%",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly",overflow:"scroll"}}>
                         {localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                            <div style={{width:"90%",cursor:"pointer",paddingTop:"12px",paddingBottom:"12px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"1px 1px 3px gray inset,-1px -2px 2px gray inset",backgroundColor:"white"}} onClick={async()=>{
+                            <div style={{width:"90%",cursor:"pointer",paddingTop:"12px",paddingBottom:"12px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"#fd7e14",color:"white"}} onClick={async()=>{
                             if(loading_token==false){
                             await send_token_email_v();
                             }
                         }}>
-                            <div>{loading_token==false?"Verify email":"Sending Token..."}</div>
+                            <div><FaCertificate/> {loading_token==false?"Verify email":"Sending Token..."}</div>
                         </div>:
                         null
                         }
-                        <div style={{width:"90%",cursor:"pointer",paddingTop:"12px",paddingBottom:"12px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"1px 1px 3px gray inset,-1px -2px 2px gray inset",backgroundColor:"white"}} onClick={async()=>{
+                        <div style={{width:"90%",cursor:"pointer",paddingTop:"12px",paddingBottom:"12px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"#fd7e14",color:"white"}} onClick={async()=>{
                             if(loading_ps_token==false){
                             await send_ps_token();
                             }
                         }}>
-                            <div>{loading_ps_token==false?"Change Password":"Sending Token..."}</div>
+                            <div><FaLock/>{loading_ps_token==false?"Change Password":"Sending Token..."}</div>
                         </div>
                     </div>
                     {/* <div style={{height:"10%",width:"100%",backgroundColor:"rgba(255,0,0,1)",color:"white",textAlign:"center",fontSize:"12px",display:"flex",alignItems:"center",justifyContent:"center"}} onClick={()=>{
@@ -463,7 +464,7 @@ function Small_nella(){
                     }}>SIGN OUT</div> */}
                     </div>
                 </div>
-                <div style={{width:"100%",height:"60%",backgroundColor:"rgba(0,0,0,0.9)"}} onClick={()=>{
+                <div style={{width:"100%",height:"60%",backgroundColor:"rgba(255,255,255,0.1)"}} onClick={()=>{
                     set_drawer1(false);
                 }}></div>
                 <div style={{position:"absolute",backgroundColor:"red",color:"honeydew",top:`${v_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
