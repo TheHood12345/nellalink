@@ -53,17 +53,17 @@ function Flip1(){
     return (
         <div style={{width:"100%",height:"100%",position:"relative",display:"flex",paddingBottom:"20px",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"80%",display:"flex",paddingBottom:"20px",flexDirection:"column",alignItems:"center",justifyContent:"center",overflow:"scroll"}}>
-            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"20px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div1,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"0px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div1,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                 
                    <div style={{width:"80%"}}>I'm impressed with how easy it is to place orders on your website! The menu options are clear, and the ordering process is seamless. I've had a great experience using your platform to order food from my favorite restaurants in Lagos. Janet Lagos, Nigeria</div>
                 
             </div>
-            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"20px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div2,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"0px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div2,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                 
                     <div style={{width:"80%"}}>Your website has made ordering food a breeze! I love how I can browse through different restaurants, check menus, and place orders quickly. The platform is user-friendly, and I've had no issues with my orders. Thanks for providing a convenient service! Mkhize Capetown, South Africa</div>
                 
             </div>
-            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"20px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div3,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",height:"100%",backgroundColor:"rgb(100,100,100)",paddingTop:"20px",paddingBottom:"20px",borderRadius:"0px",color:"white",position:"absolute",left:`0%`,top:"0%",zIndex:div3,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                
                     <div style={{width:"80%"}}>Your website has made ordering food a breeze! I love how I can browse through different restaurants, check menus, and place orders quickly. The platform is user-friendly, and I've had no issues with my orders. Thanks for providing a convenient service! Mkhize Capetown, South Africa</div>
                 

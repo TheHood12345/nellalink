@@ -192,7 +192,7 @@ function Large_login(){
             
             <div className="large_main" style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll",overflowX:"hidden"}}>
                 <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",marginTop:"20px"}}>
-                    <img src="/nellalink.jpg" style={{width:"20%",aspectRatio:"2/1",borderRadius:"100px"}}/>
+                    <img src="/nellalink.jpg" style={{width:"20%",aspectRatio:"1/1",borderRadius:"100px"}}/>
                     <h1 style={{color:"rgb(0,0,130)",width:"60%"}}>Nellalink Smart Business Suite (SBS)</h1>
                 </div>
                 <div style={{color:"rgb(18,22,28)",width:"90%"}}>
@@ -203,14 +203,14 @@ function Large_login(){
                 <div style={{width:"90%",aspectRatio:"2/1"}}>
                     <Flip/>
                 </div>
-                <div style={{width:"90%",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
+                <div style={{width:"100%",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
                     <Flip1/>
                 </div>
             </div>
 
             <div style={{width:"50%",height:"100%",fontFamily:"l",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-            <div style={{width:"90%",height:"90%",overflow:"scroll",boxShadow:"0px 0px 6px rgb(240,240,240)",backgroundColor:"white",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <div style={{fontWeight:"bold",width:"90%",fontSize:"28px",marginTop:"30px"}}>Welcome back!</div>
+            <div style={{width:"100%",height:"100%",overflow:"scroll",boxShadow:"0px 0px 6px rgb(240,240,240)",backgroundColor:"white",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                <h1></h1><div style={{fontWeight:"bold",width:"90%",fontSize:"28px",marginTop:"20px"}}>Welcome back!</div>
                 <div style={{width:"90%",fontSize:"16px"}}>Don't have an account? <Link to={"/signup"} style={{color:"#fd7e14",textDecoration:"none"}}>Sign Up</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
                     <div>Email Address</div>
