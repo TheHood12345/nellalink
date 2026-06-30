@@ -496,9 +496,9 @@ function Business({prop_set_q}){
                         </div>
                         {
                             i==index&&
-                            <div style={{width:"60%",height:"100%",alignSelf:"self-start",position:"absolute",backgroundColor:"white",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",leftt:"0%",display:"flex",flexDirection:"column",alignItems:"end",justifyContent:"start"}}>
-                                <div style={{width:"90%",height:"100%",backgroundColor:"white",paddingRight:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-                                    <div className="view" style={{height:"30%"}} onClick={()=>{
+                            <div style={{zIndex:"10",width:"60%",alignSelf:"self-start",position:"absolute",backgroundColor:"rgb(240,240,240)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",left:"10%",display:"flex",flexDirection:"column",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"90%",height:"100%",backgroundColor:"rgb(240,240,240)",paddingRight:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
+                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
                                         set_view(true);
                                         set_business_name_v(item.title_name);
                                         set_business_address_v(item.extra_data.business_address);
@@ -508,8 +508,8 @@ function Business({prop_set_q}){
                                         set_business_status_v(item.status);
                                         
                                         set_i(null);
-                                    }}><BsViewList/> View</div>
-                                    <div className="view" style={{height:"30%"}} onClick={()=>{
+                                    }}><BsViewList size={20}/> View</div>
+                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
                                         set_edit(true);
                                         set_business_uuid(item.uuid);
                                         set_business_owned_by(item.owned_by);
@@ -524,8 +524,8 @@ function Business({prop_set_q}){
 
                                         set_i(null);
                                         
-                                    }}><BiEdit/> Edit</div>
-                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",height:"30%"}}><MdManageAccounts/> Manage</Link>
+                                    }}><BiEdit size={20}/> Edit</div>
+                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",height:"30%",fontSize:"20px"}}><MdManageAccounts size={20}/> Manage</Link>
                                 </div>
                             </div>
                         }

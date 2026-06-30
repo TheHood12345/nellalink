@@ -8,3 +8,18 @@
   flex-direction: column;
   align-items: center;
 }
+.view:hover{
+  background-color: orange;
+  color: white;
+  border-radius: 2px;
+}
+.view{
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color:black;
+  font-size:12px;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
