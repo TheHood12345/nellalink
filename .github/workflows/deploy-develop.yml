@@ -1,0 +1,63 @@
+name: Deploy Latest Code to Dev Server
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  server-deploy:
+    name: Deploy to Dev Server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+
+      - name: ✅ Verify Required Files - Prebuild
+        run: |
+          if [ ! -f ./public/.htaccess ]; then
+            echo "Required files (.htaccess) are missing in the specified folder!"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Inject Environment Variables (ENV)
+        run: |
+          echo "VITE_CORE_BACKEND_BASE_API_URL=https://backend-dev.nellalink.com" >> .env
+          echo "VITE_MIDDLEWARE_API_URL=https://middleware-dev.nellalink.com" >> .env
+          echo "VITE_APP_DOMAIN=https://dev.nellalink.com" >> .env
+          echo "VITE_SECRET_KEY='NELLALINK_%%/*'" >> .env
+          echo "VITE_APP_PAYSTACK_URL=https://api.paystack.co" >> .env
+          echo "VITE_APP_API_KEY=nll_95ea8f6437ee8358a029ac4da016b71e5a94" >> .env
+          echo "VITE_GOOGLE_CLIENT_ID=35682479272-d1n4b0tngv07ak3i2ejg4h7ooumt68ac.apps.googleusercontent.com" >> .env
+          echo "VITE_GOOGLE_REDIRECT_URI=https://app-dev.nellalink.com/oauth/google/callback" >> .env
+
+      - name: Build Project
+        run: npm run build
+
+      # - name: Generate Static Site
+      #   run: npm run generate
+
+      - name: List generated files
+        run: ls -alh
+
+      - name: ✅ Verify Required Files - Postbuild
+        run: |
+          if [ ! -f ./dist/index.html ] || [ ! -f ./dist/.htaccess ]; then
+            echo "Required files (index.html or .htaccess) are missing in the dist folder!"
+            exit 1
+          fi
+
+      - name: Deploy to FTP Server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: 185.146.22.254
+          username: autodeploygithub@app-dev.nellalink.com
+          password: ${{ secrets.GIT_FTP_AUTODEPLOY_PASSWORD_DEV }}
+          server-dir: /
+          local-dir: dist/
