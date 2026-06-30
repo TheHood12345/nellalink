@@ -7,6 +7,7 @@ import { MdManageAccounts } from "react-icons/md";
 import { data, Link, useSearchParams } from "react-router-dom";
 import Business_view from "./business_view";
 import Business_edit from "./business_edit";
+import {AlarmCheck, BellCheck} from "lucide-react"
 //import { s3 } from "./s3";
 // import { S3Client,PutObjectCommand } from "@aws-sdk/client-s3";
 // import {FetchHttpHandler} from "@aws-sdk/fetch-http-handler"
@@ -442,7 +443,7 @@ function Business({prop_set_q}){
             {all_data.map((item,index)=>{
                 if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
                 return (
-                    <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRadius:"0px",borderBottom:"1px solid black"}} draggable onDragOver={(e)=>{
+                    <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable onDragOver={(e)=>{
                         e.preventDefault();
                     }} onDragStart={(e)=>{
                         set_dragIndex(index);

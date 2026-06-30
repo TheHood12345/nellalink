@@ -455,7 +455,7 @@ function Menu(){
 
                                 if(index<a){
                                     if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
-                                return(<div key={index} style={{width:"100%",position:"relative",backgroundColor:"rgb(250,250,250)",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",borderBottom:"1px solid black"}} draggable
+                                return(<div key={index} style={{width:"100%",position:"relative",backgroundColor:"rgb(250,250,250)",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable
                                      onDragStart={(e)=>{
                                         set_drag({parentId,index});
                                         e.target.style.opacity="0";
