@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router-do
 import Menu_qr_code from "./menu_qr_code";
 import Menu_del from "./menu_del";
 import Menu_edit from "./menu_edit";
+import { Loader } from "lucide-react";
 
 function Menu(){
 
@@ -394,9 +395,8 @@ function Menu(){
                         {
                 all_data==null?
                 loading_get_now==true?
-                <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
-                <FaDownload size={30}/>
-                <div style={{color:"black"}}>Loading all data...</div>
+                <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
+                    <Loader className="loading"  size={90} color="#fd7e14"/>
                 </div>:
                 
             <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>

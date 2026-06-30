@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiExit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
 import { FaArrowDown, FaBook, FaCalendar, FaCaretLeft, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaDownload, FaEarthAfrica, FaEllipsisVertical, FaLocationPin, FaMessage, FaPerson, FaPhotoFilm } from "react-icons/fa6";
@@ -7,7 +7,7 @@ import { MdManageAccounts } from "react-icons/md";
 import { data, Link, useSearchParams } from "react-router-dom";
 import Business_view from "./business_view";
 import Business_edit from "./business_edit";
-import {AlarmCheck, BellCheck} from "lucide-react"
+import {AlarmCheck, BellCheck, ImageDown, Loader, Loader2, LoaderPinwheel, Upload} from "lucide-react"
 //import { s3 } from "./s3";
 // import { S3Client,PutObjectCommand } from "@aws-sdk/client-s3";
 // import {FetchHttpHandler} from "@aws-sdk/fetch-http-handler"
@@ -347,7 +347,7 @@ function Business({prop_set_q}){
     return (
         <div style={{width:"100%",height:"70%",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
              <div style={{width:"100%",height:`${ht.first}%`,transition:"all 0.3s linear",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-            <div style={{width:"90%",height:`${ht.add1}%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
+            <div style={{width:ht.first==10?"90%":"90%",height:`${ht.add1}%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 set_ad(true);
             }}><FaPlus size={30}/><div style={{fontSize:"20px",paddingLeft:"3%"}}>Add Business</div></div>
             <div style={{width:"90%",height:"30%",backgroundColor:"rgb(230,230,230)",overflow:"scroll",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
@@ -422,9 +422,8 @@ function Business({prop_set_q}){
             {
                 all_data==null?
                 loading_get_now==true?
-                <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
-                <FaDownload size={30}/>
-                <div style={{color:"black"}}>Loading all data...</div>
+                <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
+                <Loader className="loading"  size={90} color="#fd7e14"/>
                 </div>:
                 
             <div style={{width:"90%",marginTop:"20px",fontSize:"14px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
@@ -570,8 +569,20 @@ function Business({prop_set_q}){
             {
                 ad&&
                 <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"white",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                    <div style={{width:"90%",position:"relative",marginTop:"20px",marginBottom:"20px",boxShadow:"0px 0px 6px rgb(200,200,200)",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                        <div style={{width:"90%",height:"200px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative"}} onDragLeave={(e)=>{
+                    <div className="view" style={{backgroundColor:"orange",boxSizing:"border-box",width:"90%",height:"10%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <div>CREATE A NEW BUSINESS</div>
+                            <div style={{color:"orangered",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                                set_ad(false);
+                            }}>
+                            <BiExit size={30}/>
+                            <div style={{fontSize:"14px"}}>Back</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div style={{width:"90%",height:"80%",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                        <div style={{width:"90%",height:"200px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -587,32 +598,33 @@ function Business({prop_set_q}){
                         {
                             sc==""?
                             <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <FaUpload size={100} color="gray"/>
-                                <div>Drag & Drop Image File here</div>
+                                <ImageDown size={100} color="gray"/>
+                                <div style={{marginTop:"10px"}}>Drag & Drop Image File here</div>
                             </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",height:"100%"}}/>
                         }
                         </div>
-                        <label style={{width:"90%",boxShadow:"0px 0px 3px rgb(200,200,200)",cursor:"pointer",backgroundColor:"rgb(200,200,200)",borderRadius:"3px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                            <FaPlus size={20}/>
-                            <div>Upload Image for Business Logo</div>
+                        <div>OR</div>
+                        <label style={{width:"90%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                            <Upload size={20}/>
+                            <div>Click here to upload image</div>
                             <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
                                 set_sc(e.target.files[0]);
                             }}/>
                         </label>
-                        <div style={{width:"90%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center"}}>Max: 2MB. PNG, JPEG only.</div>
+                        <div style={{width:"90%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
                         <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center"}}>
                             <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <FaBook size={17}/>
-                                <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                <FaBook size={20}/>
+                                <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"90%",border:"0px"}} onChange={(e)=>{
                                     set_title_name(e.target.value);
                                 }}/>
                             </div>
 
                             <div style={{width:"100%",marginTop:"10px"}}>Short Name</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <FaPerson size={17}/>
-                                <input type="text" placeholder="SBS" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}}/>
+                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                <FaPerson size={20}/>
+                                <input type="text" placeholder="SBS" style={{width:"90%",border:"0px"}}/>
                             </div>
 
                             <div style={{width:"100%",marginTop:"10px"}}>Description</div>
@@ -623,25 +635,25 @@ function Business({prop_set_q}){
                             </div>
 
                             <div style={{width:"100%",marginTop:"10px"}}>Business Address</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <FaLocationPin size={17}/>
-                                <input type="text" value={business_address} placeholder="Abuja" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                <FaLocationPin size={20}/>
+                                <input type="text" value={business_address} placeholder="Abuja" style={{width:"90%",border:"0px"}} onChange={(e)=>{
                                     set_business_address(e.target.value);
                                 }}/>
                             </div>
 
                             <div style={{width:"100%",marginTop:"10px"}}>Contact Email</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <FaMessage size={17}/>
-                                <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                <FaMessage size={20}/>
+                                <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"90%",border:"0px"}} onChange={(e)=>{
                                     set_contact_email(e.target.value);
                                 }}/>
                             </div>
 
                             <div style={{width:"100%",marginTop:"10px"}}>Country</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",marginBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <FaEarthAfrica size={17}/>
-                                <input type="text" value={country} placeholder="" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",marginBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                <FaEarthAfrica size={20}/>
+                                <input type="text" value={country} placeholder="" style={{width:"90%",border:"0px"}} onChange={(e)=>{
                                     set_country(e.target.value);
                                 }}/>
                             </div>
@@ -654,19 +666,15 @@ function Business({prop_set_q}){
                                 
                             }}>{loading?"Loading...":"Register"}</div>
                         </div>
-                        <div style={{paddingTop:"20px",paddingBottom:"20px",position:"absolute",right:"1%",top:"0%",marginTop:"10px",marginBottom:"20px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                        <FaCircleXmark size={30} onClick={()=>{
-                            set_ad(false);
-                        }}/>
-                        </div>
+                        
                     
                     </div>
-                    <div style={{width:"90%",paddingBottom:"20px",marginTop:"10px",marginBottom:"20px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",color:"orangered"}}>
+                    {/* <div style={{width:"90%",paddingBottom:"20px",marginTop:"10px",marginBottom:"20px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",color:"orangered"}}>
                         <FaCaretLeft size={30}/>
                         <div style={{fontSize:"14px"}} onClick={()=>{
                             set_ad(false);
                         }}>Back</div>
-                        </div>
+                    </div> */}
                     
                 </div>
             }
