@@ -42,7 +42,7 @@ function Small_login(){
     const [success,set_success]=useState(false);
     const [success_message,set_success_message]=useState("");
     const [fail,set_fail]=useState(false);
-    const [fail_message,set_fail_message]=useState("")
+    const [fail_message,set_fail_message]=useState("");
 
     const navigate = useNavigate()
 

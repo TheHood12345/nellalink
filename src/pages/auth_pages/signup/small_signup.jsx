@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaGoogle, FaTwitter } from "react-icons/fa";
+import { FaCheckCircle, FaExclamationCircle, FaEye, FaEyeSlash, FaGoogle, FaTwitter } from "react-icons/fa";
 import { data, Link, useNavigate } from "react-router-dom";
 
 function Small_signup(){
@@ -21,32 +21,10 @@ function Small_signup(){
 
     const [create_text,set_create_text] = useState("Operation Failed");
 
-  
-    // async function verify_email(){
-    //     set_loading(true);
-        
-    //      await fetch("https://backend-test.nellalink.com/public/api/v1/nellalink/user/verify-email-address",{
-    //         method:"post",
-    //         headers:{
-    //             "Content-Type":"application/json",
-    //             "x-api-key": api
-    //         },
-    //         body: JSON.stringify({
-    //             email_address: email
-    //         })
-    //      }).then((res)=>res.json()).then(async(data)=>{
-    //         set_loading(false);
-    //         if(data.status==true){
-    //             console.log("Email verified successfully",data);
-    //             await register()
-    //         }else{
-    //             console.log("Could not verify email",data.message)
-    //         }
-    //     }).catch((err)=>{
-    //         console.log(`nope: ${err}`);
-    //         set_loading(false);
-    //     });
-    // }
+    const [success,set_success]=useState(false);
+    const [success_message,set_success_message]=useState("");
+    const [fail,set_fail]=useState(false);
+    const [fail_message,set_fail_message]=useState("");
 
       async function register(){
         set_loading(true);
@@ -77,34 +55,35 @@ function Small_signup(){
             set_loading(false);
             if(data.status==true){
                 console.log("Successfully registered: ",data);
-                navigate("/login");
+                set_success_message(data.message);
+                set_success(true);
+                setTimeout(()=>{
+                    set_success(false);
+                    navigate("/login");
+                },2000);
             }else{
                 console.log("Could not register: ",data);
-                set_create_text(data.message);
-                set_register_error(true);
-                set_register_top(0);
+                set_fail_message(data.message);
+                set_fail(true);
                 setTimeout(()=>{
-                    set_register_error(false);
-                    set_register_top(-10);
-                },2000);
+                    set_fail(false);
+                },5000);
                 
             }
         }).catch((err)=>{
-            console.log(`nope: ${err}`);
-            set_create_text("Check your internet connection.")
             set_loading(false);
-            set_register_error(true);
-            set_register_top(0);
+            console.log(`nope: ${err}`);
+            set_fail_message("Check your internet connection.");
+            set_fail(true);
             setTimeout(()=>{
-                set_register_error(false);
-                set_register_top(-10);
-            },2000);
+                set_fail(false);
+            },5000);
         });
     }
 
     return (
         <div className="small_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"white",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-            <div style={{width:"90%",height:"90%",overflow:"scroll",boxShadow:"0px 0px 6px rgb(200,200,200)",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
+            <div style={{width:"90%",height:"90%",overflow:"scroll",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
                 <div style={{fontWeight:"bold",fontSize:"30px",color:"black",fontWeight:"bolder",marginTop:"20px"}}>REGISTER</div>
                 <div style={{fontSize:"20px",marginTop:"10px"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14"}}>Login</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
@@ -157,6 +136,22 @@ function Small_signup(){
             <div style={{position:"absolute",backgroundColor:"red",color:"honeydew",top:`${register_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
                     {/*FAILED TO CREATE ACCOUNT*/} {create_text}
             </div>
+            {success&&
+            <div style={{position:"fixed",backgroundColor:"rgba(0,0,0,0.6)",color:"white",top:"0%",right:"0%",width:"100%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+            <div style={{backgroundColor:"orange",color:"white",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                    <FaCheckCircle size={30}/> {success_message}
+                </div>
+            </div>
+            </div>
+            }
+            {fail&&
+            <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"10%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                    <FaExclamationCircle size={30}/> {fail_message} 
+                </div>
+            </div>
+            }
         </div>
     );
 }
