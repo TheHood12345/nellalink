@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
 import { FaArrowDown, FaBusinessTime, FaCaretDown, FaCheckCircle, FaDollarSign, FaDownload, FaEuroSign, FaIcicles, FaPlus, FaRegImages, FaSearch, FaUpload } from "react-icons/fa";
-import { FaArrowRight, FaCediSign, FaCircleXmark, FaDeleteLeft, FaEllipsisVertical, FaImage, FaNairaSign, FaX } from "react-icons/fa6";
+import { FaArrowRight, FaCediSign, FaCircleXmark, FaDeleteLeft, FaEllipsisVertical, FaImage, FaNairaSign, FaSpinner, FaX } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Menu_qr_code from "./menu_qr_code";
@@ -847,9 +847,8 @@ function Menu(){
                                     {
                                         all_b_data==null?
                                         loading_b_get_now==true?
-                                        <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
-                                        <FaDownload size={30}/>
-                                        <div style={{color:"black"}}>Loading all data...</div>
+                                        <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
+                                            <Loader className="loading"  size={90} color="#fd7e14"/>
                                         </div>:
                                         
                                     <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
