@@ -95,7 +95,14 @@ function Menu(){
 
     const [show_menu_edit,set_show_menu_edit]=useState(false);
 
-    const [ht,set_ht]=useState({first:40,second:60,add1:30,search1:"flex",filter1:"flex"});
+    const [ht,set_ht]=useState({
+        //first:40,second:60,add1:30,search1:"flex",filter1:"flex"
+        first:10,
+        second: 90,
+        add1: 100,
+        search1: "none",
+        filter1: "none"
+    });
 
     const [p_i,set_p_i]=useState("-1");
 

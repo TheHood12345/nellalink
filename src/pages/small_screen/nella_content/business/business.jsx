@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BiEdit, BiExit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
-import { FaArrowDown, FaBook, FaCalendar, FaCaretLeft, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
+import { FaArrowDown, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaDownload, FaEarthAfrica, FaEllipsisVertical, FaLocationPin, FaMessage, FaPerson, FaPhotoFilm } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { data, Link, useSearchParams } from "react-router-dom";
@@ -54,6 +54,7 @@ function Business({prop_set_q}){
     const [business_desc_v,set_business_desc_v]=useState("");
     const [business_country_v,set_business_country_v]=useState("");
     const [business_status_v,set_business_status_v]=useState("");
+    const [business_logo_v,set_business_logo_v]=useState("");
 
     const [edit,set_edit] = useState(false);
     const [business_uuid,set_business_uuid] = useState("");
@@ -70,7 +71,19 @@ function Business({prop_set_q}){
 
     const [dragIndex,set_dragIndex] = useState(null);
 
-    const [ht,set_ht]=useState({first:40,second:60,add1:30,search1:"flex",filter1:"flex"});
+    const [ht,set_ht]=useState({
+        //first:40,second:60,add1:30,search1:"flex",filter1:"flex"
+        first:10,
+        second: 90,
+        add1: 100,
+        search1: "none",
+        filter1: "none"
+    });
+
+    const [ad_success,set_ad_success]=useState(false);
+    const [ad_fail,set_ad_fail]=useState(false);
+    const [ad_success_message,set_ad_success_message]=useState("");
+    const [ad_fail_message,set_ad_fail_message]=useState("");
 
     //entity_featured_url: "https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/6a622d6e-b707-4159-9742-1ad91d4cc620/info/logo/1781768213528-w.jpg"
 
@@ -229,18 +242,29 @@ function Business({prop_set_q}){
                 "expires_in": 3600
                 })
         }).then((res)=>res.json()).then(async(data)=>{
-            set_loading(false);
-            // if(!res.ok){
-            //     console.log("Upload failed:    ",res);
-            // }else{
-                //await create_business(file,nw);
-                console.log("Upload Successful:    ",data);
-                complete_upload(data.data[0],file);
+           // set_loading(false);
+            if(data.status){
                 
-           // }
+                console.log("Upload Successful:    ",data);
+                await complete_upload(data.data[0],file);
+            }else{
+                //await create_business(file,nw);
+                set_loading(false);
+                console.log("Upload failed:    ",data);
+                set_ad_fail_message(data.message);
+                set_ad_fail(true);
+                setTimeout(()=>{
+                    set_ad_fail(false);
+                },5000);
+           }
         }).catch((err)=>{
             set_loading(false);
             console.log("Could not make upload request:    ",err);
+            set_ad_fail_message("Check your internet connection");
+            set_ad_fail(true);
+            setTimeout(()=>{
+                set_ad_fail(false);
+            },5000);
         })
   
         // await s3.send(
@@ -292,28 +316,43 @@ function Business({prop_set_q}){
                 set_loading(false);
                 set_get_now(!get_now);
                 set_ad(false);
-                set_create_s_text("successfully created business");
-                set_create_s_top(0);
-                setTimeout(() => {
-                    set_create_s_top(-10);
-                }, 3000);
+                // set_create_s_text("successfully created business");
+                // set_create_s_top(0);
+                // setTimeout(() => {
+                //     set_create_s_top(-10);
+                // }, 3000);
+                set_ad_success_message(data.message);
+                set_ad_success(true);
+                setTimeout(()=>{
+                    set_ad_success(false);
+                },5000);
             }else{
                 set_loading(false);
                 console.log(data);
-                set_create_text(data.message);
-                set_create_top(0);
-                setTimeout(() => {
-                    set_create_top(-10);
-                }, 3000);
+                // set_create_text(data.message);
+                // set_create_top(0);
+                // setTimeout(() => {
+                //     set_create_top(-10);
+                // }, 3000);
+                set_ad_fail_message(data.message);
+                set_ad_fail(true);
+                setTimeout(()=>{
+                    set_ad_fail(false);
+                },5000);
             }
          }).catch((err)=>{
             console.log(`nope: ${err}`);
             set_loading(false);
-            set_create_text("Check your internet connection.");
-            set_create_top(0);
-            setTimeout(() => {
-                set_create_top(-10);
-            }, 3000);
+            // set_create_text("Check your internet connection.");
+            // set_create_top(0);
+            // setTimeout(() => {
+            //     set_create_top(-10);
+            // }, 3000);
+            set_ad_fail_message("Check your internet connection.");
+            set_ad_fail(true);
+            setTimeout(()=>{
+                set_ad_fail(false);
+            },5000);
         });
     }
 
@@ -505,6 +544,7 @@ function Business({prop_set_q}){
                                         set_business_desc_v(item.description);
                                         set_business_country_v(item.extra_data.country_of_registration);
                                         set_business_status_v(item.status);
+                                        set_business_logo_v(item.entity_featured_url);
                                         
                                         set_i(null);
                                     }}><BsViewList size={20}/> View</div>
@@ -520,6 +560,7 @@ function Business({prop_set_q}){
                                         set_business_country_v(item.extra_data.country_of_registration);
                                         set_business_status_v(item.status);
                                         set_short_name(item.meta_key);
+                                        set_business_logo_v(item.entity_featured_url);
 
                                         set_i(null);
                                         
@@ -569,20 +610,19 @@ function Business({prop_set_q}){
             {
                 ad&&
                 <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"white",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                    <div className="view" style={{backgroundColor:"orange",boxSizing:"border-box",width:"90%",height:"10%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                    <div className="view" style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                             <div>CREATE A NEW BUSINESS</div>
-                            <div style={{color:"orangered",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                            <div style={{color:"white",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_ad(false);
                             }}>
-                            <BiExit size={30}/>
-                            <div style={{fontSize:"14px"}}>Back</div>
+                            <FaCircleXmark size={30}/>
                             </div>
                         </div>
                         
                     </div>
                     <div style={{width:"90%",height:"80%",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                        <div style={{width:"90%",height:"200px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
+                        <div style={{width:"100%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -600,11 +640,11 @@ function Business({prop_set_q}){
                             <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <ImageDown size={100} color="gray"/>
                                 <div style={{marginTop:"10px"}}>Drag & Drop Image File here</div>
-                            </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",height:"100%"}}/>
+                            </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",aspectRatio:"2/1"}}/>
                         }
                         </div>
                         <div>OR</div>
-                        <label style={{width:"90%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <label style={{width:"100%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                             <Upload size={20}/>
                             <div>Click here to upload image</div>
                             <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
@@ -612,7 +652,7 @@ function Business({prop_set_q}){
                             }}/>
                         </label>
                         <div style={{width:"90%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
-                        <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center"}}>
                             <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
                             <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                 <FaBook size={20}/>
@@ -669,28 +709,32 @@ function Business({prop_set_q}){
                         
                     
                     </div>
-                    {/* <div style={{width:"90%",paddingBottom:"20px",marginTop:"10px",marginBottom:"20px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",color:"orangered"}}>
-                        <FaCaretLeft size={30}/>
-                        <div style={{fontSize:"14px"}} onClick={()=>{
-                            set_ad(false);
-                        }}>Back</div>
-                    </div> */}
+                    
+                    {ad_fail&&
+                    <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                        <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                            <FaExclamationCircle size={30}/> {ad_fail_message} 
+                        </div>
+                    </div>
+                    }
                     
                 </div>
             }
             {
                 view&&
-                <Business_view set_view={set_view} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v}/>
+                <Business_view set_view={set_view} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
             }
             {   edit&&
-                <Business_edit set_get_now={set_get_now} get_now={get_now} set_edit={set_edit} business_owned_by={business_owned_by} short_name1={short_name} business_uuid={business_uuid} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v}/>
+                <Business_edit set_ad_success={set_ad_success} set_ad_success_message={set_ad_success_message} set_get_now={set_get_now} get_now={get_now} set_edit={set_edit} business_owned_by={business_owned_by} short_name1={short_name} business_uuid={business_uuid} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
             }
-            <div style={{position:"absolute",fontFamily:"arial",backgroundColor:"red",color:"honeydew",top:`${create_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.3s linear",textAlign:"center",fontSize:"14px"}}>
-                    {/*FAILED TO LOGIN*/} {create_text}
-            </div>
-            <div style={{position:"absolute",fontFamily:"arial",backgroundColor:"rgba(0, 255, 255, 0.5)",color:"black",top:`${create_s_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"14px"}}>
-                    {/* Successful */} {create_s_text}
-            </div>
+
+            {ad_success&&
+                    <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                        <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                            <FaCheckCircle size={30}/> {ad_success_message}
+                        </div>
+                    </div>
+            }
         </div>
     )
 }

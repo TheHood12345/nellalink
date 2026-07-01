@@ -1,6 +1,6 @@
 import { FaCircleXmark, FaImages } from "react-icons/fa6";
 
-function Business_view({set_view,business_name_v,business_address_v,business_email_v,business_desc_v,business_country_v,business_status_v}){
+function Business_view({set_view,business_logo_v,business_name_v,business_address_v,business_email_v,business_desc_v,business_country_v,business_status_v}){
     return (
         <div style={{width:"100%",height:"100%",position:"absolute",backgroundColor:"rgba(0,0,0,0.8)",display:"flex",fontSize:"16px",flexDirection:"column",alignItems:"center"}}>
 
@@ -15,7 +15,7 @@ function Business_view({set_view,business_name_v,business_address_v,business_ema
             </div>
             <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div style={{fontWeight:"bolder"}}>Business Logo</div>
-                <FaImages size={30}/>
+                <image src={business_logo_v} alt="" style={{width:"30%",aspectRatio:"1/1",backgroundColor:"rgb(240,240,240)"}}/>
             </div>
             <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div style={{fontWeight:"bolder"}}>Business Name</div>
