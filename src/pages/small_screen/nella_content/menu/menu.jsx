@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
-import { FaArrowDown, FaBusinessTime, FaCaretDown, FaCheckCircle, FaDollarSign, FaDownload, FaEuroSign, FaIcicles, FaPlus, FaRegImages, FaSearch, FaUpload } from "react-icons/fa";
+import { FaArrowDown, FaBusinessTime, FaCaretDown, FaCheckCircle, FaDollarSign, FaDownload, FaEuroSign, FaIcicles, FaInfoCircle, FaPlus, FaRegImages, FaSearch, FaUpload } from "react-icons/fa";
 import { FaArrowRight, FaCediSign, FaCircleXmark, FaDeleteLeft, FaEllipsisVertical, FaImage, FaNairaSign, FaSpinner, FaX } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
@@ -406,8 +406,8 @@ function Menu(){
                     <Loader className="loading"  size={90} color="#fd7e14"/>
                 </div>:
                 
-            <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
-                <FaIcicles size={30}/>
+            <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
+                <FaInfoCircle size={30}/>
                 <div style={{color:"black"}}>No menu data available</div>
                 <div>Please add new items to see them listed here.</div>
             </div>:
@@ -852,7 +852,7 @@ function Menu(){
                                         </div>:
                                         
                                     <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
-                                        <FaIcicles size={30}/>
+                                        <FaInfoCircle size={30}/>
                                         <div style={{color:"black"}}>No menu data available</div>
                                         <div>Please add new items to see them listed here.</div>
                                     </div>:

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
 import Business from "./small_screen/nella_content/business/business";
 import Home from "./small_screen/nella_content/home/home";
@@ -278,22 +278,124 @@ function Large_nella(){
     }
 
     return (
-        <div className="large_main" style={{width:"70%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"100%",height:"15%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+        <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
+            {/* --------------------- */}
+            <div style={{width:"30%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(200,200,200)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
+                    <h1 style={{color:"rgb(50,50,50)"}}>Nellalink</h1>
+                    <h1 style={{marginTop:"0px",color:"rgb(50,50,50)"}}>SBS</h1>
+                    <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"0px",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    
+                    set_q(1);
+                }}>
+                    <FaHome color={q==1? "black": "gray"} size={25} style={{width:"30%"}}/>
+                    <div style={{color:q==1? "black": "gray",width:"70%"}}>Dashboard</div>
+                </Link>
+                <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    //if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                        // set_verify_email_text_top(0);
+                        // setTimeout(()=>{
+                        //     set_verify_email_text_top(-10);
+                        // },2000);
+                    //}else{
+                       // set_q(3);
+                   // }
+                    
+                }}>
+                    <FaBell color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%"}}>Notifications</div>
+                </Link>
+                <Link to={
+                    localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
+                    "/home":"/business"} style={{backgroundColor:q==2?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                        set_verify_email_text_top(0);
+                        setTimeout(()=>{
+                            set_verify_email_text_top(-10);
+                        },2000);
+                    }else{
+                      set_q(2);  
+                    }
+                    
+                }}>
+                    <FaBusinessTime color={q==2? "black": "gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==2? "black": "gray",width:"70%"}}>Businesses</div>
+                </Link>
+                <Link to={
+                    localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
+                    "/home":"/menu"} style={{backgroundColor:q==3?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                        set_verify_email_text_top(0);
+                        setTimeout(()=>{
+                            set_verify_email_text_top(-10);
+                        },2000);
+                    }else{
+                        set_q(3);
+                    }
+                    
+                }}>
+                    <FaBookOpen color={q==3? "black": "gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==3? "black": "gray",width:"70%"}}>QR Menu/Price List</div>
+                </Link>
+                <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                    //     set_verify_email_text_top(0);
+                    //     setTimeout(()=>{
+                    //         set_verify_email_text_top(-10);
+                    //     },2000);
+                    // }else{
+                    //     set_q(3);
+                    // }
+                    
+                }}>
+                    <FaTable color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%"}}>Analytics</div>
+                </Link>
+                <Link  style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                    //     set_verify_email_text_top(0);
+                    //     setTimeout(()=>{
+                    //         set_verify_email_text_top(-10);
+                    //     },2000);
+                    // }else{
+                    //     set_q(3);
+                    // }
+                    
+                }}>
+                    <FaGear color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%"}}>Settings</div>
+                </Link>
+                </div>
+                <div style={{width:"100%",height:"20%",backgroundColor:"rgb(50,50,50)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end"}}>
+                    <div style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                        <img src="/35.png" alt="" style={{width:"80%",aspectRatio:"1/1",borderRadius:"100px"}}/>
+                    </div>
+                    <div style={{width:"70%"}}>
+                        <div>{localStorage.getItem("name")}</div>
+                        <div>Merchant ID: {localStorage.getItem("uuid")}</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {/* ------------------------- */}
+            <div style={{width:"70%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"100%",height:"30%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold",color:"black"}}>
-                        <div style={{fontSize:"12px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
+                        <h1 style={{fontSize:"40px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</h1>
                         {
                             localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                           <div style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"orange":"aqua",color:"white",width:"60%",borderRadius:"2px"}} onClick={()=>{
+                           <div style={{display:"flex",fontSize:"30px",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"orange":"aqua",color:"white",width:"60%",borderRadius:"2px"}} onClick={()=>{
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
                         }}>{v_text}</div>:
-                           <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
+                           <div style={{display:"flex",fontSize:"30px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     
-                    <div style={{width:"40%",position:"relative",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                    <div style={{width:"30%",position:"relative",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
                         {/* <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative"}}> */}
                            
 
@@ -319,23 +421,29 @@ function Large_nella(){
                            
                         {/* </div> */}
                         
-                        <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        {/* <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                            <FaRegBell size={24} color={"gray"} style={{margin:"0px",padding:"0px"}}/>
                            <div style={{color:"white",backgroundColor:"red",width:"50%",height:"40%",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-10%",right:"-10%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
-                        </div>
+                        </div> */}
                         
                         <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         {/* <FaList size={20} style={{cursor:"pointer"}} onClick={()=>{
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
                         }}/> */}
-                        <FaGear size={24} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
+                        <div style={{width:"20%",height:"90%",fontSize:"20px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
+                            set_logout(true);
+                        }}>
+                            <FaRightToBracket color={q==4? "black": "gray"} size={40}/>
+                            {/* <div style={{color:q==4? "black": "gray"}}>Logout</div> */}
+                        </div>
+                        {/* <FaGear size={24} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
                             set_col3(!col3);
                             set_col1(false);
                             set_drawer1(!drawer1);
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
-                        }}/>
+                        }}/> */}
                         {/* {show_verify_anim&& localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
                         <div className="verify" style={{position:"absolute",paddingLeft:"10px",paddingRight:"10px",backgroundColor:"transparent",color:"white",left:"-110%",borderRadius:"10px",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}} onClick={()=>{
                             set_drawer1(true);
@@ -354,57 +462,9 @@ function Large_nella(){
             {/* {
             q == 1?<Home/>:q==2?<Business prop_set_q={set_q}/>:q==3?<Menu/>:null
             } */}
+            {/* <div style={{width:"100%",height:"85%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}> */}
             <Outlet/>
-
-            {/* Bottom nav bar */}
-            <div style={{width:"100%",height:"15%",border:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",boxShadow:"0px -1px 2px gray",fontSize:"10px"}}>
-                <Link to={"/home"} style={{width:"20%",textDecoration:"none",cursor:"pointer",height:"90%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                    
-                    set_q(1);
-                }}>
-                    <FaHome color={q==1? "black": "gray"} size={20}/>
-                    <div style={{fontSize:"12px",color:q==1? "black": "gray"}}>Home</div>
-                </Link>
-                <Link to={
-                    localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                    "/home":"/business"} style={{width:"20%",height:"90%",textDecoration:"none",border:"0px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                    if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
-                        setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
-                    }else{
-                      set_q(2);  
-                    }
-                    
-                }}>
-                    <FaBusinessTime color={q==2? "black": "gray"} size={20}/>
-                    <div style={{fontSize:"12px",color:q==2? "black": "gray"}}>Business</div>
-                </Link>
-                <Link to={
-                    localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                    "/home":"/menu"} style={{width:"20%",height:"90%",textDecoration:"none",border:"0px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                    if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
-                        setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
-                    }else{
-                        set_q(3);
-                    }
-                    
-                }}>
-                    <FaBookOpen color={q==3? "black": "gray"} size={20}/>
-                    <div style={{fontSize:"12px",color:q==3? "black": "gray"}}>QR Menu{/*"/Price List"*/}</div>
-                </Link>
-                <div style={{width:"20%",height:"90%",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                    set_logout(true);
-                }}>
-                    <FaRightToBracket color={q==4? "black": "gray"} size={20}/>
-                    <div style={{fontSize:"12px",color:q==4? "black": "gray"}}>Logout</div>
-                </div>
-            </div>
-
+            {/* </div> */}
             {
                 logout&&
                 <div style={{width:"100%",height:"100%",fontSize:"16px",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(0,0,0,0.6)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
@@ -558,6 +618,7 @@ function Large_nella(){
             </div>
             <div style={{position:"absolute",backgroundColor:"orange",color:"white",fontSize:"14px",top:`${verify_email_text_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.5s linear",textAlign:"center"}}>
                     Kindly verify your email address to access this feature
+            </div>
             </div>
         </div>
     );

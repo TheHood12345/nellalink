@@ -23,6 +23,10 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.view_large:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+}
 @keyframes loading_anim {
   from{
     transform: rotate(0deg);

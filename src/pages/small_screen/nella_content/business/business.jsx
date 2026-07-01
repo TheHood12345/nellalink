@@ -465,7 +465,7 @@ function Business({prop_set_q}){
                 <Loader className="loading"  size={90} color="#fd7e14"/>
                 </div>:
                 
-            <div style={{width:"90%",marginTop:"20px",fontSize:"14px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
+            <div style={{width:"90%",marginTop:"20px",fontSize:"14px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
                 <FaInfoCircle size={30}/>
                 <div style={{width:"80%",color:"black",textAlign:"center"}}>No Business data available</div>
                 <div style={{width:"80%",color:"gray",textAlign:"center"}}>Please add a Business to see them listed here.</div>
