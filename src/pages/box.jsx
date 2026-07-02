@@ -15,7 +15,7 @@ function Box(){
                 console.log("OneSignal failed to initialize:    ",err)
             });
             await OneSignal.Notifications.requestPermission().then((res)=>{
-                console.log("OneSignal requested permission: ",res);
+                console.log("OneSignal requested permission successfully: ",res);
             }).catch((err)=>{
                 console.log("OneSignal failed to request permission:    ",err)
             });
