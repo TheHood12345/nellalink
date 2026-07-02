@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar } from "react-icons/fa";
 import { FaBoltLightning, FaComputer, FaFileLines, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRightToBracket } from "react-icons/fa6";
-import Dashboard from "../../../large_screen/Dashboard";
+import Dashboard from "../../../large_screen/dashboard";
 
 function Home(){
 
