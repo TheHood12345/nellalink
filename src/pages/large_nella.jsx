@@ -6,7 +6,7 @@ import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines,
 // import Menu from "./small_screen/nella_content/menu/menu";
 import { Outlet, useNavigate,Link,useSearchParams } from "react-router-dom";
 import Business from "./large_screen/businesses";
-import Dashboard from "./large_screen/Dashboard";
+import Dashboard from "./large_screen/dashboard";
 
 function Large_nella(){
 
