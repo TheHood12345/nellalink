@@ -22,7 +22,7 @@ function Box(){
 
             OneSignal.Notifications.addEventListener("foregroundWillDisplay", (event)=>{
                 console.log("New Notification:  ",event.notification);
-
+                alert("New notification:    ",event.notification);
                 event.preventDefault();
                 event.notification.display();
             })
