@@ -9,6 +9,7 @@ function Box(){
         async function init(){
             await OneSignal.init({
                 appId: import.meta.env.VITE_ONESIGNAL_APP_ID,
+                allowLocalhostAsSecureOrigin: true
             }).then((res)=>{
                 console.log("OneSignal initialized: ",res);
             }).catch((err)=>{
@@ -21,8 +22,8 @@ function Box(){
             });
 
             OneSignal.Notifications.addEventListener("foregroundWillDisplay", (event)=>{
-                console.log("New Notification:  ",event.notification);
-                alert("New notification:    ",event.notification);
+                console.log("New Notification:  ",JSON.stringify(event.notification));
+                alert("New notification:    ",JSON.stringify(event.notification));
                 event.preventDefault();
                 event.notification.display();
             })
