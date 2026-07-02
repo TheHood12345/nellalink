@@ -8,7 +8,6 @@ import { data, Link, useSearchParams } from "react-router-dom";
 import Business_view from "./business_view";
 import Business_edit from "./business_edit";
 import {AlarmCheck, BellCheck, ImageDown, Loader, Loader2, LoaderPinwheel, Upload} from "lucide-react"
-import Business_large from "../../../large_screen/businesses";
 //import { s3 } from "./s3";
 // import { S3Client,PutObjectCommand } from "@aws-sdk/client-s3";
 // import {FetchHttpHandler} from "@aws-sdk/fetch-http-handler"
@@ -16,7 +15,7 @@ import Business_large from "../../../large_screen/businesses";
 
 //https://nellalink-middleware-dev.eu-4.evennode.com/docs/api/#/File%20Manager/post_api_v1_nellalink_file_manager_aws_upload_url
 
-function Business({prop_set_q}){
+function Business_large({prop_set_q}){
     const url="https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business";
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
     const get_all_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`;
@@ -385,13 +384,13 @@ function Business({prop_set_q}){
 
 
     return (
-        <>
-        <div id="small_business" style={{width:"100%",height:"70%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
-             <div style={{width:"100%",height:`${ht.first}%`,transition:"all 0.3s linear",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-            <div style={{width:ht.first==10?"90%":"90%",height:`${ht.add1}%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
+        <div id="large_business" style={{width:"100%",height:"80%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
+            <div style={{width:"90%",height:`10%`,transition:"all 0.3s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"30%",height:`100%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 set_ad(true);
             }}><FaPlus size={30}/><div style={{fontSize:"20px",paddingLeft:"3%"}}>Add Business</div></div>
-            <div style={{width:"90%",height:"30%",backgroundColor:"rgb(230,230,230)",overflow:"scroll",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
+            <div style={{width:"50%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"50%",height:"100%",overflow:"scroll",display:`flex`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
                 <FaSearch size={20} color={"gray"} style={{width:"10%",display:"flex",flexDirection:"row",alignItems:"center",alignItems:"center"}}/>
                 <input type="text" value={z_search} placeholder="Search Email, name" style={{backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onChange={(e)=>{
                     set_z_search(e.target.value);
@@ -404,7 +403,7 @@ function Business({prop_set_q}){
                     }
                 }}/>
             </div>
-            <div style={{width:"90%",height:"30%",color:"black",backgroundColor:"rgb(230,230,230)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
+            <div style={{width:"40%",height:"100%",color:"black",display:`flex`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
                 <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
@@ -438,27 +437,28 @@ function Business({prop_set_q}){
                 </div>:null
                 } */}
             </div>
+            </div>
 
             </div>
             {/* ....... */}
-             <div style={{width:"100%",height:`${ht.second}%`,transition:"all 0.3s linear",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll",backgroundColor:"white",opacity:"1"}} onScroll={(e)=>{
-                if(e.target.scrollTop >= 20){
-                    set_ht({
-                        first:10,
-                        second: 90,
-                        add1: 100,
-                        search1: "none",
-                        filter1: "none"
-                    })
-                }else{
-                    set_ht({
-                        first:40,
-                        second: 60,
-                        add1: 30,
-                        search1: "flex",
-                        filter1: "flex"
-                    })
-                }
+             <div style={{width:"100%",height:`90%`,paddingTop:"20px",paddingBottom:"20px",transition:"all 0.3s linear",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll",backgroundColor:"white",opacity:"1"}} onScroll={(e)=>{
+                // if(e.target.scrollTop >= 20){
+                //     set_ht({
+                //         first:10,
+                //         second: 90,
+                //         add1: 100,
+                //         search1: "none",
+                //         filter1: "none"
+                //     })
+                // }else{
+                //     set_ht({
+                //         first:40,
+                //         second: 60,
+                //         add1: 30,
+                //         search1: "flex",
+                //         filter1: "flex"
+                //     })
+                // }
              }}>
             {
                 all_data==null?
@@ -473,17 +473,23 @@ function Business({prop_set_q}){
                 <div style={{width:"80%",color:"gray",textAlign:"center"}}>Please add a Business to see them listed here.</div>
             </div>:
             <div style={{width:"90%",marginTop:"0px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px",backgroundColor:"rgb(255,255,255)",borderRadius:"10px"}}>
-            <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a",color:"black"}}>
-                <div style={{width:"90%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                    <div style={{width:"10%",textAlign:"center"}}><input type="checkbox"/></div>
-                    <div style={{width:"10%",textAlign:"end"}}>S/N</div>
-                    <div style={{width:"80%",textAlign:"center"}}>Business Name</div>
+            <div style={{width:"100%",fontSize:"14px",overflow:"hidden",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a",color:"black"}}>
+                <div style={{width:"90%",fontWeight:"bolder",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                    <div style={{width:"10%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                        <div style={{width:"30%",textAlign:"center"}}><input type="checkbox"/></div>
+                        <div style={{width:"60%",textAlign:"end"}}>S/N</div>
+                    </div>
+                    <div style={{width:"20%",textAlign:"center"}}>Business Name</div>
+                    <div style={{width:"20%",textAlign:"center"}}>Business Email</div>
+                    <div style={{width:"20%",textAlign:"center"}}>Business Address</div>
+                    <div style={{width:"20%",textAlign:"center"}}>Status</div>
+                    <div>{" "}</div>
                 </div>
             </div>
             {all_data.map((item,index)=>{
                 if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
                 return (
-                    <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable onDragOver={(e)=>{
+                    <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(255,255,255)",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable onDragOver={(e)=>{
                         e.preventDefault();
                     }} onDragStart={(e)=>{
                         set_dragIndex(index);
@@ -511,28 +517,31 @@ function Business({prop_set_q}){
                     }}
                     >
                         <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div style={{width:"10%"}}><input type="checkbox"/></div>
-                            <div style={{width:"10%",textAlign:"center",fontSize:"14px"}}>{index+1}</div>
+                            <div style={{width:"10%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                <div style={{width:"10%"}}><input type="checkbox"/></div>
+                                <div style={{width:"10%",textAlign:"center",fontSize:"14px"}}>{index+1}</div>
+                            </div>
                             
                             <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                {/* <div style={{paddingRight:"10px",backgroundColor:"rgb(200,200,200)",borderRadius:"20px",display:"flex",flexDirection:"column",alignItems:"flex-start",justifyContent:"center",textAlign:"center"}}> */}
-                                    {/* <FaImage size={30} color={"gray"} style={{paddingRight:"10px"}}/> */}
+                                <div style={{width:"20%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                     <img src={item.entity_featured_url} alt="" style={{width:"20%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
-                                {/* </div> */}
-                                <div style={{width:"60%",display:"flex",flexDirection:"column",alignItems:"start"}}>
-                                    <div style={{fontSize:"16px",color:"black",fontWeight:"bolder"}}>{item.title_name}</div>
-                                    <div style={{fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.contact_email}</div>
-                                    <div style={{fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.business_address}</div>
-                                    <div style={{width:"70%",fontSize:"14px",paddingTop:"10px",paddingBottom:"10px",marginTop:"10px",backgroundColor:"rgb(200,200,200)",borderRadius:"4px",textAlign:"center"}}>{item.status}</div>
+                                
+                                    <div style={{width:"60%",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                        <div style={{fontSize:"14px",color:"gray",fontWeight:"bolder"}}>{item.title_name}</div>
+                                    </div>
                                 </div>
-                                <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
+                                <div style={{width:"20%",fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.contact_email}</div>
+                                <div style={{width:"20%",fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.business_address}</div>
+                                <div style={{width:"20%",fontSize:"12px",paddingTop:"2px",paddingBottom:"2px",backgroundColor:"rgb(240,240,240)",borderRadius:"4px",textAlign:"center"}}>{item.status}</div>
+                                
+                            </div>
+                            <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(i==index){
                                         set_i(null);
                                     }else{
                                     set_i(index);
                                     }
                                 }}/>
-                            </div>
                         </div>
                         {
                             i==index&&
@@ -738,10 +747,7 @@ function Business({prop_set_q}){
                     </div>
             }
         </div>
-
-        <Business_large/>
-        </>
     )
 }
 
-export default Business;
+export default Business_large;

@@ -72,12 +72,48 @@ html,body{
   .large_main{
     display: none;
   }
+  #small_home{
+    display: flex;
+  }
+  #small_business{
+    display: flex;
+  }
+  #small_menu{
+    display: flex;
+  }
+  #large_home{
+    display: none;
+  }
+  #large_business{
+    display: none;
+  }
+  #large_menu{
+    display: none;
+  }
 }
 @media screen and (min-width: 701px) {
   .small_main{
     display: none;
   }
   .large_main{
+    display: flex;
+  }
+  #small_home{
+    display: none;
+  }
+  #small_business{
+    display: none;
+  }
+  #small_menu{
+    display: none;
+  }
+  #large_home{
+    display: flex;
+  }
+  #large_business{
+    display: flex;
+  }
+  #large_menu{
     display: flex;
   }
 }

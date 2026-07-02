@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
-import Business from "./small_screen/nella_content/business/business";
-import Home from "./small_screen/nella_content/home/home";
-import Menu from "./small_screen/nella_content/menu/menu";
+// import Business from "./small_screen/nella_content/business/business";
+// import Home from "./small_screen/nella_content/home/home";
+// import Menu from "./small_screen/nella_content/menu/menu";
 import { Outlet, useNavigate,Link,useSearchParams } from "react-router-dom";
+import Business from "./large_screen/businesses";
+import Dashboard from "./large_screen/Dashboard";
 
 function Large_nella(){
 
@@ -63,38 +65,7 @@ function Large_nella(){
         }
     },[query]);
 
-    const items = [
-        {
-            icon: <FaCalendar size={20} color={"gray"}/>,
-            nil: "_",
-            name: "Total Business (My Business)"
-        },
-        {
-            icon: <FaPeopleGroup size={20} color={"purple"}/>,
-            nil: "_",
-            name: "Total Number of Users Onboarded"
-        },
-        {
-            icon: <FaList size={20} color={"gray"}/>,
-            nil: "_",
-            name: "Total number of accepted orders"
-        },
-        {
-            icon: <FaBell size={20} color={"orange"}/>,
-            nil: "Nil",
-            name: "Total Number of Notifications"
-        },
-        {
-            icon: <FaFileLines size={20} color={"red"}/>,
-            nil: "Nil",
-            name: "Total Number of Declined Orders"
-        },
-        {
-            icon: <FaComputer size={20} color={"gray"}/>,
-            nil: "Nil",
-            name: "Total Number of devices"
-        }
-    ]
+
     // useEffect(()=>{
     //       if(!token){
     //         navigate("/login",{replace:true});
@@ -280,7 +251,7 @@ function Large_nella(){
     return (
         <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
             {/* --------------------- */}
-            <div style={{width:"30%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <div style={{width:"20%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
                 <div style={{width:"100%",height:"80%",backgroundColor:"rgb(200,200,200)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
                     <h1 style={{color:"rgb(50,50,50)"}}>Nellalink</h1>
                     <h1 style={{marginTop:"0px",color:"rgb(50,50,50)"}}>SBS</h1>
@@ -366,11 +337,11 @@ function Large_nella(){
                     <div style={{color:"gray",width:"70%"}}>Settings</div>
                 </Link>
                 </div>
-                <div style={{width:"100%",height:"20%",backgroundColor:"rgb(50,50,50)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end"}}>
+                <div style={{width:"100%",height:"20%",backgroundColor:"rgb(50,50,50)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",overflow:"scroll"}}>
                     <div style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                         <img src="/35.png" alt="" style={{width:"80%",aspectRatio:"1/1",borderRadius:"100px"}}/>
                     </div>
-                    <div style={{width:"70%"}}>
+                    <div style={{width:"70%",fontSize:"12px",userSelect:"all"}}>
                         <div>{localStorage.getItem("name")}</div>
                         <div>Merchant ID: {localStorage.getItem("uuid")}</div>
                     </div>
@@ -380,22 +351,22 @@ function Large_nella(){
             </div>
 
             {/* ------------------------- */}
-            <div style={{width:"70%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"100%",height:"30%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"80%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"100%",height:"20%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold",color:"black"}}>
-                        <h1 style={{fontSize:"40px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</h1>
+                        <h1 style={{fontSize:"20px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</h1>
                         {
                             localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
                            <div style={{display:"flex",fontSize:"30px",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"orange":"aqua",color:"white",width:"60%",borderRadius:"2px"}} onClick={()=>{
                             set_drawer1(!drawer1);
                             set_show_verify_anim(false);
                         }}>{v_text}</div>:
-                           <div style={{display:"flex",fontSize:"30px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
+                           <div style={{display:"flex",fontSize:"20px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     
-                    <div style={{width:"30%",position:"relative",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
+                    <div style={{width:"20%",position:"relative",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
                         {/* <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative"}}> */}
                            
 
@@ -409,7 +380,7 @@ function Large_nella(){
                         }} onError={(e)=>{
                             set_icon(true);
                         }}/>:
-                        <FaUserCircle size={24} color={col1==true&&drawer1==true?"black":"gray"}  onClick={()=>{
+                        <FaUserCircle size={30} color={col1==true&&drawer1==true?"black":"gray"}  onClick={()=>{
                             set_col1(!col1);
                             set_col3(false);
                             set_drawer1(!drawer1);
@@ -421,10 +392,10 @@ function Large_nella(){
                            
                         {/* </div> */}
                         
-                        {/* <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                            <FaRegBell size={24} color={"gray"} style={{margin:"0px",padding:"0px"}}/>
-                           <div style={{color:"white",backgroundColor:"red",width:"50%",height:"40%",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-10%",right:"-10%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
-                        </div> */}
+                           <div style={{color:"red",fontSize:"20px",fontWeight:"bolder",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-20px",right:"50%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
+                        </div>
                         
                         <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         {/* <FaList size={20} style={{cursor:"pointer"}} onClick={()=>{
@@ -434,7 +405,7 @@ function Large_nella(){
                         <div style={{width:"20%",height:"90%",fontSize:"20px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                             set_logout(true);
                         }}>
-                            <FaRightToBracket color={q==4? "black": "gray"} size={40}/>
+                            <FaRightToBracket color={q==4? "black": "gray"} size={30}/>
                             {/* <div style={{color:q==4? "black": "gray"}}>Logout</div> */}
                         </div>
                         {/* <FaGear size={24} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
@@ -460,9 +431,9 @@ function Large_nella(){
                 
             </div>
             {/* {
-            q == 1?<Home/>:q==2?<Business prop_set_q={set_q}/>:q==3?<Menu/>:null
+            q == 1?<Dashboard/>:q==3?<Business prop_set_q={set_q}/>:q==4?<Business/>:null
             } */}
-            {/* <div style={{width:"100%",height:"85%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}> */}
+            {/* <div style={{width:"100%",height:"80%",boxShadow:"0px 3px 3px red",backgroundColor:"blue",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}> */}
             <Outlet/>
             {/* </div> */}
             {
