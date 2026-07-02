@@ -97,12 +97,12 @@ function Menu(){
     const [show_menu_edit,set_show_menu_edit]=useState(false);
 
     const [ht,set_ht]=useState({
-        //first:40,second:60,add1:30,search1:"flex",filter1:"flex"
-        first:10,
-        second: 90,
-        add1: 100,
-        search1: "none",
-        filter1: "none"
+        first:40,second:60,add1:30,search1:"flex",filter1:"flex"
+        // first:10,
+        // second: 90,
+        // add1: 100,
+        // search1: "none",
+        // filter1: "none"
     });
 
     const [p_i,set_p_i]=useState("-1");
@@ -327,7 +327,7 @@ function Menu(){
                 set_i(null);
                 
             }}><FaPlus size={30}/><div style={{fontSize:"20px",paddingLeft:"3%"}}>Add Menu {location.state?.title_name}</div></div>
-            <div style={{width:"90%",height:"30%",backgroundColor:"rgb(230,230,230)",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
+            <div style={{width:"90%",height:"30%",backgroundColor:"rgb(250,250,250)",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
                 <FaSearch size={20} style={{width:"10%",display:"flex",flexDirection:"row",alignItems:"center",alignItems:"center"}}/>
                 <input type="text" value={z_search} placeholder="Search Email, name" style={{backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onChange={(e)=>{
                     set_z_search(e.target.value);
@@ -341,7 +341,7 @@ function Menu(){
                 }}/>
             </div>
            
-            <div style={{width:"90%",height:"30%",color:"black",backgroundColor:"rgb(230,230,230)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
+            <div style={{width:"90%",height:"30%",color:"black",backgroundColor:"rgb(250,250,250)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
                 <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
@@ -414,7 +414,7 @@ function Menu(){
                 <div>Please add new items to see them listed here.</div>
             </div>:
             <div style={{width:"90%",marginTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
-            <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a"}}>
+            <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a"}}>
                 <div style={{width:"100%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",color:"rgb(27, 41, 62)"}}>
                   
                     <div style={{width:"20%",textAlign:"center"}}>S/N</div>
@@ -464,7 +464,7 @@ function Menu(){
 
                                 if(index<a){
                                     if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
-                                return(<div key={index} style={{width:"100%",position:"relative",backgroundColor:"rgb(250,250,250)",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable
+                                return(<div key={index} style={{width:"100%",position:"relative",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",borderBottom:"1px solid rgb(220,220,220)",borderBottom:"1px solid rgb(220,220,220)"}} draggable
                                      onDragStart={(e)=>{
                                         set_drag({parentId,index});
                                         e.target.style.opacity="0";
@@ -483,11 +483,11 @@ function Menu(){
                                 <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                            
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px"}}>{index+1}</div>
-                            <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}}>
+                            <div style={{width:"20%",textAlign:"center",fontSize:"14px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
-                                <div style={{width:"100%",textAlign:"center",fontSize:"14px",fontWeight:"bolder",display:"flex",flexDirection:"row"}}>{item.title_name}</div>
+                                <div style={{width:"100%",textAlign:"center",fontSize:"14px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item.title_name}</div>
                             </div>
-                            <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder",color:"gray"}}>View Menu</div>
+                            <a  href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     set_i(index);
