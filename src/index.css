@@ -90,6 +90,24 @@ html,body{
   #large_menu{
     display: none;
   }
+  #note_main{
+    width: 40%;
+    height: 15%;
+    top:0%;
+    right: 2%;
+  }
+  .screen1{
+    display: none;
+  }
+  .screen2{
+    display: flex;
+  }
+  .screen1_notif{
+    display: none;
+  }
+  .screen2_notif{
+    display: flex;
+  }
 }
 @media screen and (min-width: 701px) {
   .small_main{
@@ -116,6 +134,24 @@ html,body{
   #large_menu{
     display: flex;
   }
+  #note_main{
+    width: 20%;
+    height: 15%;
+    top:0%;
+    right: 2%;
+  }
+  .screen1{
+    display: flex;
+  }
+  .screen2{
+    display: flex;
+  }
+  .screen1_notif{
+    display: flex;
+  }
+  .screen2_notif{
+    display: none;
+  }
 }
 ::-webkit-scrollbar{
   width: 0%;
@@ -140,3 +176,4 @@ input:focus{
   border-radius: 7px;
   box-shadow: 0px 0px 2px rgba(200,200,200,0);
 }
+

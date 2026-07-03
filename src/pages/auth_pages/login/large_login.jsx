@@ -351,14 +351,14 @@ function Large_login(){
             </div>}
           
             {success&&
-                        <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"10%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                        <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                             <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                 <FaCheckCircle size={30}/> {success_message}
                             </div>
                         </div>
                         }
                         {fail&&
-                        <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"10%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                        <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                             <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                 <FaExclamationCircle size={30}/> {fail_message} 
                             </div>

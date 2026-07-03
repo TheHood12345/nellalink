@@ -286,75 +286,21 @@ function Small_nella(){
                         {/* <div>{localStorage.getItem("email")}</div> */}
                         {
                            localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                           <div style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"#fd7e14":"aqua",color:"white",width:"80%",height:"50%",borderRadius:"10px"}} onClick={()=>{
-                            set_drawer1(!drawer1);
-                            set_show_verify_anim(false);
-                        }}>{v_text}</div>:
+                          // <div style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"#fd7e14":"aqua",color:"white",width:"80%",height:"50%",borderRadius:"10px"}} onClick={()=>{
+                           // set_drawer1(!drawer1);
+                           // set_show_verify_anim(false);
+                       // }}>{v_text}</div>
+                        
+                        null:
                            <div style={{display:"flex",alignItems:"center",justifyContent:"center",fontSize:"14px"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     
-                    <div style={{width:"40%",position:"relative",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                        {/* <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative"}}> */}
-                           
-
-                        <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        {icon==false?
-                        <img src="/35.png" style={{width:"80%"}} onClick={()=>{
-                            set_col1(!col1);
-                            set_col3(false);
-                            set_drawer1(!drawer1);
-                            set_show_verify_anim(false);
-                        }} onError={(e)=>{
-                            set_icon(true);
-                        }}/>:
-                        <FaUserCircle size={24} color={col1==true&&drawer1==true?"black":"gray"}  onClick={()=>{
-                            set_col1(!col1);
-                            set_col3(false);
-                            set_drawer1(!drawer1);
-                            set_show_verify_anim(false);
-                        }}/>
-                        }
-                        
-                        </div>
-                           
-                        {/* </div> */}
-                        
-                        <div style={{width:"30%",position:"relative",margin:"0px",padding:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                           <FaRegBell size={25} color={"gray"} style={{margin:"0px",padding:"0px"}}/>
-                           <div style={{color:"red",backgroundColor:"white",fontSize:"20px",fontWeight:"bolder",width:"50%",height:"40%",borderRadius:"100px",textAlign:"center",position:"absolute",top:"-10%",right:"-10%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>0</div>
-                        </div>
-                        
-                        <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        {/* <FaList size={20} style={{cursor:"pointer"}} onClick={()=>{
-                            set_drawer1(!drawer1);
-                            set_show_verify_anim(false);
-                        }}/> */}
-                        <FaGear size={26} color={col3==true&&drawer1==true?"black":"gray"}  onClick={()=>{
-                            set_col3(!col3);
-                            set_col1(false);
-                            set_drawer1(!drawer1);
-                            set_drawer1(!drawer1);
-                            set_show_verify_anim(false);
-                        }}/>
-                        {/* {show_verify_anim&& localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                        <div className="verify" style={{position:"absolute",paddingLeft:"10px",paddingRight:"10px",backgroundColor:"transparent",color:"white",left:"-110%",borderRadius:"10px",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}} onClick={()=>{
-                            set_drawer1(true);
-                            set_show_verify_anim(false);
-                        }}><FaArrowUp size={20} color="black"/>
-                        <div style={{backgroundColor:"orange",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",padding:"10px"}}>
-                            <div>VERIFY</div> <div>EMAIL</div>
-                        </div>
-                        </div>:null 5clipPath:"polygon(50% 0%, 0% 100%, 100% 100%)",display:"flex",flexDirection:"column",alignItems5:"center",justifyContent:"center",textAlign:"center",width:"90%",paddingBottom:"20px",paddingTop:"20px",aspectRatio:"4/1",
-                        } */}
-                        </div>
-                    </div>
+                    
                 </div>
                 
             </div>
-            {/* {
-            q == 1?<Home/>:q==2?<Business prop_set_q={set_q}/>:q==3?<Menu/>:null
-            } */}
+            
             <Outlet/>
 
             {/* Bottom nav bar */}

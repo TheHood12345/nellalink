@@ -384,7 +384,7 @@ function Business_large({prop_set_q}){
 
 
     return (
-        <div id="large_business" style={{width:"100%",height:"80%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
+        <div id="large_business" style={{width:"100%",height:"85%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
             <div style={{width:"90%",height:`10%`,transition:"all 0.3s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
             <div style={{width:"30%",height:`100%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 set_ad(true);

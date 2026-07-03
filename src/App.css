@@ -38,3 +38,20 @@
 .loading{
   animation: loading_anim 1s linear 0s infinite reverse forwards;
 }
+@keyframes alert_anim {
+  0%{
+    transform: rotate(30deg);
+  }
+  30%{
+    transform: rotate(-30deg);
+  }
+  60%{
+    transform: rotate(30deg);
+  }
+  100%{
+    transform: rotate(-30deg);
+  }
+}
+.alert{
+  animation: alert_anim 3s linear 0s infinite alternate forwards;
+}
