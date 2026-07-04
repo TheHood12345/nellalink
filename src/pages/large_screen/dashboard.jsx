@@ -11,7 +11,7 @@ function Dashboard(){
                 name: "Total Business (My Business)"
             },
             {
-                icon: <FaPeopleGroup size={30} color={"purple"}/>,
+                icon: <FaPeopleGroup size={30} color={"gray"}/>,
                 nil: "_",
                 name: "Total Number of Users Onboarded"
             },
@@ -21,7 +21,7 @@ function Dashboard(){
                 name: "Total number of accepted orders"
             },
             {
-                icon: <FaBell size={30} color={"orange"}/>,
+                icon: <FaBell size={30} color={"gray"}/>,
                 nil: "Nil",
                 name: "Total Number of Notifications"
             },
@@ -39,12 +39,12 @@ function Dashboard(){
 
         const [up,set_up] = useState(0)
     return (
-        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(255,255,255)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
-            <div style={{width:"97%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px"}}>
+        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(250,250,250)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
+            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}>
                         {
                             items.map((item,index)=>{
                                 return(
-                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(200,200,200)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
+                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(240,240,240)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
                                     set_up(index);
                                 }} onMouseEnter={(e)=>{
                                     set_up(index);
@@ -53,18 +53,18 @@ function Dashboard(){
                                         {item.icon}
                                         <FaArrowUp/>
                                     </div>
-                                    <div style={{color:"black",fontWeight:"bold",fontSize:"20px",marginTop:"10px"}}>{item.nil}</div>
+                                    <div style={{color:"black",fontWeight:"bold",fontSize:"20px",marginTop:"20px"}}>{item.nil}</div>
                                     <div style={{marginTop:"20px"}}>{item.name}</div>
                                 </div>
                             )
                             })
                         }
                         </div>
-                <div style={{width:"97%",display:"grid",gridTemplateColumns:"1fr 2fr",gap:"10px"}}>
+                <div style={{width:"90%",display:"grid",gridTemplateColumns:"1fr 2fr",gap:"10px",marginTop:"40px"}}>
                         <div style={{width:"90%",backgroundColor:"white",fontSize:"14px",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:"0px 3px 20px rgb(240,240,240)",marginTop:"20px",display:"flex",flexDirection:"column"}}>
-                                    <div style={{fontSize:"30px",fontWeight:"bold",color:"black"}}>1</div>
+                                    <div style={{fontSize:"30px",fontWeight:"bold",color:"black",marginBottom:"20px"}}>1</div>
                                     <div>USER ONBOARDING</div>
-                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                          <div style={{width:"30%",paddingTop:"1%",paddingBottom:"1%",backgroundColor:"pink",color:"red",textAlign:"center",borderRadius:"3px"}}>Daily</div>
                                          <div style={{width:"30%",paddingTop:"1%",paddingBottom:"1%",backgroundColor:"rgb(200,200,200)",color:"black",textAlign:"center",borderRadius:"3px"}}>Weekly</div>
                                          <div style={{width:"30%",paddingTop:"1%",paddingBottom:"1%",backgroundColor:"rgb(200,200,200)",color:"black",textAlign:"center",borderRadius:"3px"}}>Monthly</div>
@@ -81,7 +81,7 @@ function Dashboard(){
                         </div>
                         <div>
                         <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}>
-                        <div style={{width:"100%",backgroundColor:"white",fontSize:"14px",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:"0px 0px 20px rgb(240,240,240)",marginTop:"20px",display:"flex",flexDirection:"column"}}>
+                        <div style={{width:"90%",backgroundColor:"white",fontSize:"14px",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:"0px 0px 20px rgb(240,240,240)",marginTop:"20px",display:"flex",flexDirection:"column"}}>
                             <div>TIME LOGS</div>
                             <h2 style={{color:"black",fontWeight:"bold",marginBottom:"0px"}}>0 HOURS</h2>
                             <div style={{color:"red"}}><FaArrowDown/>0% up from last week</div>
@@ -98,7 +98,7 @@ function Dashboard(){
                         </div>
         
         
-                        <div style={{width:"100%",backgroundColor:"white",paddingTop:"10px",fontSize:"14px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:"0px 0px 20px rgb(240,240,240)",marginTop:"20px",marginBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                        <div style={{width:"100%",backgroundColor:"white",paddingTop:"10px",fontSize:"14px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:"0px 0px 20px rgb(240,240,240)",marginTop:"40px",marginBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
                             <div style={{width:"95%"}}>RECENT</div>
                             <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",border:"1px solid orange",marginTop:"2px",display:"flex",flexDirection:"column"}}>
                                 <div><FaBoltLightning style={{color:"yellow"}}/> QR Code successfully generated</div>

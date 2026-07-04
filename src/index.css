@@ -59,12 +59,16 @@ html,body{
   flex-direction: column;
   align-items: center;
   user-select: none;
+  font-family: poppins;
 }
 *{
   -webkit-tap-highlight-color: transparent;
 }
 
-
+@font-face{
+  font-family: "poppins";
+  src: "./assets/poppins.TTF";
+}
 @media screen and (max-width: 700px) {
   .small_main{
     display: flex;
@@ -101,6 +105,8 @@ html,body{
   }
   .screen2{
     display: flex;
+    width: 90%;
+    height: 100%;
   }
   .screen1_notif{
     display: none;
@@ -145,6 +151,8 @@ html,body{
   }
   .screen2{
     display: flex;
+    width: 50%;
+    height: 100%;
   }
   .screen1_notif{
     display: flex;

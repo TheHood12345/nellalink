@@ -252,15 +252,15 @@ function Large_nella(){
         <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
             {/* --------------------- */}
             <div style={{width:"20%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(200,200,200)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
+                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(100,100,100)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
                     <h1 style={{color:"rgb(50,50,50)"}}>Nellalink</h1>
                     <h1 style={{marginTop:"0px",color:"rgb(50,50,50)"}}>SBS</h1>
                     <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"0px",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     
                     set_q(1);
                 }}>
-                    <FaHome color={q==1? "black": "gray"} size={25} style={{width:"30%"}}/>
-                    <div style={{color:q==1? "black": "gray",width:"70%"}}>Dashboard</div>
+                    <FaHome color={q==1? "black": "white"} size={25} style={{width:"30%"}}/>
+                    <div style={{color:q==1? "black": "white",width:"70%",fontSize:"12px"}}>Dashboard</div>
                 </Link>
                 <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     //if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
@@ -273,8 +273,8 @@ function Large_nella(){
                    // }
                     
                 }}>
-                    <FaBell color={"gray"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"gray",width:"70%"}}>Notifications</div>
+                    <FaBell color={"white"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Notifications</div>
                 </Link>
                 <Link to={
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
@@ -289,8 +289,8 @@ function Large_nella(){
                     }
                     
                 }}>
-                    <FaBusinessTime color={q==2? "black": "gray"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:q==2? "black": "gray",width:"70%"}}>Businesses</div>
+                    <FaBusinessTime color={q==2? "black": "white"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==2? "black": "white",width:"70%",fontSize:"12px"}}>Businesses</div>
                 </Link>
                 <Link to={
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
@@ -305,8 +305,8 @@ function Large_nella(){
                     }
                     
                 }}>
-                    <FaBookOpen color={q==3? "black": "gray"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:q==3? "black": "gray",width:"70%"}}>QR Menu/Price List</div>
+                    <FaBookOpen color={q==3? "black": "white"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==3? "black": "white",width:"70%",fontSize:"12px"}}>QR Menu/Price List</div>
                 </Link>
                 <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
@@ -319,8 +319,8 @@ function Large_nella(){
                     // }
                     
                 }}>
-                    <FaTable color={"gray"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"gray",width:"70%"}}>Analytics</div>
+                    <FaTable color={"white"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Analytics</div>
                 </Link>
                 <Link  style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
@@ -333,8 +333,8 @@ function Large_nella(){
                     // }
                     
                 }}>
-                    <FaGear color={"gray"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"gray",width:"70%"}}>Settings</div>
+                    <FaGear color={"white"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Settings</div>
                 </Link>
                 </div>
                 <div style={{width:"100%",height:"20%",backgroundColor:"rgb(50,50,50)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",overflow:"scroll"}}>

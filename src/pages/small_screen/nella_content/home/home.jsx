@@ -12,7 +12,7 @@ function Home(){
                 name: "Total Business (My Business)"
             },
             {
-                icon: <FaPeopleGroup size={30} color={"purple"}/>,
+                icon: <FaPeopleGroup size={30} color={"gray"}/>,
                 nil: "_",
                 name: "Total Number of Users Onboarded"
             },
@@ -22,7 +22,7 @@ function Home(){
                 name: "Total number of accepted orders"
             },
             {
-                icon: <FaBell size={30} color={"orange"}/>,
+                icon: <FaBell size={30} color={"gray"}/>,
                 nil: "Nil",
                 name: "Total Number of Notifications"
             },
@@ -44,7 +44,7 @@ function Home(){
                         {
                             items.map((item,index)=>{
                                 return(
-                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(200,200,200)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
+                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(250,250,250)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
                                     set_up(index);
                                 }} onMouseEnter={(e)=>{
                                     set_up(index);
