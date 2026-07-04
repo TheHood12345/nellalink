@@ -44,7 +44,7 @@ function Dashboard(){
                         {
                             items.map((item,index)=>{
                                 return(
-                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(240,240,240)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
+                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"40px",paddingBottom:"40px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(240,240,240)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
                                     set_up(index);
                                 }} onMouseEnter={(e)=>{
                                     set_up(index);

@@ -405,15 +405,15 @@ function Box(){
                 </div>
             }
             {prof&&
-                <div style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(250,250,250,1)",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}}>
-                    <div style={{width:"100%",height:"90%",backgroundColor:"rgba(250,250,250,1)",boxShadow:"0px 0px 3px rgba(250,250,250,1)",display:"flex",flexDirection:"row",alignItems:"start",justifyContent:"center"}}>
+                <div style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(0,0,0,0.8)",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}}>
+                    <div style={{width:"100%",height:"90%",boxShadow:"0px 0px 3px transparent",display:"flex",flexDirection:"row",alignItems:"start",justifyContent:"center"}}>
                         
 
                         {/* -------------------SCREEN 2------------------------- */}
                         <div className="screen2" style={{scrollBehavior:"smooth",backgroundColor:"white",borderRadius:"10px",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                            <div style={{width:"95%",height:"90%",paddingBottom:"20px",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
+                            <div style={{width:"95%",height:"90%",paddingBottom:"20px",backgroundColor:"transparent",borderRadius:"10px",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
 
-                                <div style={{width:"100%",height:"20%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                     <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
                                         set_prof(false);
                                     }}><BsFillArrowLeftCircleFill size={40}/></div>
@@ -421,7 +421,7 @@ function Box(){
                                     
                                 </div>
 
-                                <div ref={screen2_ref} style={{width:"100%",height:"80%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",backgroundColor:"rgb(255,255,255)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start",overflow:"scroll",scrollBehavior:"smooth"}}>
+                                <div ref={screen2_ref} style={{width:"100%",height:"90%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",backgroundColor:"rgb(255,255,255)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start",overflow:"scroll",scrollBehavior:"smooth"}}>
                                 
 
 

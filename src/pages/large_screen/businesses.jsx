@@ -403,20 +403,21 @@ function Business_large({prop_set_q}){
                     }
                 }}/>
             </div>
-            <div style={{width:"40%",height:"100%",color:"black",display:`flex`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
+            <div style={{width:"40%",height:"100%",position:"relative",color:"black",display:`flex`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
                 <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
                     <div>{x}</div>
                     <FaArrowDown/>
+                    
                 </div>
-                {/* {
+                {
                 q==true?
-                <div style={{width:"100%",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",border:"1px solid black",top:"120%",overflow:"scroll"}}>
+                <div style={{width:"100%",zIndex:"2",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",top:"100%",left:"0%",overflow:"scroll"}}>
                     {
                         z.map((item,index)=>{
                             return (
-                                <div className="add" style={{width:"100%",paddingLeft:"3px",paddingRight:"3px",paddingTop:"1%",paddingBottom:"1%",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                                <div className="add" style={{width:"100%",paddingLeft:"10px",cursor:"pointer",paddingRight:"3px",paddingTop:"10px",paddingBottom:"10px",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                     set_x(item);
                                     set_q(!q);
                                     set_z_search("");
@@ -435,7 +436,7 @@ function Business_large({prop_set_q}){
                         })
                     }
                 </div>:null
-                } */}
+                }
             </div>
             </div>
 
@@ -588,32 +589,7 @@ function Business_large({prop_set_q}){
             })}
             </div>
             }
-            {
-                q==true?
-                <div style={{width:"90%",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",border:"1px solid black",top:"0%",overflow:"scroll"}}>
-                    {
-                        z.map((item,index)=>{
-                            return (
-                                <div className="add" style={{width:"100%",paddingLeft:"3px",paddingRight:"3px",paddingTop:"1%",paddingBottom:"1%",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
-                                    set_x(item);
-                                    set_q(!q);
-                                    set_z_search("");
-                                    if(index == 0){
-                                        set_z_main("enabled");
-                                        set_z_all("disabled");
-                                    }else if(index==1){
-                                        set_z_main("enabled");
-                                        set_z_all("enabled");
-                                    }else if(index==2){
-                                        set_z_main("disabled");
-                                        set_z_all("disabled")
-                                    }
-                                }}>{item}</div>
-                            )
-                        })
-                    }
-                </div>:null
-                }
+            
             </div>
 
             {/* ..................................... */}

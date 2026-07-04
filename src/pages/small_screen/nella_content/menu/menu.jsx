@@ -341,20 +341,20 @@ function Menu(){
                 }}/>
             </div>
            
-            <div style={{width:"90%",height:"30%",color:"black",backgroundColor:"rgb(250,250,250)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
-                <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
+            <div style={{width:"90%",height:"20%",position:"relative",color:"black",backgroundColor:"rgba(250,250,250,0)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"start",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
+                <div style={{width:"30%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
                     <div>{x}</div>
-                    <FaArrowDown/>
+                    <FaArrowDown style={{marginLeft:"10px"}}/>
                 </div>
-                {/* {
+                {
                 q==true?
-                <div style={{width:"100%",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",border:"1px solid black",top:"0%",overflow:"scroll"}}>
+                <div style={{width:"40%",zIndex:"2",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",top:"100%",left:"0%",overflow:"scroll"}}>
                     {
                         z.map((item,index)=>{
                             return (
-                                <div className="add" style={{width:"100%",paddingLeft:"3px",paddingRight:"3px",paddingTop:"1%",paddingBottom:"1%",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                                <div className="add" style={{width:"100%",paddingLeft:"10px",cursor:"pointer",paddingRight:"3px",paddingTop:"10px",paddingBottom:"10px",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                     set_x(item);
                                     set_q(!q);
                                     set_z_search("");
@@ -373,7 +373,7 @@ function Menu(){
                         })
                     }
                 </div>:null
-                } */}
+                }
             </div>
             </div>
              {/* ................... */}
@@ -577,32 +577,7 @@ function Menu(){
 
             
             }
-             {
-                q==true?
-                <div style={{width:"90%",backgroundColor:"white",paddingTop:"10px",paddingBottom:"10px",position:"absolute",border:"1px solid black",top:"0%",overflow:"scroll"}}>
-                    {
-                        z.map((item,index)=>{
-                            return (
-                                <div className="add" style={{width:"100%",paddingLeft:"3px",paddingRight:"3px",paddingTop:"1%",paddingBottom:"1%",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
-                                    set_x(item);
-                                    set_q(!q);
-                                    set_z_search("");
-                                    if(index == 0){
-                                        set_z_main("enabled");
-                                        set_z_all("disabled");
-                                    }else if(index==1){
-                                        set_z_main("enabled");
-                                        set_z_all("enabled");
-                                    }else if(index==2){
-                                        set_z_main("disabled");
-                                        set_z_all("disabled")
-                                    }
-                                }}>{item}</div>
-                            )
-                        })
-                    }
-                </div>:null
-                }
+             
             </div>
                         {/* ----------------------------------------------------------------------------------- */}
             {
