@@ -253,7 +253,7 @@ function Large_login(){
                 </div>
             </div>
 
-            <div style={{width:"50%",height:"100%",fontFamily:"l",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"100%",overflow:"scroll",boxShadow:"0px 0px 6px rgb(240,240,240)",backgroundColor:"white",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
                 <h1></h1><div style={{fontWeight:"bold",width:"90%",fontSize:"28px",marginTop:"20px"}}>Welcome back!</div>
                 <div style={{width:"90%",fontSize:"16px"}}>Don't have an account? <Link to={"/signup"} style={{color:"#fd7e14",textDecoration:"none"}}>Sign Up</Link></div>

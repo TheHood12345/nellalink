@@ -67,7 +67,7 @@ html,body{
 
 @font-face{
   font-family: "poppins";
-  src: "./assets/poppins.TTF";
+  src: url("./assets/poppins.TTF");
 }
 @media screen and (max-width: 700px) {
   .small_main{

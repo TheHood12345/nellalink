@@ -231,7 +231,7 @@ function Small_login(){
         });
     }
     return (
-        <div className="small_main" style={{width:"100%",height:"100%",fontFamily:"l",position:"absolute",top:"0%",left:"0%",color:"rgb(50,50,50)",backgroundColor:"rgb(255,255,255)",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+        <div className="small_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",color:"rgb(50,50,50)",backgroundColor:"rgb(255,255,255)",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"90%",height:"90%",overflow:"scroll",backgroundColor:"white",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
         <h1></h1><div style={{fontWeight:"bold",width:"90%",fontSize:"28px",marginTop:"20px"}}>Welcome back!</div>
                 <div style={{width:"90%",fontSize:"16px",marginTop:"10px"}}>Don't have an account? <Link to={"/signup"} style={{color:"#fd7e14",textDecoration:"none"}}>Sign Up</Link></div>
