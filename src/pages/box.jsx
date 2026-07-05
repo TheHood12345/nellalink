@@ -330,7 +330,7 @@ function Box(){
                                 {   
                                     notif_items.map((item,index)=>
                                          <div key={index} style={{width:"100%",fontSize:"12px",boxShadow:"0px 0px 10px rgb(220,220,220)",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"40px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-                                            <div key={index} style={{width:"100%",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                                            <div style={{width:"100%",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                                                 <div key={index} style={{width:"90%",paddingTop:"20px",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                                     <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>Title</div>
                                                     <div style={{width:"60%"}}>{item.title}</div>
@@ -377,21 +377,21 @@ function Box(){
                                     :
                                     notif_items.map((item,index)=>
                                         <div key={index} style={{width:"100%",fontSize:"12px",boxShadow:"0px 0px 10px rgb(220,220,220)",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"40px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-                                            <div key={index} style={{width:"100%",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                                            <div style={{width:"100%",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                                                 <div key={index} style={{width:"90%",paddingTop:"20px",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>BUSINESS NAME </div>
-                                                    <div style={{width:"60%"}}>{"INDEX "}{index}</div>
+                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>Title</div>
+                                                    <div style={{width:"60%"}}>{item.title}</div>
                                                 </div>
                                                 <div key={index} style={{width:"90%",paddingTop:"20px",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>MENU </div>
-                                                    <div style={{width:"60%"}}>{index}</div>
+                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>Body</div>
+                                                    <div style={{width:"60%"}}>{item.body}</div>
                                                 </div>
                                                 <div key={index} style={{width:"90%",paddingTop:"20px",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>Name: </div>
-                                                    <div style={{width:"60%"}}>{"INDEX "}{index}</div>
+                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>ID</div>
+                                                    <div style={{width:"60%"}}>{item.id}</div>
                                                 </div>
                                                 <div key={index} style={{width:"90%",paddingTop:"20px",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>UUID: </div>
+                                                    <div style={{width:"30%",display:"flex",fontWeight:"bold"}}>Index</div>
                                                     <div style={{width:"60%"}}>{index}</div>
                                                 </div>
                                             </div>
