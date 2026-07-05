@@ -244,11 +244,11 @@ function Box(){
             });
 
             OneSignal.Notifications.addEventListener("foregroundWillDisplay", (event)=>{
+                event.preventDefault();
                 set_notif_num((num)=>num+=1);
                 set_notif_items(prev => [{name:"name",uuid:"uuid"},...prev]);
                 console.log("New Notification:  ",JSON.stringify(event.notification));
                 alert("New notification:    ",JSON.stringify(event.notification));
-                event.preventDefault();
                 event.notification.display();
             })
         }
@@ -314,7 +314,12 @@ function Box(){
                     <div style={{width:"100%",height:"100%",backgroundColor:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         <div className="screen1_notif" style={{width:"100%",height:"100%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <div style={{width:"80%",height:"90%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <h1>Notifications</h1>
+                                <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                    <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
+                                        set_notif(false);
+                                    }}><BsFillArrowLeftCircleFill size={40}/></div>
+                                    <h1>Notifications</h1>
+                                </div>
                                 {
                                 notif_num<=0?
                                 <div style={{width:"90%",height:"70%",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
@@ -356,7 +361,13 @@ function Box(){
                         </div>
                         <div className="screen2_notif" style={{width:"100%",height:"100%",backgroundColor:"white",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <div style={{width:"80%",height:"90%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <h1>Notifications</h1>
+                                <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                    <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
+                                        set_notif(false);
+                                    }}><BsFillArrowLeftCircleFill size={40}/></div>
+                                    <h1>Notifications</h1>
+                                </div>
+                                
                                 
                                 { 
                                     notif_num<=0?
@@ -397,9 +408,7 @@ function Box(){
                         
                     </div>
 
-                    <div style={{position:"absolute",cursor:"pointer",top:"3%",right:"3%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"orange"}} onClick={()=>{
-                                        set_notif(false);
-                                    }}><BsFillArrowLeftCircleFill size={40}/><div>Back</div></div>
+                    
                     
                     
                 </div>
