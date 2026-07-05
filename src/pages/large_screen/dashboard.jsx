@@ -40,7 +40,7 @@ function Dashboard(){
         const [up,set_up] = useState(0)
     return (
         <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(250,250,250)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
-            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}>
+            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px"}}>
                         {
                             items.map((item,index)=>{
                                 return(

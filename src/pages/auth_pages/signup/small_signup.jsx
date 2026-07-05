@@ -146,7 +146,7 @@ function Small_signup(){
             </div>
             }
             {fail&&
-            <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"10%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+            <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                 <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                     <FaExclamationCircle size={30}/> {fail_message} 
                 </div>

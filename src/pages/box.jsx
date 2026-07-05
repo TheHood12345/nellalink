@@ -3,7 +3,7 @@ import Small_nella from "./small_nella";
 import OneSignal from "react-onesignal";
 import { useEffect, useRef, useState } from "react";
 import { Bell, CheckCircle2, Copy, IdCard, LockKeyhole, Send, Verified } from "lucide-react";
-import { FaAngleDown, FaAngleUp, FaBell, FaCaretDown, FaCaretUp, FaCertificate, FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaLock, FaRegBell } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaArrowLeft, FaBell, FaCaretDown, FaCaretUp, FaCertificate, FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaLock, FaRegBell } from "react-icons/fa";
 import { FaCircleXmark, FaRightToBracket } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { BsFillArrowLeftCircleFill, BsPerson } from "react-icons/bs";
@@ -314,16 +314,16 @@ function Box(){
                         <div className="screen1_notif" style={{width:"100%",height:"100%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <div style={{width:"80%",height:"90%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                    <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
+                                    <div style={{cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
                                         set_notif(false);
-                                    }}><BsFillArrowLeftCircleFill size={40}/></div>
-                                    <h1>Notifications</h1>
+                                    }}><FaArrowLeft size={30}/></div>
+                                    <div style={{marginLeft:"10px"}}>Notifications</div>
                                 </div>
                                 {
                                 notif_num<=0?
                                 <div style={{width:"90%",height:"70%",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                     <FaInfoCircle size={40}/>
-                                    <div style={{fontWeight:"bolder",textAlign:"center"}}>No New Notifications</div>
+                                    <div style={{fontWeight:"bolder",textAlign:"center",fontSize:"10px"}}>No New Notifications</div>
                                 </div>
                                 :
                                 <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}>
@@ -349,7 +349,7 @@ function Box(){
                                                 </div>
                                             </div>
                                             <div style={{width:"100%",backgroundColor:"rgb(250,250,250)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                <div style={{width:"100%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"orange",color:"white",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>ACTION</div>
+                                                <div style={{width:"100%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"orange",color:"white",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>ACTION</div>
                                             </div>
                                         </div>
                                     )
@@ -361,10 +361,10 @@ function Box(){
                         <div className="screen2_notif" style={{width:"100%",height:"100%",backgroundColor:"white",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <div style={{width:"80%",height:"90%",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                    <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
+                                    <div style={{cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
                                         set_notif(false);
-                                    }}><BsFillArrowLeftCircleFill size={40}/></div>
-                                    <h1>Notifications</h1>
+                                    }}><FaArrowLeft size={30}/></div>
+                                    <div style={{marginLeft:"10px"}}>Notifications</div>
                                 </div>
                                 
                                 
@@ -372,7 +372,7 @@ function Box(){
                                     notif_num<=0?
                                     <div style={{width:"90%",height:"70%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                         <FaInfoCircle size={40}/>
-                                        <div style={{fontWeight:"bolder",textAlign:"center"}}>No New Notifications</div>
+                                        <div style={{fontWeight:"bolder",textAlign:"center",fontSize:"10px"}}>No New Notifications</div>
                                     </div>
                                     :
                                     notif_items.map((item,index)=>
@@ -395,8 +395,8 @@ function Box(){
                                                     <div style={{width:"60%"}}>{index}</div>
                                                 </div>
                                             </div>
-                                            <div style={{width:"100%",paddingTop:"20px",backgroundColor:"rgb(250,250,250)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                <div style={{width:"100%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"orange",color:"white",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>ACTION</div>
+                                            <div style={{width:"100%",backgroundColor:"rgb(250,250,250)",borderRadius:"10px",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                                <div style={{width:"100%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"orange",color:"white",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>ACTION</div>
                                             </div>
                                         </div>
                                     )
@@ -414,22 +414,22 @@ function Box(){
             }
             {prof&&
                 <div style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(0,0,0,0.8)",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}}>
-                    <div style={{width:"100%",height:"90%",boxShadow:"0px 0px 3px transparent",display:"flex",flexDirection:"row",alignItems:"start",justifyContent:"center"}}>
+                    <div style={{width:"100%",height:"100%",boxShadow:"0px 0px 3px transparent",display:"flex",flexDirection:"row",alignItems:"start",justifyContent:"center"}}>
                         
 
                         {/* -------------------SCREEN 2------------------------- */}
-                        <div className="screen2" style={{scrollBehavior:"smooth",backgroundColor:"white",borderRadius:"10px",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                        <div className="screen2" style={{scrollBehavior:"smooth",backgroundColor:"rgb(18,22,28)",color:"white",borderRadius:"0px",overflow:"scroll",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <div style={{width:"95%",height:"90%",paddingBottom:"20px",backgroundColor:"transparent",borderRadius:"10px",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
 
                                 <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                    <div style={{cursor:"pointer",width:"20%",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
+                                    <div style={{cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
                                         set_prof(false);
-                                    }}><BsFillArrowLeftCircleFill size={40}/></div>
-                                    <div style={{width:"80%"}}>PROFILE</div>
+                                    }}><FaArrowLeft size={30} color="white"/></div>
+                                    <div style={{marginLeft:"10px"}}>PROFILE</div>
                                     
                                 </div>
 
-                                <div ref={screen2_ref} style={{width:"100%",height:"90%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",backgroundColor:"rgb(255,255,255)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start",overflow:"scroll",scrollBehavior:"smooth"}}>
+                                <div ref={screen2_ref} style={{width:"100%",height:"90%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start",overflow:"scroll",scrollBehavior:"smooth"}}>
                                 
 
 
@@ -439,7 +439,7 @@ function Box(){
                                 </div>
                                 <div style={{width:"65%",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}}>
                                     <div style={{fontSize:"30px",fontWeight:"bolder"}}>{localStorage.getItem("name")}</div>
-                                    <div style={{fontWeight:"bolder",marginTop:"10px"}}>{localStorage.getItem("email")}</div>
+                                    <div style={{fontWeight:"bolder",marginTop:"10px",fontSize:"12px"}}>{localStorage.getItem("email")}</div>
                                     <div style={{}}>{localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
                                     <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",padding:"6px",backgroundColor:"rgb(240,240,240)",borderRadius:'100px',color:"orangered",fontSize:"12px"}}>
                                         <FaInfoCircle/>

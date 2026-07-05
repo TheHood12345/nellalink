@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BiEdit, BiExit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
-import { FaArrowDown, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
+import { FaArrowDown, FaArrowLeft, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaDownload, FaEarthAfrica, FaEllipsisVertical, FaLocationPin, FaMessage, FaPerson, FaPhotoFilm } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { data, Link, useSearchParams } from "react-router-dom";
@@ -73,7 +73,7 @@ function Business({prop_set_q}){
     const [dragIndex,set_dragIndex] = useState(null);
 
     const [ht,set_ht]=useState({
-        first:40,second:60,add1:30,search1:"flex",filter1:"flex"
+        first:30,second:70,add1:30,search1:"flex",filter1:"flex"
         // first:10,
         // second: 90,
         // add1: 100,
@@ -386,14 +386,14 @@ function Business({prop_set_q}){
 
     return (
         <>
-        <div id="small_business" style={{width:"100%",height:"70%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
+        <div id="small_business" style={{width:"100%",height:"70%",backgroundColor:"rgb(250,250,250)",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
              <div style={{width:"100%",height:`${ht.first}%`,transition:"all 0.3s linear",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-            <div style={{width:ht.first==10?"90%":"90%",height:`${ht.add1}%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
+            <div style={{width:ht.first==10?"90%":"90%",height:`${ht.add1}%`,fontSize:"14px",transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 set_ad(true);
-            }}><FaPlus size={30}/><div style={{fontSize:"20px",paddingLeft:"3%"}}>Add Business</div></div>
-            <div style={{width:"90%",height:"30%",backgroundColor:"rgb(250,250,250)",overflow:"scroll",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
-                <FaSearch size={20} color={"gray"} style={{width:"10%",display:"flex",flexDirection:"row",alignItems:"center",alignItems:"center"}}/>
-                <input type="text" value={z_search} placeholder="Search Email, name" style={{backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onChange={(e)=>{
+            }}><FaPlus size={14}/><div style={{paddingLeft:"3%"}}>Add Business</div></div>
+            <div style={{width:"90%",height:"30%",backgroundColor:"rgb(255,255,255)",overflow:"scroll",display:`${ht.search1}`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
+                <FaSearch size={14} color={"gray"} style={{width:"10%",display:"flex",flexDirection:"row",alignItems:"center",alignItems:"center"}}/>
+                <input type="text" value={z_search} placeholder="Search Email, name" style={{fontSize:"12px",backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onChange={(e)=>{
                     set_z_search(e.target.value);
                     if(z_search!=""){
                         set_z_main("");
@@ -405,7 +405,7 @@ function Business({prop_set_q}){
                 }}/>
             </div>
             <div style={{width:"90%",height:"30%",position:"relative",color:"black",backgroundColor:"rgba(250,250,250,0)",display:`${ht.filter1}`,flexDirection:"column",alignItems:"start",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
-                <div style={{width:"30%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
+                <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
                     <div>{x}</div>
@@ -417,7 +417,7 @@ function Business({prop_set_q}){
                     {
                         z.map((item,index)=>{
                             return (
-                                <div className="add" style={{width:"100%",paddingLeft:"10px",cursor:"pointer",paddingRight:"3px",paddingTop:"10px",paddingBottom:"10px",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                                <div className="add" key={index} style={{width:"100%",paddingLeft:"10px",cursor:"pointer",paddingRight:"3px",paddingTop:"10px",paddingBottom:"10px",overflow:"scroll",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                     set_x(item);
                                     set_q(!q);
                                     set_z_search("");
@@ -441,7 +441,7 @@ function Business({prop_set_q}){
 
             </div>
             {/* ....... */}
-             <div style={{width:"100%",height:`${ht.second}%`,transition:"all 0.3s linear",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll",backgroundColor:"white",opacity:"1"}} onScroll={(e)=>{
+             <div style={{width:"100%",height:`${ht.second}%`,transition:"all 0.3s linear",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll",backgroundColor:"rgb(250,250,250)",opacity:"1"}} onScroll={(e)=>{
                 if(e.target.scrollTop >= 20){
                     set_ht({
                         first:10,
@@ -452,8 +452,8 @@ function Business({prop_set_q}){
                     })
                 }else{
                     set_ht({
-                        first:40,
-                        second: 60,
+                        first:30,
+                        second: 70,
                         add1: 30,
                         search1: "flex",
                         filter1: "flex"
@@ -483,7 +483,7 @@ function Business({prop_set_q}){
                 </div>
             </div>
             {all_data.map((item,index)=>{
-                if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
+                if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="") || (item.title_name?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="")){
                 return (
                     <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(255,255,255)",borderRadius:"0px",borderBottom:"1px solid rgb(220,220,220)"}} draggable onDragOver={(e)=>{
                         e.preventDefault();
@@ -513,21 +513,21 @@ function Business({prop_set_q}){
                     }}
                     >
                         <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div style={{width:"13%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <div style={{width:"13%",opacity:i==index?"0":"1",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                 <div style={{}}><input type="checkbox"/></div>
-                                <div style={{textAlign:"flex-endr",fontSize:"14px"}}>{index+1}</div>
+                                <div style={{textAlign:"flex-end",fontSize:"14px"}}>{index+1}</div>
                             </div>
                             
                             <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                 {/* <div style={{paddingRight:"10px",backgroundColor:"rgb(200,200,200)",borderRadius:"20px",display:"flex",flexDirection:"column",alignItems:"flex-start",justifyContent:"center",textAlign:"center"}}> */}
                                     {/* <FaImage size={30} color={"gray"} style={{paddingRight:"10px"}}/> */}
-                                    <img src={item.entity_featured_url} alt="" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
+                                    <img src={item.entity_featured_url} alt="" style={{width:"15%",opacity:i==index?"0":"1",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 {/* </div> */}
-                                <div style={{width:"70%",display:"flex",flexDirection:"column",alignItems:"start"}}>
-                                    <div style={{fontSize:"16px",color:"gray",fontWeight:"bolder"}}>{item.title_name}</div>
-                                    <div style={{fontSize:"13px",color:"gray"}}>{item.extra_data.contact_email}</div>
-                                    <div style={{fontSize:"13px",color:"gray"}}>{item.extra_data.business_address}</div>
-                                    <div style={{width:"70%",fontSize:"12px",paddingTop:"3px",paddingBottom:"3px",marginTop:"10px",backgroundColor:"rgb(240,240,240)",borderRadius:"100px",textAlign:"center"}}>{item.status}</div>
+                                <div style={{width:"65%",overflow:"scroll",opacity:i==index?"0":"1",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                    <div style={{fontSize:"14px",fontWeight:"bolder"}}>{item.title_name}</div>
+                                    <div style={{fontSize:"12px",color:"gray"}}>{item.extra_data.contact_email}</div>
+                                    <div style={{fontSize:"12px",color:"gray"}}>{item.extra_data.business_address}</div>
+                                    <div style={{width:"40%",fontSize:"12px",paddingTop:"3px",paddingBottom:"3px",backgroundColor:"rgb(250,250,250)",color:"gray",borderRadius:"9px",textAlign:"center"}}>{item.status}</div>
                                 </div>
                                 <FaEllipsisVertical size={24} color="gray" style={{cursor:"pointer"}} onClick={()=>{
                                     if(i==index){
@@ -538,11 +538,11 @@ function Business({prop_set_q}){
                                 }}/>
                             </div>
                         </div>
-                        {
+                        {/* {
                             i==index&&
-                            <div style={{zIndex:"10",width:"60%",alignSelf:"self-start",position:"absolute",backgroundColor:"rgb(240,240,240)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",left:"10%",display:"flex",flexDirection:"column",alignItems:"end",justifyContent:"start"}}>
-                                <div style={{width:"90%",height:"100%",backgroundColor:"rgb(240,240,240)",paddingRight:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
+                            <div style={{width:"30%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"rgb(255,255,255)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",right:"10%",display:"flex",flexDirection:"column",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
+                                    <div className="view" style={{display:"flex",alignItems:"center",justifyContent:"start"}} onClick={()=>{
                                         set_view(true);
                                         set_business_name_v(item.title_name);
                                         set_business_address_v(item.extra_data.business_address);
@@ -554,7 +554,7 @@ function Business({prop_set_q}){
                                         
                                         set_i(null);
                                     }}><BsViewList size={20}/> View</div>
-                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
+                                    <div className="view" style={{display:"flex",alignItems:"center",justifyContent:"start"}}  onClick={()=>{
                                         set_edit(true);
                                         set_business_uuid(item.uuid);
                                         set_business_owned_by(item.owned_by);
@@ -571,7 +571,44 @@ function Business({prop_set_q}){
                                         set_i(null);
                                         
                                     }}><BiEdit size={20}/> Edit</div>
-                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",height:"30%",fontSize:"20px"}}><MdManageAccounts size={20}/> Manage</Link>
+                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",display:"flex",alignItems:"center",justifyContent:"start"}}><MdManageAccounts size={20}/> Manage</Link>
+                                </div>
+                            </div>
+                        } */}
+                        {
+                            i==index&&
+                            <div style={{width:"80%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"rgb(255,255,255)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",left:"0%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    <div className="view" style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                        set_view(true);
+                                        set_business_name_v(item.title_name);
+                                        set_business_address_v(item.extra_data.business_address);
+                                        set_business_email_v(item.extra_data.contact_email);
+                                        set_business_desc_v(item.description);
+                                        set_business_country_v(item.extra_data.country_of_registration);
+                                        set_business_status_v(item.status);
+                                        set_business_logo_v(item.entity_featured_url);
+                                        
+                                        set_i(null);
+                                    }}><BsViewList size={20}/> View</div>
+                                    <div className="view" style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                        set_edit(true);
+                                        set_business_uuid(item.uuid);
+                                        set_business_owned_by(item.owned_by);
+
+                                        set_business_name_v(item.title_name);
+                                        set_business_address_v(item.extra_data.business_address);
+                                        set_business_email_v(item.extra_data.contact_email);
+                                        set_business_desc_v(item.description);
+                                        set_business_country_v(item.extra_data.country_of_registration);
+                                        set_business_status_v(item.status);
+                                        set_short_name(item.meta_key);
+                                        set_business_logo_v(item.entity_featured_url);
+
+                                        set_i(null);
+                                        
+                                    }}><BiEdit size={20}/> Edit</div>
+                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)"}}><MdManageAccounts size={20}/> Manage</Link>
                                 </div>
                             </div>
                         }
@@ -589,118 +626,118 @@ function Business({prop_set_q}){
             {/* ..................................... */}
 
             {
-                ad&&
-                <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"white",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                    <div className="view" style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div>CREATE A NEW BUSINESS</div>
-                            <div style={{color:"white",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
-                                set_ad(false);
-                            }}>
-                            <FaCircleXmark size={30}/>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div style={{width:"90%",height:"80%",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                        <div style={{width:"100%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
-                            e.preventDefault();
-                            e.target.style.border="0px dashed transparent";
-                        }} onDragOver={(e)=>{
-                            e.preventDefault();
-                            e.target.style.border="2px dashed orange";
-                        }} onDrop={(e)=>{
-                            e.preventDefault();
-                            if(e.dataTransfer.files[0].type.startsWith("image/")){
-                                set_sc(e.dataTransfer.files[0]); 
-                            }
-                            e.target.style.border="0px dashed transparent";
-                        }}>
-                        {
-                            sc==""?
-                            <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <ImageDown size={100} color="gray"/>
-                                <div style={{marginTop:"10px"}}>Drag & Drop Image File here</div>
-                            </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",aspectRatio:"2/1"}}/>
-                        }
-                        </div>
-                        <div>OR</div>
-                        <label style={{width:"100%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                            <Upload size={20}/>
-                            <div>Click here to upload image</div>
-                            <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
-                                set_sc(e.target.files[0]);
-                            }}/>
-                        </label>
-                        <div style={{width:"90%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
-                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                            <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
-                                <FaBook size={20}/>
-                                <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"90%",border:"0px"}} onChange={(e)=>{
-                                    set_title_name(e.target.value);
-                                }}/>
-                            </div>
-
-                            <div style={{width:"100%",marginTop:"10px"}}>Short Name</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
-                                <FaPerson size={20}/>
-                                <input type="text" placeholder="SBS" style={{width:"90%",border:"0px"}}/>
-                            </div>
-
-                            <div style={{width:"100%",marginTop:"10px"}}>Description</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                <input type="text" value={description} placeholder="Add description here" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
-                                    set_description(e.target.value);
-                                }}/>
-                            </div>
-
-                            <div style={{width:"100%",marginTop:"10px"}}>Business Address</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
-                                <FaLocationPin size={20}/>
-                                <input type="text" value={business_address} placeholder="Abuja" style={{width:"90%",border:"0px"}} onChange={(e)=>{
-                                    set_business_address(e.target.value);
-                                }}/>
-                            </div>
-
-                            <div style={{width:"100%",marginTop:"10px"}}>Contact Email</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
-                                <FaMessage size={20}/>
-                                <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"90%",border:"0px"}} onChange={(e)=>{
-                                    set_contact_email(e.target.value);
-                                }}/>
-                            </div>
-
-                            <div style={{width:"100%",marginTop:"10px"}}>Country</div>
-                            <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",marginBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
-                                <FaEarthAfrica size={20}/>
-                                <input type="text" value={country} placeholder="" style={{width:"90%",border:"0px"}} onChange={(e)=>{
-                                    set_country(e.target.value);
-                                }}/>
-                            </div>
-
-                            <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px"}} onClick={async()=>{
-                                if(loading==false){
-                                   // await create_business11();
-                                  await file_upload(sc);
+                            ad&&
+                            <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(250,250,250)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                <div style={{backgroundColor:"orange",width:"80%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                    <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                        <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                                            set_ad(false);
+                                        }}>
+                                        <FaArrowLeft size={30}/>
+                                        </div>
+                                        <div style={{marginLeft:"20px"}}>CREATE A NEW BUSINESS</div>
+                                    </div>
+                                    
+                                </div>
+                                <div style={{width:"80%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                    <div style={{width:"60%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
+                                        e.preventDefault();
+                                        e.target.style.border="0px dashed transparent";
+                                    }} onDragOver={(e)=>{
+                                        e.preventDefault();
+                                        e.target.style.border="2px dashed orange";
+                                    }} onDrop={(e)=>{
+                                        e.preventDefault();
+                                        if(e.dataTransfer.files[0].type.startsWith("image/")){
+                                            set_sc(e.dataTransfer.files[0]); 
+                                        }
+                                        e.target.style.border="0px dashed transparent";
+                                    }}>
+                                    {
+                                        sc==""?
+                                        <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                            <ImageDown size={100} color="gray"/>
+                                            <div style={{marginTop:"10px"}}>Drag & Drop Image File here</div>
+                                        </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",aspectRatio:"2/1"}}/>
+                                    }
+                                    </div>
+                                    <div>OR</div>
+                                    <label style={{width:"80%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                        <Upload size={20}/>
+                                        <div>Click here to upload image</div>
+                                        <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
+                                            set_sc(e.target.files[0]);
+                                        }}/>
+                                    </label>
+                                    <div style={{width:"80%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
+                                    <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                            <FaBook size={20}/>
+                                            <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                                set_title_name(e.target.value);
+                                            }}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",marginTop:"10px"}}>Short Name</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                            <FaPerson size={20}/>
+                                            <input type="text" placeholder="SBS" style={{width:"90%",border:"0px"}}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",marginTop:"10px"}}>Description</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
+                                            <input type="text" value={description} placeholder="Add description here" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                                                set_description(e.target.value);
+                                            }}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",marginTop:"10px"}}>Business Address</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                            <FaLocationPin size={20}/>
+                                            <input type="text" value={business_address} placeholder="Abuja" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                                set_business_address(e.target.value);
+                                            }}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",marginTop:"10px"}}>Contact Email</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                            <FaMessage size={20}/>
+                                            <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                                set_contact_email(e.target.value);
+                                            }}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",marginTop:"10px"}}>Country</div>
+                                        <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",marginBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
+                                            <FaEarthAfrica size={20}/>
+                                            <input type="text" value={country} placeholder="" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                                set_country(e.target.value);
+                                            }}/>
+                                        </div>
+            
+                                        <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px"}} onClick={async()=>{
+                                            if(loading==false){
+                                               // await create_business11();
+                                              await file_upload(sc);
+                                            }
+                                            
+                                        }}>{loading?"Loading...":"Register"}</div>
+                                    </div>
+                                    
+                                
+                                </div>
+                                
+                                {ad_fail&&
+                                <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                                    <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                        <FaExclamationCircle size={30}/> {ad_fail_message} 
+                                    </div>
+                                </div>
                                 }
                                 
-                            }}>{loading?"Loading...":"Register"}</div>
-                        </div>
-                        
-                    
-                    </div>
-                    
-                    {ad_fail&&
-                    <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                        <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                            <FaExclamationCircle size={30}/> {ad_fail_message} 
-                        </div>
-                    </div>
-                    }
-                    
-                </div>
-            }
+                            </div>
+                        }
             {
                 view&&
                 <Business_view set_view={set_view} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
@@ -710,7 +747,7 @@ function Business({prop_set_q}){
             }
 
             {ad_success&&
-                    <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                    <div style={{position:"absolute",backgroundColor:"orange",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                         <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                             <FaCheckCircle size={30}/> {ad_success_message}
                         </div>

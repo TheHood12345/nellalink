@@ -1,6 +1,6 @@
 import { ImageDown } from "lucide-react";
 import { useState } from "react";
-import { FaExclamationCircle, FaImages, FaUpload } from "react-icons/fa";
+import { FaArrowLeft, FaExclamationCircle, FaImages, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaPlus } from "react-icons/fa6";
 
 function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_now,set_edit,short_name1,business_owned_by,business_uuid,business_name_v,business_logo_v,business_address_v,business_email_v,business_desc_v,business_country_v,business_status_v}){
@@ -123,14 +123,14 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             {/* <div style={{width:"90%",textAlign:"end",position:"absolute",top:"1%",right:"1%"}}><FaCircleXmark size={30} onClick={()=>{
                 set_edit(false);
             }}/></div> */}
-            <div className="view" style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div>EDIT BUSINESS</div>
-                            <div style={{color:"white",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+            <div style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                            <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_edit(false);
                             }}>
-                            <FaCircleXmark size={30}/>
+                            <FaArrowLeft size={30}/>
                             </div>
+                            <div style={{marginLeft:"20px"}}>EDIT BUSINESS</div>
                         </div>
                         
                     </div>
@@ -167,7 +167,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
                         set_im(e.target.files[0]);
                     }}/>
             </label>
-            <div style={{alignSelf:"flex-end",fontFamily:"arial",fontSize:"12px"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
+            <div style={{fontFamily:"arial",fontSize:"12px",width:"90%",textAlign:"end"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
 
             <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Name</div>

@@ -123,7 +123,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             {/* <div style={{width:"90%",textAlign:"end",position:"absolute",top:"1%",right:"1%"}}><FaCircleXmark size={30} onClick={()=>{
                 set_edit(false);
             }}/></div> */}
-            <div className="view" style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <div className="view" style={{backgroundColor:"orange",width:"80%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                             <div>EDIT BUSINESS</div>
                             <div style={{color:"white",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
@@ -134,7 +134,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
                         </div>
                         
                     </div>
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(240,240,240)",aspectRatio:"3/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
+            <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(240,240,240)",aspectRatio:"3/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -162,56 +162,56 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
                 
             </div>
             <div style={{marginTop:"5px"}}>OR</div>
-            <label style={{width:"90%",fontSize:"12px",marginTop:"5px",paddingTop:"13px",paddingBottom:"13px",cursor:"pointer",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}><FaPlus/> Click to upload business logo
+            <label style={{width:"80%",fontSize:"12px",marginTop:"5px",paddingTop:"13px",paddingBottom:"13px",cursor:"pointer",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}><FaPlus/> Click to upload business logo
                     <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
                         set_im(e.target.files[0]);
                     }}/>
             </label>
-            <div style={{alignSelf:"flex-end",fontFamily:"arial",fontSize:"12px"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
+            <div style={{width:"80%",textAlign:"end",fontFamily:"arial",fontSize:"12px"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Name</div>
                 <input type="text" value={business_name} placeholder="Enter your business name..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_business_name(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Short Name</div>
                 <input type="text" value={short_name} placeholder="..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_short_name(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Description</div>
                 <input type="text" value={desc} placeholder="Add description here" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_desc(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Address</div>
                 <input type="text" value={address} placeholder="e.g. Abuja" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_address(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Contact Email</div>
                 <input type="text" value={email} placeholder="Business Contact Email" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_email(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"80%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Country</div>
                 <input type="text" value={country} placeholder="e.g. Nigeria" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_country(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",marginBottom:"20px",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
+            <div style={{width:"80%",marginTop:"20px",marginBottom:"20px",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
                 if(loading==false){
                     await make_edit();
                 }

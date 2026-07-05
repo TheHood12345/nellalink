@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BiEdit, BiExit } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
-import { FaArrowDown, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
+import { FaArrowDown, FaArrowLeft, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaDownload, FaEarthAfrica, FaEllipsisVertical, FaLocationPin, FaMessage, FaPerson, FaPhotoFilm } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
 import { data, Link, useSearchParams } from "react-router-dom";
@@ -386,13 +386,13 @@ function Business_large({prop_set_q}){
     return (
         <div id="large_business" style={{width:"100%",height:"85%",overflow:"scroll",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
             <div style={{width:"90%",height:`10%`,transition:"all 0.3s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"30%",height:`100%`,transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
+            <div style={{width:"40%",height:`80%`,fontSize:"12px",transition:"all 0.3s linear",paddingLeft:"3%",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 set_ad(true);
-            }}><FaPlus size={30}/><div style={{fontSize:"20px",paddingLeft:"3%"}}>Add Business</div></div>
+            }}><FaPlus size={14}/><div style={{paddingLeft:"3%"}}>Add Business</div></div>
             <div style={{width:"50%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
             <div style={{width:"50%",height:"100%",overflow:"scroll",display:`flex`,flexDirection:"row",alignItems:"center",borderRadius:"10px"}}>
                 <FaSearch size={20} color={"gray"} style={{width:"10%",display:"flex",flexDirection:"row",alignItems:"center",alignItems:"center"}}/>
-                <input type="text" value={z_search} placeholder="Search Email, name" style={{backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onChange={(e)=>{
+                <input type="text" value={z_search} placeholder="Search Email, name" style={{backgroundColor:"transparent",height:"100%",border:"0px",width:"90%"}} onInput={(e)=>{
                     set_z_search(e.target.value);
                     if(z_search!=""){
                         set_z_main("");
@@ -403,7 +403,7 @@ function Business_large({prop_set_q}){
                     }
                 }}/>
             </div>
-            <div style={{width:"40%",height:"100%",position:"relative",color:"black",display:`flex`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
+            <div style={{width:"50%",height:"100%",position:"relative",color:"black",display:`flex`,flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px",position:"relative"}}>
                 <div style={{width:"90%",fontWeight:"bold",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
                     set_q(!q);
                 }}>
@@ -474,7 +474,7 @@ function Business_large({prop_set_q}){
                 <div style={{width:"80%",color:"gray",textAlign:"center"}}>Please add a Business to see them listed here.</div>
             </div>:
             <div style={{width:"90%",marginTop:"0px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px",backgroundColor:"rgb(255,255,255)",borderRadius:"10px"}}>
-            <div style={{width:"100%",fontSize:"14px",overflow:"hidden",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a",color:"black"}}>
+            <div style={{width:"100%",fontSize:"12px",overflow:"hidden",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"#fd7d143a",color:"black"}}>
                 <div style={{width:"90%",fontWeight:"bolder",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"10%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                         <div style={{width:"30%",textAlign:"center"}}><input type="checkbox"/></div>
@@ -483,12 +483,12 @@ function Business_large({prop_set_q}){
                     <div style={{width:"20%",textAlign:"center"}}>Business Name</div>
                     <div style={{width:"20%",textAlign:"center"}}>Business Email</div>
                     <div style={{width:"20%",textAlign:"center"}}>Business Address</div>
-                    <div style={{width:"20%",textAlign:"center"}}>Status</div>
-                    <div>{" "}</div>
+                    <div style={{width:"10%",textAlign:"center"}}>Status</div>
+                    <div style={{width:"10%",textAlign:"center"}}>{" "}</div>
                 </div>
             </div>
             {all_data.map((item,index)=>{
-                if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
+                if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="") || (item.title_name?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="")){
                 return (
                     <div key={index} style={{width:"100%",position:"relative",cursor:"grab",transition:"all 0.1s linear",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(255,255,255)",borderRadius:"0px",borderBottom:"1px solid rgb(200,200,200)"}} draggable onDragOver={(e)=>{
                         e.preventDefault();
@@ -518,22 +518,22 @@ function Business_large({prop_set_q}){
                     }}
                     >
                         <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div style={{width:"10%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <div style={{width:"10%",opacity:i==index?"0":"1",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                 <div style={{width:"10%"}}><input type="checkbox"/></div>
-                                <div style={{width:"10%",textAlign:"center",fontSize:"14px"}}>{index+1}</div>
+                                <div style={{width:"10%",textAlign:"center",fontSize:"12px"}}>{index+1}</div>
                             </div>
                             
-                            <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <div style={{width:"80%",opacity:i==index?"0":"1",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                 <div style={{width:"20%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                     <img src={item.entity_featured_url} alt="" style={{width:"20%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 
                                     <div style={{width:"60%",display:"flex",flexDirection:"column",alignItems:"start"}}>
-                                        <div style={{fontSize:"14px",color:"gray",fontWeight:"bolder"}}>{item.title_name}</div>
+                                        <div style={{fontSize:"12px",color:"gray",fontWeight:"bolder"}}>{item.title_name}</div>
                                     </div>
                                 </div>
-                                <div style={{width:"20%",fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.contact_email}</div>
-                                <div style={{width:"20%",fontSize:"14px",fontFamily:"arial",color:"gray"}}>{item.extra_data.business_address}</div>
-                                <div style={{width:"20%",fontSize:"12px",paddingTop:"2px",paddingBottom:"2px",backgroundColor:"rgb(240,240,240)",borderRadius:"4px",textAlign:"center"}}>{item.status}</div>
+                                <div style={{width:"20%",fontSize:"12px",fontFamily:"arial",color:"gray"}}>{item.extra_data.contact_email}</div>
+                                <div style={{width:"20%",fontSize:"12px",fontFamily:"arial",color:"gray"}}>{item.extra_data.business_address}</div>
+                                <div style={{width:"20%",fontSize:"10px",paddingTop:"2px",paddingBottom:"2px",backgroundColor:"rgb(240,240,240)",borderRadius:"4px",textAlign:"center"}}>{item.status}</div>
                                 
                             </div>
                             <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
@@ -546,9 +546,9 @@ function Business_large({prop_set_q}){
                         </div>
                         {
                             i==index&&
-                            <div style={{zIndex:"10",width:"60%",alignSelf:"self-start",position:"absolute",backgroundColor:"rgb(240,240,240)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",left:"10%",display:"flex",flexDirection:"column",alignItems:"end",justifyContent:"start"}}>
-                                <div style={{width:"90%",height:"100%",backgroundColor:"rgb(240,240,240)",paddingRight:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
+                            <div style={{width:"70%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"rgb(255,255,255)",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"0%",left:"10%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    <div className="view" style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
                                         set_view(true);
                                         set_business_name_v(item.title_name);
                                         set_business_address_v(item.extra_data.business_address);
@@ -560,7 +560,7 @@ function Business_large({prop_set_q}){
                                         
                                         set_i(null);
                                     }}><BsViewList size={20}/> View</div>
-                                    <div className="view" style={{height:"30%",fontSize:"20px"}} onClick={()=>{
+                                    <div className="view" style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
                                         set_edit(true);
                                         set_business_uuid(item.uuid);
                                         set_business_owned_by(item.owned_by);
@@ -577,7 +577,7 @@ function Business_large({prop_set_q}){
                                         set_i(null);
                                         
                                     }}><BiEdit size={20}/> Edit</div>
-                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",height:"30%",fontSize:"20px"}}><MdManageAccounts size={20}/> Manage</Link>
+                                    <Link to={"/menu?q=create_menu"} state={item} className="view" style={{textDecoration:"none",display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(250,250,250)"}}><MdManageAccounts size={20}/> Manage</Link>
                                 </div>
                             </div>
                         }
@@ -596,20 +596,20 @@ function Business_large({prop_set_q}){
 
             {
                 ad&&
-                <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"white",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                    <div className="view" style={{backgroundColor:"orange",width:"90%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                            <div>CREATE A NEW BUSINESS</div>
-                            <div style={{color:"white",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(250,250,250)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                    <div style={{backgroundColor:"orange",width:"80%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                            <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_ad(false);
                             }}>
-                            <FaCircleXmark size={30}/>
+                            <FaArrowLeft size={30}/>
                             </div>
+                            <div style={{marginLeft:"20px"}}>CREATE A NEW BUSINESS</div>
                         </div>
                         
                     </div>
-                    <div style={{width:"90%",height:"80%",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                        <div style={{width:"100%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
+                    <div style={{width:"80%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                        <div style={{width:"60%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -631,15 +631,15 @@ function Business_large({prop_set_q}){
                         }
                         </div>
                         <div>OR</div>
-                        <label style={{width:"100%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <label style={{width:"80%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                             <Upload size={20}/>
                             <div>Click here to upload image</div>
                             <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
                                 set_sc(e.target.files[0]);
                             }}/>
                         </label>
-                        <div style={{width:"90%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
-                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                        <div style={{width:"80%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
+                        <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center"}}>
                             <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
                             <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                 <FaBook size={20}/>
@@ -698,7 +698,7 @@ function Business_large({prop_set_q}){
                     </div>
                     
                     {ad_fail&&
-                    <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                    <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                         <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                             <FaExclamationCircle size={30}/> {ad_fail_message} 
                         </div>
@@ -716,7 +716,7 @@ function Business_large({prop_set_q}){
             }
 
             {ad_success&&
-                    <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"30%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                    <div style={{position:"absolute",backgroundColor:"orange",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
                         <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                             <FaCheckCircle size={30}/> {ad_success_message}
                         </div>
