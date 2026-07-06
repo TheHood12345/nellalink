@@ -1,5 +1,5 @@
-import Large_profile from "./large_profile";
-import Small_profile from "./small_profile";
+import Large_profile from "./lp";
+import Small_profile from "./sp";
 
 
 function Main_profile(){

@@ -20,7 +20,7 @@ function App() {
         <Route path="business" element={<Business/>}/>
         <Route path="menu" element={<Menu/>}/>
       </Route>
-      {/* <Route path="/profile" element={<Main_profile/>}/> */}
+      <Route path="/profile" element={<Main_profile/>}/>
     </Routes>
   )
 }
