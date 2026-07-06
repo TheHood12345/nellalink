@@ -117,6 +117,12 @@ html,body{
   .screen2_notif{
     display: flex;
   }
+  .small_profile{
+    display: flex;
+  }
+  .large_profile{
+    display: none;
+  }
 }
 @media screen and (min-width: 701px) {
   .small_main{
@@ -162,6 +168,12 @@ html,body{
   }
   .screen2_notif{
     display: none;
+  }
+  .small_profile{
+    display: none;
+  }
+  .large_profile{
+    display: flex;
   }
 }
 ::-webkit-scrollbar{

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaLock } from "react-icons/fa";
+import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaLock, FaExclamationCircle } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
 import Business from "./small_screen/nella_content/business/business";
 import Home from "./small_screen/nella_content/home/home";
@@ -52,6 +52,9 @@ function Small_nella(){
     const [col3,set_col3]=useState(false);
 
     const [icon,set_icon]=useState(false);
+
+    const [fail,set_fail] = useState(false);
+    const [fail_message,set_fail_message] = useState(false);
     
     const [query]=useSearchParams();
 
@@ -316,10 +319,15 @@ function Small_nella(){
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
                     "/home":"/business"} style={{width:"20%",height:"90%",textDecoration:"none",border:"0px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
+                        // set_verify_email_text_top(0);
+                        // setTimeout(()=>{
+                        //     set_verify_email_text_top(-10);
+                        // },2000);
+                        set_fail_message("Kindly verify your email to access this feature");
+                        set_fail(true);
                         setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
+                            set_fail(false);
+                        },5000);
                     }else{
                       set_q(2);  
                     }
@@ -332,10 +340,11 @@ function Small_nella(){
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
                     "/home":"/menu"} style={{width:"20%",height:"90%",textDecoration:"none",border:"0px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
+                        set_fail_message("Kindly verify your email to access this feature");
+                        set_fail(true);
                         setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
+                            set_fail(false);
+                        },5000);
                     }else{
                         set_q(3);
                     }
@@ -503,9 +512,16 @@ function Small_nella(){
             <div style={{position:"absolute",backgroundColor:"rgba(0, 255, 255, 0.5)",color:"black",top:`${ve_s_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
                     Successful
             </div>
-            <div style={{position:"absolute",backgroundColor:"orange",color:"white",fontSize:"14px",top:`${verify_email_text_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.5s linear",textAlign:"center"}}>
+            {/* <div style={{position:"absolute",backgroundColor:"orange",color:"white",fontSize:"14px",top:`${verify_email_text_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.5s linear",textAlign:"center"}}>
                     Kindly verify your email address to access this feature
-            </div>
+            </div> */}
+            {fail&&
+                <div style={{position:"absolute",backgroundColor:"red",color:"white",bottom:"15%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                    <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <FaExclamationCircle size={30}/> {fail_message} 
+                    </div>
+                </div>
+            }
         </div>
     );
 }

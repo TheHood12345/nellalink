@@ -66,6 +66,8 @@ function Large_nella(){
     },[query]);
 
 
+
+
     // useEffect(()=>{
     //       if(!token){
     //         navigate("/login",{replace:true});
@@ -252,9 +254,9 @@ function Large_nella(){
         <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
             {/* --------------------- */}
             <div style={{width:"20%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(18,100,100)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
-                    <h1 style={{color:"rgb(50,50,50)"}}>Nellalink</h1>
-                    <h1 style={{marginTop:"0px",color:"rgb(50,50,50)"}}>SBS</h1>
+                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(100,100,100)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
+                    <h1 style={{color:"white"}}>Nellalink</h1>
+                    <h1 style={{marginTop:"0px",color:"white"}}>SBS</h1>
                     <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"0px",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     
                     set_q(1);

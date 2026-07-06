@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Bell, CheckCircle2, Copy, IdCard, LockKeyhole, Send, Verified } from "lucide-react";
 import { FaAngleDown, FaAngleUp, FaArrowLeft, FaBell, FaCaretDown, FaCaretUp, FaCertificate, FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaLock, FaRegBell } from "react-icons/fa";
 import { FaCircleXmark, FaRightToBracket } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { BsFillArrowLeftCircleFill, BsPerson } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
@@ -44,6 +44,14 @@ function Box(){
 
     const [notif_num,set_notif_num] = useState(0);
     const [notif_items,set_notif_items] = useState([]);
+
+    const [query]=useSearchParams();
+
+        useEffect(()=>{
+        if(query.get("notification")=="true"){
+            set_notif(true);
+        }
+    },[query]);
 
     async function make_cp(){
         set_cp_loading(true);
@@ -261,11 +269,9 @@ function Box(){
             {
                 <div id="note_main" style={{position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                     <div style={{display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
-                        <div style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                            set_prof(true);
-                        }}>
+                        <Link to="profile" style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <img src="/35.png" alt="" style={{width:"70%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
-                        </div>
+                        </Link>
                         <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                             set_notif(true);
                         }}>
