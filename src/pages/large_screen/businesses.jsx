@@ -117,7 +117,7 @@ function Business_large({prop_set_q}){
                 title_name: title_name,
                 description: description,
               //  entity_type: "nellalink_business",
-                entity_featured_url: `https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/${localStorage.getItem("uuid")}/info/logo/${nw}-${file.name}`,
+                entity_featured_url: encodeURI(`https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/${localStorage.getItem("uuid")}/info/logo/${nw}-${file.name}`),
                 //entity_featured_url:"https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/6a622d6e-b707-4159-9742-1ad91d4cc620/info/logo/1781952232029-a2.jpg",
                 extra_data: {
                  //   key_name1:"value1",
