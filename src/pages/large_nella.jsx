@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable } from "react-icons/fa";
+import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable, FaExclamationCircle } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
 // import Business from "./small_screen/nella_content/business/business";
 // import Home from "./small_screen/nella_content/home/home";
@@ -23,6 +23,9 @@ function Large_nella(){
     const [c_token,set_c_token] = useState("");
 
     const navigate = useNavigate();
+
+    const [fail,set_fail] = useState(false);
+    const [fail_message,set_fail_message] = useState(false);
 
     const [loading_token,set_loading_token] = useState(false);
     const [v_top,set_v_top] = useState(-10);
@@ -269,10 +272,11 @@ function Large_nella(){
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
                     "/home":"/business"} style={{backgroundColor:q==2?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
+                        set_fail_message("Kindly verify your email to access this feature");
+                        set_fail(true);
                         setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
+                            set_fail(false);
+                        },5000);
                     }else{
                       set_q(2);  
                     }
@@ -285,10 +289,11 @@ function Large_nella(){
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
                     "/home":"/menu"} style={{backgroundColor:q==3?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        set_verify_email_text_top(0);
+                        set_fail_message("Kindly verify your email to access this feature");
+                        set_fail(true);
                         setTimeout(()=>{
-                            set_verify_email_text_top(-10);
-                        },2000);
+                            set_fail(false);
+                        },5000);
                     }else{
                         set_q(3);
                     }
@@ -381,7 +386,7 @@ function Large_nella(){
             {
                 logout&&
                 <div style={{width:"100%",height:"100%",fontSize:"16px",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(0,0,0,0.6)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                    <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                    <div style={{width:"70%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                         <div style={{fontWeight:"bolder",color:"black",fontSize:"16px"}}>Confirm Logout</div>
                         <div style={{fontSize:"14px",marginTop:"10px",color:"rgb(40,40,40)"}}>Are you sure you want to log out?</div>
                         <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
@@ -526,12 +531,13 @@ function Large_nella(){
                 </div>
             </div>
             }
-            <div style={{position:"absolute",backgroundColor:"rgba(0, 255, 255, 0.5)",color:"black",top:`${ve_s_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
-                    Successful
-            </div>
-            <div style={{position:"absolute",backgroundColor:"orange",color:"white",fontSize:"14px",top:`${verify_email_text_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.5s linear",textAlign:"center"}}>
-                    Kindly verify your email address to access this feature
-            </div>
+            {fail&&
+                <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"15%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                    <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <FaExclamationCircle size={30}/> {fail_message} 
+                    </div>
+                </div>
+            }
             </div>
         </div>
     );

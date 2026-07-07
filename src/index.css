@@ -134,6 +134,9 @@ html,body{
   .set1{
     width: 80%;
   }
+  .logout1{
+    width: 70%;
+  }
 }
 @media screen and (min-width: 701px) {
   .small_main{
@@ -188,6 +191,9 @@ html,body{
   }
   .set1{
     width: 60%;
+  }
+  .logout1{
+    width: 40%;
   }
 }
 ::-webkit-scrollbar{

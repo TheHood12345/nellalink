@@ -509,9 +509,9 @@ function Small_nella(){
                 </div>
             </div>
             }
-            <div style={{position:"absolute",backgroundColor:"rgba(0, 255, 255, 0.5)",color:"black",top:`${ve_s_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
+            {/* <div style={{position:"absolute",backgroundColor:"rgba(0, 255, 255, 0.5)",color:"black",top:`${ve_s_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
                     Successful
-            </div>
+            </div> */}
             {/* <div style={{position:"absolute",backgroundColor:"orange",color:"white",fontSize:"14px",top:`${verify_email_text_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.5s linear",textAlign:"center"}}>
                     Kindly verify your email address to access this feature
             </div> */}

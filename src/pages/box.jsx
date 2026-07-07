@@ -294,9 +294,9 @@ function Box(){
             {
                 logout&&
                 <div style={{width:"100%",height:"100%",fontSize:"16px",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(0,0,0,0.6)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                    <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{fontWeight:"bolder",color:"black",fontSize:"16px"}}>Confirm Logout</div>
-                        <div style={{fontSize:"14px",marginTop:"10px",color:"rgb(40,40,40)"}}>Are you sure you want to log out?</div>
+                    <div className="logout1" style={{paddingTop:"20px",paddingBottom:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{fontFamily:"poppins-bold",color:"black",fontSize:"16px"}}>Confirm Logout</div>
+                        <div style={{fontSize:"14px",marginTop:"10px",color:"rgb(40,40,40)",textAlign:"center",width:"90%"}}>Are you sure you want to log out?</div>
                         <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",opacity:"1",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
                             <div style={{width:"40%",paddingTop:"10px",paddingBottom:"10px",borderRadius:"4px",textAlign:"center",cursor:"pointer",color:"rgb(30,30,30)"}} onClick={()=>{
                                 set_logout(false);
