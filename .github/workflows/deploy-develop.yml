@@ -34,7 +34,7 @@ jobs:
           echo "VITE_APP_DOMAIN=https://app-dev.nellalink.com" >> .env
           echo "VITE_SECRET_KEY='NELLALINK_%%/*'" >> .env
           echo "VITE_APP_PAYSTACK_URL=https://api.paystack.co" >> .env
-          echo "VITE_APP_API_KEY=nll_95ea8f6437ee8358a029ac4da016b71e5a94" >> .env
+          echo "VITE_APP_API_KEY=nll_b4e86bc0db90475b3272642a20b2656ddbd1" >> .env
           echo "VITE_GOOGLE_CLIENT_ID=35682479272-d1n4b0tngv07ak3i2ejg4h7ooumt68ac.apps.googleusercontent.com" >> .env
           echo "VITE_GOOGLE_REDIRECT_URI=https://app-dev.nellalink.com/oauth/google/callback" >> .env
 
