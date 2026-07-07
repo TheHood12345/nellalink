@@ -269,23 +269,23 @@ function Box(){
             {
                 <div id="note_main" style={{position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                     <div style={{display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
-                        <Link to="profile" style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                        <Link to="profile" style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                             <img src="/35.png" alt="" style={{width:"70%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
                         </Link>
-                        <div style={{width:"30%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
+                        <div style={{width:"20%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                             set_notif(true);
                         }}>
-                            <FaRegBell size={30} className={notif_num>0?"alert":null}/>
+                            <FaRegBell size={25} className={notif_num>0?"alert":null}/>
                             {notif_num>0&&
                             <div style={{position:"absolute",top:"0%",right:"10%"}}>
                                 <div style={{color:"white",backgroundColor:"rgba(255,0,0,0.8)",width:"20px",aspectRatio:"1/1",borderRadius:"100px",textAlign:"center",fontWeight:"bolder",fontSize:"7px"}}>{notif_num>0?notif_num:null}</div>
                             </div>
                             }
                         </div>
-                        <div style={{width:"30%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
+                        <div style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                             set_logout(true);
                         }}>
-                            <FaRightToBracket size={30}/>
+                            <FaRightToBracket size={25}/>
                         </div>
                     </div>
 

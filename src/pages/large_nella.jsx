@@ -360,10 +360,10 @@ function Large_nella(){
 
             {/* ------------------------- */}
             <div style={{width:"80%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(252,254,255)",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"100%",height:"15%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",height:"15%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                    <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold",color:"black"}}>
-                        <div style={{fontSize:"20px",fontFamily:"poppins-bold"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
+                    <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold"}}>
+                        <div style={{fontSize:"14px",fontFamily:"poppins-bold"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
                         {
                          //   localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
                         //  

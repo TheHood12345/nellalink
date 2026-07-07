@@ -40,8 +40,8 @@ function Dashboard(){
 
         const [up,set_up] = useState(0)
     return (
-        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(252,254,255)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
-            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"40px"}}>
+        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(255,255,255)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
+            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",backgroundColor:"rgb(255,255,5255)",gap:"40px"}}>
                         {
                             items.map((item,index)=>{
                                 return(
