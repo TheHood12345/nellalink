@@ -557,7 +557,7 @@ function Menu_large(){
                         if(bus.uuid == item.parent_entity_uuid){
                             console.log(bus);
                             console.log(bus.meta_key);
-                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONTEND_BASE_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
+                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONT_FACING_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
                                             set_i(-1);
                                             set_success_message("Copied");
                                             set_success(true);
@@ -695,7 +695,7 @@ function Menu_large(){
                         if(bus.uuid == item.parent_entity_uuid){
                             console.log(bus);
                             console.log(bus.meta_key);
-                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONTEND_BASE_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
+                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONT_FACING_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
                                             set_i(-1);
                                             set_success_message("Copied");
                                             set_success(true);
