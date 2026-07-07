@@ -98,6 +98,7 @@ function Menu(){
 
     const [show_qr,set_show_qr]=useState(false);
     const [qr_nm,set_qr_nm]=useState("");
+    const [qr_bus,set_qr_bus]=useState("");
 
     const [show_del,set_show_del]=useState(false);
     const [uuid_del,set_uuid_del]=useState("");
@@ -499,7 +500,40 @@ function Menu(){
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
-                            <a  href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <div href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}} onClick={async()=>{
+                                                                //////////----------viewwwwwwwww------------------
+
+                                // ---            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+
+                            const a = document.createElement("a");
+                            a.href = `${import.meta.env.VITE_FRONT_FACING_URL}/app/${bus.meta_key}/menu/${item.title_name}`;
+                            a.target = "_blank";
+                            a.click();
+                        }
+                    })
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+            //----------view end-----------------------
+                            }}>View Menu</div>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){
@@ -535,10 +569,40 @@ function Menu(){
                             (i==index && en==item.parent_entity_uuid)&&
                             <div style={{width:"40%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"white",borderRadius:"10px",boxShadow:"0px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",right:"20%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
                                 <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(1,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
-                                        set_qr_nm(item.title_name);
-                                        set_show_qr(true);
-                                        set_i(-1);
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
+                                        
+                                //////////----------viewwwwwwwww------------------
+
+                                // ---            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+
+                            set_qr_nm(item.title_name);
+                            set_qr_bus(bus.meta_key);
+                            set_show_qr(true);
+                            set_i(-1);
+                        }
+                    })
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+            //----------view end-----------------------
                                     }}><BsViewList size={20}/> Generate QR</div>
                                     <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
             console.log("-----------1");
@@ -636,7 +700,40 @@ function Menu(){
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item.title_name}</div>
                             </div>
-                            <a  href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <div href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}} onClick={async()=>{
+                                //////////----------viewwwwwwwww------------------
+
+                                // ---            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+
+                            const a = document.createElement("a");
+                            a.href = `${import.meta.env.VITE_FRONT_FACING_URL}/app/${bus.meta_key}/menu/${item.title_name}`;
+                            a.target = "_blank";
+                            a.click();
+                        }
+                    })
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+            //----------view end-----------------------
+                            }}>View Menu</div>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){
@@ -717,10 +814,39 @@ function Menu(){
                             (i==index && en==item.parent_entity_uuid)&&
                             <div style={{width:"40%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"white",borderRadius:"10px",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",right:"20%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
                                 <div style={{width:"80%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(1,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
-                                        set_qr_nm(item.title_name);
-                                        set_show_qr(true);
-                                        set_i(-1);
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
+                                //////////----------viewwwwwwwww------------------
+
+                                // ---            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+
+                            set_qr_nm(item.title_name);
+                            set_qr_bus(bus.meta_key);
+                            set_show_qr(true);
+                            set_i(-1);
+                        }
+                    })
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+            //----------view end-----------------------
                                     }}><BsViewList size={20}/> Generate QR</div>
                                     <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
             console.log("-----------1");
@@ -1139,7 +1265,7 @@ function Menu(){
                         }
             {
                 show_qr&&
-                <Menu_qr_code set_show_qr={set_show_qr} qr_nm={qr_nm}/>
+                <Menu_qr_code qr_bus={qr_bus} set_show_qr={set_show_qr} qr_nm={qr_nm}/>
             }
             {
                 show_del&&
