@@ -30,7 +30,8 @@ jobs:
         run: |
           echo "VITE_CORE_BACKEND_BASE_API_URL=https://backend-dev.nellalink.com" >> .env
           echo "VITE_MIDDLEWARE_API_URL=https://middleware-dev.nellalink.com" >> .env
-          echo "VITE_APP_DOMAIN=https://dev.nellalink.com" >> .env
+          echo "VITE_FRONT_FACING_URL=https://business-dev.nellalink.com" >> .env
+          echo "VITE_APP_DOMAIN=https://app-dev.nellalink.com" >> .env
           echo "VITE_SECRET_KEY='NELLALINK_%%/*'" >> .env
           echo "VITE_APP_PAYSTACK_URL=https://api.paystack.co" >> .env
           echo "VITE_APP_API_KEY=nll_95ea8f6437ee8358a029ac4da016b71e5a94" >> .env
