@@ -221,7 +221,7 @@ function Business({prop_set_q}){
         console.log("------------",file.type);
         //
         //`https://middleware-dev.middey.com/api/entity/nellalink_business/${localStorage.getItem("uuid")}/info/logo/${nw}-${file.name}`
-        await fetch(`https://middleware-dev.middey.com/api/v1/nellalink/file-manager/aws/upload-url`,{
+        await fetch(`${import.meta.env.VITE_MIDDLEWARE_API_URL}/api/v1/nellalink/file-manager/aws/upload-url`,{
             method:"post",
             headers:{
                 "Content-Type": "application/json",

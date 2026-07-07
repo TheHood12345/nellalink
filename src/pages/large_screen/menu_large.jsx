@@ -503,7 +503,7 @@ function Menu_large(){
                                 <div style={{width:"20%",fontSize:"12px"}}>{item.extra_data.contact_info.email_address}</div>
                                 <div style={{width:"20%",fontSize:"12px"}}>{item.description}</div>
                                 
-                            <a href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank" style={{width:"20%",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <a href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank" style={{width:"20%",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"10%",textAlign:"center",fontSize:"12px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){
@@ -641,7 +641,7 @@ function Menu_large(){
                                 <div style={{width:"20%",fontSize:"12px"}}>{item.extra_data.contact_info.email_address}</div>
                                 <div style={{width:"20%",fontSize:"12px"}}>{item.description}</div>
                                 
-                            <a href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank" style={{width:"20%",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <a href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank" style={{width:"20%",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"10%",textAlign:"center",fontSize:"12px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){

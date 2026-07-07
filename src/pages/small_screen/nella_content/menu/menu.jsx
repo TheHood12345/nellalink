@@ -499,7 +499,7 @@ function Menu(){
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
-                            <a  href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <a  href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){
@@ -636,7 +636,7 @@ function Menu(){
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item.title_name}</div>
                             </div>
-                            <a  href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
+                            <a  href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
                                 <FaEllipsisVertical size={24} style={{cursor:"pointer"}} onClick={()=>{
                                     if(en==item.parent_entity_uuid){
