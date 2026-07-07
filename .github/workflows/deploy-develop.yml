@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          node-version: '26'
 
       - name: ✅ Verify Required Files - Prebuild
         run: |
@@ -55,7 +55,7 @@ jobs:
           fi
 
       - name: Deploy to FTP Server
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: 185.146.22.254
           username: autodeploygithub@app-dev.nellalink.com
