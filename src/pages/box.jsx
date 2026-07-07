@@ -238,7 +238,8 @@ function Box(){
     useEffect(()=>{
         async function init(){
             await OneSignal.init({
-                appId: import.meta.env.VITE_ONESIGNAL_APP_ID,
+                appId: "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
+                //import.meta.env.VITE_ONESIGNAL_APP_ID,
                 allowLocalhostAsSecureOrigin: true
             }).then((res)=>{
                 console.log("OneSignal initialized: ",res);
@@ -270,7 +271,7 @@ function Box(){
                 <div id="note_main" style={{position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                     <div style={{display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
                         <Link to="profile" style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                            <img src="/35.png" alt="" style={{width:"70%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
+                            <img src="/35.png" alt="" style={{width:"80%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
                         </Link>
                         <div style={{width:"20%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                             set_notif(true);
