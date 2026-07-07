@@ -5,7 +5,7 @@ import { FaCircleXmark, FaDeleteLeft } from "react-icons/fa6";
 
 function Menu_del({set_show_del,qr_nm,set_get_now,get_now,uuid_del}){
 
-    const url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu/trash/${uuid_del}`;
+    const url = `${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu/trash/${uuid_del}`;
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
     const [loading,set_loading] = useState(false);
     const [is_bad,set_is_bad] = useState(false);
@@ -17,7 +17,7 @@ function Menu_del({set_show_del,qr_nm,set_get_now,get_now,uuid_del}){
         await fetch(url,{
             method: "delete",
             headers: {
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_loading(false);

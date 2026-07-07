@@ -3,7 +3,7 @@ import { FaUpload } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 
 function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
-    const url=`https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu/${edit_uuid}`;
+    const url=`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu/${edit_uuid}`;
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
     const [im,set_im]=useState("");
     const [im1,set_im1]=useState("");
@@ -58,7 +58,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                 method: 'put',
                 headers: {
                     "content-type": "application/json",
-                    "x-api-key": api
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
                 },
                 body: JSON.stringify(
                     {

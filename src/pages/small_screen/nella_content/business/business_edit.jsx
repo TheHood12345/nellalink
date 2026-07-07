@@ -18,7 +18,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
     const [ad_fail,set_ad_fail]=useState(false);
     const [ad_fail_message,set_ad_fail_message]=useState("");
 
-    const edit_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business/${business_uuid}`
+    const edit_url = `${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business/${business_uuid}`
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
 //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business/${business_uuid}
     async function make_edit(){
@@ -79,7 +79,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             ),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_loading(false);

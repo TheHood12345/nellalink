@@ -85,11 +85,11 @@ function Large_nella(){
     async function send_token_email_v(){
         set_loading_token(true);
         //set_token_error(false);
-        await fetch("https://backend-test.nellalink.com/public/api/v1/nellalink/user/verify-email-address",{
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/verify-email-address`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
             body: JSON.stringify({
                 email_address: localStorage.getItem("email")
@@ -124,11 +124,11 @@ function Large_nella(){
     async function ve(){
         set_loading_ve(true);
         //set_token_error(false);
-        await fetch("https://backend-test.nellalink.com/public/api/v1/nellalink/user/verify-email-address/validate",{
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/verify-email-address/validate`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
             body: JSON.stringify({
                 email_address: localStorage.getItem("email"),
@@ -168,11 +168,11 @@ function Large_nella(){
         async function send_ps_token(){
         set_loading_ps_token(true);
         //set_token_error(false);
-        await fetch("https://backend-test.nellalink.com/public/api/v1/nellalink/user/change-password",{
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/change-password`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
             body: JSON.stringify({
                 email_address: localStorage.getItem("email")
@@ -210,11 +210,11 @@ function Large_nella(){
     async function change_password(){
         set_change_loading(true);
         //set_token_error(false);
-        await fetch("https://backend-test.nellalink.com/public/api/v1/nellalink/user/change-password/validate",{
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/change-password/validate`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
             body: JSON.stringify({
                 email_address: localStorage.getItem("email"),

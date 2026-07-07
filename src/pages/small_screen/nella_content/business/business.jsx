@@ -17,9 +17,9 @@ import Business_large from "../../../large_screen/businesses";
 //https://nellalink-middleware-dev.eu-4.evennode.com/docs/api/#/File%20Manager/post_api_v1_nellalink_file_manager_aws_upload_url
 
 function Business({prop_set_q}){
-    const url="https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business";
+    const url=`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business`;
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
-    const get_all_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`;
+    const get_all_url = `${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`;
     const z = ["Filter Enabled, Disabled","Enabled","Disabled"];
     const [z_main,set_z_main]=useState("enabled");
     const [z_all,set_z_all]=useState("disabled");
@@ -155,7 +155,7 @@ function Business({prop_set_q}){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -225,7 +225,7 @@ function Business({prop_set_q}){
             method:"post",
             headers:{
                 "Content-Type": "application/json",
-                "x-api-key": api,
+                "x-api-key": import.meta.env.VITE_APP_API_KEY,
                "authorization":`Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
@@ -310,7 +310,7 @@ function Business({prop_set_q}){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -365,7 +365,7 @@ function Business({prop_set_q}){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": api
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
                 }
             }).then((res)=>res.json()).then((data)=>{
                 set_loading_get_now(false);

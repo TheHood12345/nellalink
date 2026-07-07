@@ -54,10 +54,12 @@ function Settings_page(){
                     </div>
 
                     <hr style={{width:"80%"}}/>
-                <div style={{width:"80%",position:"relative",paddingTop:"10px",paddingBottom:"10px",display:"flex",background:"rgb(255,255,255)",flexDirection:"column",alignItems:"start"}}>
-                <div className="set1" style={{marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
+                <div style={{width:"80%",position:"relative",paddingTop:"10px",fontSize:"14px",paddingBottom:"10px",display:"flex",background:"rgb(255,255,255)",flexDirection:"column",alignItems:"start"}}>
+                <div>Manage Account</div>
+                <div className="set1" style={{marginTop:"0px",backgroundColor:"rgb(230,230,230)",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     set_show_cp(true);
                 }}>
+                    <div  style={{width:"90%",cursor:"pointer",paddingTop:"5px",paddingBottom:"5px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"20%"}}>
                       <LockKeyhole/>  
                     </div>
@@ -65,8 +67,9 @@ function Settings_page(){
                     {/* <div style={{width:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
                        <FaAngleRight size={20}/> 
                     </div> */}
+                    </div>
                 </div>
-                <div className="set1" style={{marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
+                <div className="set1" style={{marginTop:"5px",backgroundColor:"rgb(230,230,230)",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                                         set_show_verify_email(true);
                                     }else{
@@ -78,19 +81,22 @@ function Settings_page(){
                                     }
                     
                 }}>
+                    <div  style={{width:"90%",cursor:"pointer",paddingTop:"5px",paddingBottom:"5px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                     <div style={{width:"20%"}}>
                                        <Verified/> 
                                     </div>
                                     
                                     <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center"}}>Verify Email<FaAngleRight  size={20}/></div>
                                     <div style={{width:"20%",position:"absolute",right:"0%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
-                                    {
+                                    
+                                        
+                                    </div>
+                                    </div>
+                    {/* {
                                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
                                     null
                                     :<div style={{color:"orange",fontSize:"12px"}}>VERIFIED</div>
-                                    }
-                                        
-                                    </div>
+                                    } */}
                                     
                 </div>
                 </div>

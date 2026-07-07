@@ -20,13 +20,13 @@ function Menu(){
     const [business_id,set_business_id] = useState("");
     const [copy_item,set_copy_item] = useState({});
 
-    const url=`https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${location.state?.owned_by}&parent_entity_type=${location.state?.parent_entity_type}&parent_entity_uuid=${location.state?.parent_entity_uuid}`
+    const url=`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${location.state?.owned_by}&parent_entity_type=${location.state?.parent_entity_type}&parent_entity_uuid=${location.state?.parent_entity_uuid}`
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
-    const get_all_menu_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${localStorage.getItem("uuid")}&parent_entity_type=nellalink_business&per_page=20000000`;
+    const get_all_menu_url = `${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${localStorage.getItem("uuid")}&parent_entity_type=nellalink_business&per_page=20000000`;
 //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=6a622d6e-b707-4159-9742-1ad91d4cc620&parent_entity_type=nellalink_business&parent_entity_uuid=2abf5fdf-8982-4cde-97a1-9e0f3a4e8a4e
 //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=6a622d6e-b707-4159-9742-1ad91d4cc620&parent_entity_type=nellalink_business&parent_entity_uuid=2abf5fdf-8982-4cde-97a1-9e0f3a4e8a4e
 //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=6a622d6e-b707-4159-9742-1ad91d4cc620&parent_entity_type=nellalink_business
-    const get_business_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=10&sort_by=uuid&sort_order=asc`;
+    const get_business_url = `${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=10&sort_by=uuid&sort_order=asc`;
 
     const z = ["Filter Enabled, Disabled","Enabled","Disabled"];
     const [z_main,set_z_main]=useState("enabled");
@@ -227,7 +227,7 @@ function Menu(){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": api
+                "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -268,7 +268,7 @@ function Menu(){
                     method: "get",
                     headers:{
                         "Content-Type": "application/json",
-                        "x-api-key": api
+                        "x-api-key": import.meta.env.VITE_APP_API_KEY
                     }
                 }).then((res)=>res.json()).then((data)=>{
                     set_loading_get_now(false);
@@ -293,7 +293,7 @@ function Menu(){
                         method: "get",
                         headers:{
                             "Content-Type": "application/json",
-                            "x-api-key": api
+                            "x-api-key": import.meta.env.VITE_APP_API_KEY
                         }
                     }).then((res)=>res.json()).then((data)=>{
                         set_loading_b_get_now(false);

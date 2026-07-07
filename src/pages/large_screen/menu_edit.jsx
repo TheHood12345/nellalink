@@ -58,7 +58,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                 method: 'put',
                 headers: {
                     "content-type": "application/json",
-                    "x-api-key": api
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
                 },
                 body: JSON.stringify(
                     {
