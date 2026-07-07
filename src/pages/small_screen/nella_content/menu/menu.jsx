@@ -17,6 +17,9 @@ function Menu(){
     const navigate = useNavigate();
     const [query] = useSearchParams();
 
+    const [business_id,set_business_id] = useState("");
+    const [copy_item,set_copy_item] = useState({});
+
     const url=`https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${location.state?.owned_by}&parent_entity_type=${location.state?.parent_entity_type}&parent_entity_uuid=${location.state?.parent_entity_uuid}`
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
     const get_all_menu_url = `https://backend-test.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu?owned_by=${localStorage.getItem("uuid")}&parent_entity_type=nellalink_business&per_page=20000000`;
@@ -308,6 +311,11 @@ function Menu(){
                 }
                 get_business();
             },[get_b_now]);
+
+
+            useState(()=>{
+
+            },[business_id]);
         
 
 
@@ -468,7 +476,7 @@ function Menu(){
 
                                 if(index<=a&&p_i==parentId){
                                     if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="") || (item.title_name?.toString().toLowerCase().startsWith(z_search.toString().toLowerCase()) && z_search!="")){
-                                return(<div key={index} style={{width:"100%",fontSize:"12px",position:"relative",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",backgroundColor:"white",borderBottom:"1px solid rgb(220,220,220)"}} draggable
+                                return(<div key={index} style={{width:"100%",fontSize:"12px",position:"relative",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",backgroundColor:en==parentId&&i==index?"rgba(0,0,0,0.9)":"white",color:en==parentId&&i==index?"white":"rgb(30,30,30)",borderBottom:"1px solid rgb(220,220,220)"}} draggable
                                      onDragStart={(e)=>{
                                         set_drag({parentId,index});
                                         e.target.style.opacity="0";
@@ -486,10 +494,10 @@ function Menu(){
                         
                                 <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                            
-                            <div style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px"}}>{index+1}</div>
-                            <div style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                            <div style={{width:"20%",textAlign:"center",fontSize:"12px",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{index+1}</div>
+                            <div style={{width:"20%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"column",color:en==parentId&&i==index?"white":"rgb(30,30,30)",alignItems:"center",justifyContent:"center"}}>
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
-                                <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item.title_name}</div>
+                                <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
                             <a  href={`https://business.nellalink.com/app/mb/menu/${item.title_name}/`} target="_blank"  style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",fontWeight:"bolder",color:"gray"}}>View Menu</a>
                             <div style={{width:"20%",textAlign:"center",fontSize:"14px",fontWeight:"bolder"}}>
@@ -525,15 +533,30 @@ function Menu(){
                         
 {
                             (i==index && en==item.parent_entity_uuid)&&
-                            <div style={{width:"80%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"rgba(250,250,250,0.3)",borderRadius:"10px",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",left:"0%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
-                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(2,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                            <div style={{width:"40%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"white",borderRadius:"10px",boxShadow:"0px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",right:"20%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(1,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_qr_nm(item.title_name);
                                         set_show_qr(true);
                                         set_i(-1);
                                     }}><BsViewList size={20}/> Generate QR</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
-                                        navigator.clipboard.writeText("https://business.nellalink.com/app/mb/menu/https://nella.vercel.app/").then(()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
+            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONTEND_BASE_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
                                             set_i(-1);
                                             set_success_message("Copied");
                                             set_success(true);
@@ -543,22 +566,34 @@ function Menu(){
                                         }).catch((err)=>{
                                             console.log("Failed to copy:    ",err);
                                         });
+                        }
+                    })
+
+                }else{
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+                                        
                                     }}><BiEdit size={20}/> Copy URL</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         const link = document.createElement("a");
                                         link.href = "/flyer.png";
                                         link.download = "nellalink-flyer.png";
                                         link.click();
                                     }}><BsViewList size={20}/> Download Flyer</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         set_qr_nm(item.title_name);
                                         set_edit_uuid(item.uuid);
                                         set_edit_owned_by(item.owned_by);
                                         set_show_menu_edit(true);
                                     }}><BiEdit size={20}/> Edit</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         set_qr_nm(item.title_name);
                                         set_uuid_del(item.uuid);
@@ -578,7 +613,7 @@ function Menu(){
 
                             else if(index<1){
                                     if((item.status==z_main&&z_main!="") || (item.status==z_all&&z_all!="") || (item.extra_data.contact_email==z_search && z_search!="") || (item.title_name==z_search && z_search!="")){
-                                return(<div key={index} style={{width:"100%",fontSize:"12px",position:"relative",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",backgroundColor:"white",borderBottom:"1px solid rgb(220,220,220)"}} draggable
+                                return(<div key={index} style={{width:"100%",fontSize:"12px",position:"relative",marginTop:"10px",cursor:"grab",transition:"all 0.1s linear",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px",borderRadius:"0px",backgroundColor:en==parentId&&i==index?"rgba(0,0,0,0.9)":"white",color:en==parentId&&i==index?"white":"rgb(30,30,30)",borderBottom:"1px solid rgb(220,220,220)"}} draggable
                                      onDragStart={(e)=>{
                                         set_drag({parentId,index});
                                         e.target.style.opacity="0";
@@ -596,8 +631,8 @@ function Menu(){
                         
                                 <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                            
-                            <div style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px"}}>{index+1}</div>
-                            <div style={{width:"20%",opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                            <div style={{width:"20%",textAlign:"center",fontSize:"12px"}}>{index+1}</div>
+                            <div style={{width:"20%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <img src={item.entity_featured_url} alt="" style={{width:"50%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"100%",textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item.title_name}</div>
                             </div>
@@ -680,15 +715,30 @@ function Menu(){
 
                         {
                             (i==index && en==item.parent_entity_uuid)&&
-                            <div style={{width:"80%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"rgba(250,250,250,0.3)",borderRadius:"10px",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",left:"0%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
-                                <div style={{width:"100%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(2,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                            <div style={{width:"40%",zIndex:"10",fontSize:"12px",position:"absolute",backgroundColor:"white",borderRadius:"10px",boxShadow:"px 0px 10px black",paddingLeft:"10px",paddingRight:"10px",top:"20%",right:"20%",display:"flex",flexDirection:"row",alignItems:"end",justifyContent:"start"}}>
+                                <div style={{width:"80%",height:"100%",paddingLeft:"10px",paddingRight:"10px",display:"grid",gap:"0px",gridTemplateColumns:"repeat(1,1fr)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_qr_nm(item.title_name);
                                         set_show_qr(true);
                                         set_i(-1);
                                     }}><BsViewList size={20}/> Generate QR</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
-                                        navigator.clipboard.writeText("https://business.nellalink.com/app/mb/menu/https://nella.vercel.app/").then(()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={async()=>{
+            console.log("-----------1");
+            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
+                method: "get",
+                headers:{
+                    "Content-Type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }).then((res)=>res.json()).then(async(data)=>{
+                console.log("-----------2");
+                if(data.status==true){
+                    console.log("-----------3");
+                    data.data.forEach(async(bus)=>{
+                        if(bus.uuid == item.parent_entity_uuid){
+                            console.log(bus);
+                            console.log(bus.meta_key);
+                            await navigator.clipboard.writeText(`${import.meta.env.VITE_FRONTEND_BASE_URL}/app/${bus.meta_key}/menu/${item.title_name}`).then(()=>{
                                             set_i(-1);
                                             set_success_message("Copied");
                                             set_success(true);
@@ -698,22 +748,34 @@ function Menu(){
                                         }).catch((err)=>{
                                             console.log("Failed to copy:    ",err);
                                         });
+                        }
+                    })
+
+                }else{
+
+                }
+                console.log("success:   ",data);
+            }).catch((err)=>{
+                set_loading_get_now(false);
+                console.log("SORRY",err);
+            });
+                    
                                     }}><BiEdit size={20}/> Copy URL</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         const link = document.createElement("a");
                                         link.href = "/flyer.png";
                                         link.download = "nellalink-flyer.png";
                                         link.click();
                                     }}><BsViewList size={20}/> Download Flyer</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         set_qr_nm(item.title_name);
                                         set_edit_uuid(item.uuid);
                                         set_edit_owned_by(item.owned_by);
                                         set_show_menu_edit(true);
                                     }}><BiEdit size={20}/> Edit</div>
-                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",color:"white",backgroundColor:"rgba(0,0,0,0.8)",borderRight:"1px solid rgb(200,200,200)"}} onClick={()=>{
+                                    <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
                                         set_i(-1);
                                         set_qr_nm(item.title_name);
                                         set_uuid_del(item.uuid);

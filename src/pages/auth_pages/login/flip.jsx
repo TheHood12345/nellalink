@@ -22,8 +22,8 @@ function Flip(){
                     set_div3(1);
                     set_div3_left(0);
                     set_move(!move);
-                },3000);
-            },2000);
+                },6000);
+            },4000);
         }
         if(div1 == 2){
             setTimeout(()=>{
@@ -34,8 +34,8 @@ function Flip(){
                     set_div3(2);
                     set_div2_left(0);
                     set_move(!move);
-                },3000);
-            },2000);
+                },6000);
+            },4000);
         }
         if(div1 == 3){
             setTimeout(()=>{
@@ -46,25 +46,25 @@ function Flip(){
                     set_div3(3);
                     set_div1_left(0);
                     set_move(!move);
-                },3000);
-            },2000);
+                },6000);
+            },4000);
         }
     },[move]);
     return (
         <div style={{width:"100%",height:"100%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"100%",backgroundColor:"transparent",color:"white",position:"absolute",left:`${div1_left}%`,top:"0%",zIndex:div1,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                 
-                    <img src="/slide1.png" style={{width:"90%",height:"100%",borderRadius:"20px"}}/>
+                    <img src="/slide1.png" style={{width:"100%",height:"100%",borderRadius:"0px"}}/>
                 
             </div>
             <div style={{width:"100%",height:"100%",backgroundColor:"transparent",color:"white",position:"absolute",left:`${div2_left}%`,top:"0%",zIndex:div2,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                 
-                    <img src="/slide2.png" style={{width:"90%",height:"100%",borderRadius:"20px"}}/>
+                    <img src="/slide2.png" style={{width:"100%",height:"100%",borderRadius:"0px"}}/>
                 
             </div>
             <div style={{width:"100%",height:"100%",backgroundColor:"transparent",color:"white",position:"absolute",left:`${div3_left}%`,top:"0%",zIndex:div3,transition:"left 1s linear",transform:"rotate(0deg)",boxShadow:"2px 2px 2px transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                
-                    <img src="/slide3.png" style={{width:"90%",height:"100%",borderRadius:"20px"}}/>
+                    <img src="/slide3.png" style={{width:"100%",height:"100%",borderRadius:"0px"}}/>
                 
             </div>
         </div>

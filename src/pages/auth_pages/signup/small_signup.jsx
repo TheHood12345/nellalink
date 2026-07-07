@@ -84,8 +84,8 @@ function Small_signup(){
     return (
         <div className="small_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"white",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"90%",height:"90%",overflow:"scroll",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
-                <div style={{fontWeight:"bold",fontSize:"30px",color:"black",fontWeight:"bolder",marginTop:"20px"}}>REGISTER</div>
-                <div style={{fontSize:"20px",marginTop:"10px"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14"}}>Login</Link></div>
+                <div style={{fontFamily:"poppins-bold",width:"90%",fontSize:"25px",color:"black",fontWeight:"bolder",marginTop:"20px"}}>REGISTER</div>
+                <div style={{marginTop:"10px",width:"90%"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14"}}>Login</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
                     <div>User Name</div>
                     <input type="text" required value={username} onChange={(e)=>{

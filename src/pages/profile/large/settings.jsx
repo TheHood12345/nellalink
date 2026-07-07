@@ -18,18 +18,33 @@ function Settings_page(){
             (show_cp==false && show_verify_email==false)&&
             <div style={{width:"90%",height:"90%",backgroundColor:"rgb(255,255,255)",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
                 
-                <div style={{width:"90%",marginTop:"40px",display:"flex",alignItems:"center",justifyContent:"start"}}>
+                <div style={{width:"80%",marginTop:"40px",display:"flex",alignItems:"center",justifyContent:"start"}}>
                     <Settings/><div>Account Settings</div>
                 </div>
 
-                <div style={{width:"90%",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                <div style={{width:"80%",marginTop:"20px",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",backgroundImage:"linear-gradient(rgba(13, 21, 32, 0.1),rgba(13, 21, 32, 0.9))",color:"white",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                         <div style={{width:"90%",paddingTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                             
+                            {/* <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                                        <div style={{width:"20%"}}>{localStorage.getItem("name")}</div>
+                                                        
+                                                    </div>
+                                                </div> */}
+                            <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                                        <div style={{width:"20%"}}>{localStorage.getItem("email")}</div>
+                                                    </div>
+                                                </div>
                             <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                                     <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                        <div style={{width:"20%"}}>Name</div>
-                                                        <div style={{width:"70%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                            <div style={{width:"80%",overflow:"scroll",color:"white"}}>{localStorage.getItem("name")}</div>
+                                                        {
+                                                        localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
+                                                        <div style={{color:"red",fontSize:"12px",backgroundColor:"pink",paddingTop:"3px",paddingBottom:"3px",width:"30%",textAlign:"center",borderRadius:"100px"}}>UNVERIFIED</div>
+                                                        :<div style={{color:"orange",fontSize:"12px",paddingTop:"3px",paddingBottom:"3px",textAlign:"center",borderRadius:"100px"}}>VERIFIED</div>
+                                                        }
+                                                        <div style={{width:"70%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
+                                                            
                                                             <FaInfoCircle/>
                                                         </div>
                                                     </div>
@@ -39,18 +54,19 @@ function Settings_page(){
                     </div>
 
                     <hr style={{width:"80%"}}/>
-                <div style={{width:"90%",marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
+                <div style={{width:"80%",position:"relative",paddingTop:"10px",paddingBottom:"10px",display:"flex",background:"rgb(255,255,255)",flexDirection:"column",alignItems:"start"}}>
+                <div className="set1" style={{marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
                     set_show_cp(true);
                 }}>
                     <div style={{width:"20%"}}>
                       <LockKeyhole/>  
                     </div>
-                    <div style={{width:"60%"}}>Change Password</div>
-                    <div style={{width:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
-                       <FaAngleRight/> 
-                    </div>
+                    <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center"}}>Change Password<FaAngleRight size={20}/></div>
+                    {/* <div style={{width:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
+                       <FaAngleRight size={20}/> 
+                    </div> */}
                 </div>
-                <div style={{width:"90%",marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
+                <div className="set1" style={{marginTop:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                                         set_show_verify_email(true);
                                     }else{
@@ -66,17 +82,18 @@ function Settings_page(){
                                        <Verified/> 
                                     </div>
                                     
-                                    <div style={{width:"60%"}}>Verify Email</div>
-                                    <div style={{width:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
+                                    <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center"}}>Verify Email<FaAngleRight  size={20}/></div>
+                                    <div style={{width:"20%",position:"absolute",right:"0%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end"}}>
                                     {
                                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                                    <div></div>
-                                    :<div style={{color:"orange",fontSize:"12px"}}>VERIFIED</div>}
-                                      <FaAngleRight/>  
+                                    null
+                                    :<div style={{color:"orange",fontSize:"12px"}}>VERIFIED</div>
+                                    }
+                                        
                                     </div>
                                     
                 </div>
-
+                </div>
                 
 
 

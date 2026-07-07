@@ -233,29 +233,29 @@ function Large_login(){
         });
     }
     return (
-        <div className="large_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+        <div className="large_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
             
-            <div className="large_main" style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll",overflowX:"hidden"}}>
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",marginTop:"20px"}}>
-                    <img src="/nellalink.jpg" style={{width:"20%",aspectRatio:"1/1",borderRadius:"100px"}}/>
-                    <h1 style={{color:"rgb(0,0,130)",width:"60%"}}>Nellalink Smart Business Suite (SBS)</h1>
+            <div className="large_main" style={{width:"50%",height:"100%",fontFamily:"poppins-bold",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll",overflowX:"hidden"}}>
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",marginTop:"40px"}}>
+                    <img src="/nellalink.jpg" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px"}}/>
+                    <div style={{color:"rgb(0,0,130)",width:"60%",fontSize:"30px",lineHeight:"40px"}}>Nellalink Smart Business Suite (SBS)</div>
                 </div>
-                <div style={{color:"rgb(18,22,28)",width:"90%"}}>
-                    <h1 style={{fontSize:"40px"}}>Elevate your</h1>
-                    <h1 style={{fontSize:"40px"}}>Business experience</h1>
-                    <h1 style={{fontSize:"40px"}}>with SBS</h1>
+                <div style={{color:"rgb(18,22,28)",width:"90%",marginTop:"40px"}}>
+                    <div style={{fontSize:"40px"}}>Elevate your</div>
+                    <div style={{fontSize:"40px",marginTop:"10px"}}>Business experience</div>
+                    <div style={{fontSize:"40px",marginTop:"10px"}}>with SBS</div>
                 </div>
-                <div style={{width:"90%",aspectRatio:"2/1"}}>
+                <div style={{width:"100%",marginTop:"40px",aspectRatio:"2/1"}}>
                     <Flip/>
                 </div>
-                <div style={{width:"100%",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
+                <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
                     <Flip1/>
                 </div>
             </div>
 
             <div style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"100%",overflow:"scroll",boxShadow:"0px 0px 6px rgb(240,240,240)",backgroundColor:"white",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <h1></h1><div style={{fontWeight:"bold",width:"90%",fontSize:"28px",marginTop:"20px"}}>Welcome back!</div>
+                <h1></h1><div style={{fontFamily:"poppins-bold",width:"90%",fontSize:"28px",marginTop:"20px"}}>Welcome back!</div>
                 <div style={{width:"90%",fontSize:"16px"}}>Don't have an account? <Link to={"/signup"} style={{color:"#fd7e14",textDecoration:"none"}}>Sign Up</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
                     <div>Email Address</div>

@@ -34,7 +34,7 @@ function Small_profile(){
                     }
                 </div>
 
-                <div style={{width:"90%",height:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                <div style={{width:"100%",height:"20%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     
                     <div style={{width:"40%",color:settings&&"rgb(40,40,40)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",cursor:"pointer"}} onClick={()=>{
                         set_details(false);

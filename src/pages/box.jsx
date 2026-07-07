@@ -322,6 +322,7 @@ function Box(){
                                 <div style={{width:"100%",height:"10%",fontSize:"20px",fontWeight:"bolder",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                     <div style={{cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",display:"flex",alignItems:"center",color:"gray"}} onClick={()=>{
                                         set_notif(false);
+                                        navigate("/")
                                     }}><FaArrowLeft size={30}/></div>
                                     <div style={{marginLeft:"10px"}}>Notifications</div>
                                 </div>

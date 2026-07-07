@@ -69,6 +69,14 @@ html,body{
   font-family: "poppins";
   src: url("./assets/poppins.TTF");
 }
+@font-face{
+  font-family: "poppins-light";
+  src: url("./assets/POPPINS-LIGHT.TTF");
+}
+@font-face{
+  font-family: "poppins-bold";
+  src: url("./assets/POPPINS-BOLD.TTF");
+}
 @media screen and (max-width: 700px) {
   .small_main{
     display: flex;
@@ -123,6 +131,9 @@ html,body{
   .large_profile{
     display: none;
   }
+  .set1{
+    width: 80%;
+  }
 }
 @media screen and (min-width: 701px) {
   .small_main{
@@ -174,6 +185,9 @@ html,body{
   }
   .large_profile{
     display: flex;
+  }
+  .set1{
+    width: 60%;
   }
 }
 ::-webkit-scrollbar{

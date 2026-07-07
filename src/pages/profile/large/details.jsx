@@ -30,86 +30,18 @@ function Details(){
                     <FaAngleDoubleRight/>
                 </div>
 
-                {/* <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}> */}
+                <div style={{width:"90%",display:"grid",marginBottom:"20px",gridTemplateColumns:"repeat(1,1fr)",gap:"30px"}}>
 
-                <div style={{width:"90%",gap:"20px",display:"flex",flexDirection:"row",alignItems:"center",overflowX:"scroll",scrollSnapType:"x mandatory"}}>
-
-                    <div style={{flex:"0 0 70%",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",paddingTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-                            
-                            <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                        <div style={{width:"20%"}}>Name</div>
-                                                        <div style={{width:"70%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                            <div style={{width:"80%",overflow:"scroll",color:"white"}}>{localStorage.getItem("name")}</div>
-                                                            <FaInfoCircle/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            <div style={{width:"90%",display:"flex",marginTop:"10px",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                <div style={{display:"flex",cursor:"pointer",flexDirection:"row",alignItems:"center",justifyContent:"start",fontSize:"10px",paddingTop:"4px",paddingBottom:"4px",borderRadius:"10px",backgroundColor:"orange",color:"white",paddingLeft:"20px",paddingRight:"20px"}} onClick={()=>{
-                                    navigator.clipboard.writeText(localStorage.getItem("name")).then(()=>{
-                                                                            set_success_message("Successfully copied user's name");
-                                                                            set_success(true);
-                                                                            setTimeout(()=>{
-                                                                                set_success(false);
-                                                                            },5000);
-                                                                        }).catch(()=>{
-                                                                            set_fail_message("Failed to copy user's name");
-                                                                            set_fail(true);
-                                                                            setTimeout(()=>{
-                                                                                set_fail(false);
-                                                                            },5000);
-                                                                        });
-                                }}>
-                                    <Copy size={10}/><div>Copy</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style={{flex:"0 0 70%",scrollSnapAlign:"center",backgroundColor:"rgba(250, 250, 250, 0.93)",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",paddingTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-                            
-                            <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                        <div style={{width:"20%"}}>Email</div>
-                                                        <div style={{width:"70%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                            <div style={{width:"80%",overflow:"scroll"}}>{localStorage.getItem("email")}</div>
-                                                            <FaInfoCircle/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            <div style={{width:"90%",display:"flex",marginTop:"10px",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                <div style={{display:"flex",cursor:"pointer",flexDirection:"row",alignItems:"center",justifyContent:"start",fontSize:"10px",paddingTop:"4px",paddingBottom:"4px",borderRadius:"10px",backgroundColor:"orange",color:"white",paddingLeft:"20px",paddingRight:"20px"}} onClick={()=>{
-                                    navigator.clipboard.writeText(localStorage.getItem("email")).then(()=>{
-                                                                            set_success_message("Successfully copied email address");
-                                                                            set_success(true);
-                                                                            setTimeout(()=>{
-                                                                                set_success(false);
-                                                                            },5000);
-                                                                        }).catch(()=>{
-                                                                            set_fail_message("Failed to copy email address");
-                                                                            set_fail(true);
-                                                                            setTimeout(()=>{
-                                                                                set_fail(false);
-                                                                            },5000);
-                                                                        });
-                                }}>
-                                    <Copy size={10}/><div>Copy</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style={{flex:"0 0 100%",scrollSnapAlign:"center",backgroundColor:"rgba(250, 250, 250, 0.93)",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                {/* <div style={{width:"90%",gap:"20px",display:"flex",flexDirection:"row",alignItems:"center",overflowX:"scroll",scrollSnapType:"x mandatory"}}> */}
+                    <div style={{flex:"0 0 100%",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",backgroundImage:"linear-gradient(rgba(13, 21, 32, 0.1),rgba(13, 21, 32, 0.9))",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                         <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                             
                             <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                        <div style={{width:"20%"}}>UUID</div>
-                                                        <div style={{width:"70%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-                                                            <div style={{width:"80%",overflow:"scroll"}}>{localStorage.getItem("uuid")}</div>
-                                                            <FaInfoCircle/>
+                                                    <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                                        <div style={{width:"20%",textAlign:"center",borderBottom:"1px solid rgb(240,240,240)"}}>UUID</div>
+                                                        <div style={{width:"70%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                                            <div style={{width:"80%",textAlign:"center",overflow:"scroll",whiteSpace:"nowrap"}}>{localStorage.getItem("uuid").toString()}</div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,6 +66,75 @@ function Details(){
                             </div>
                         </div>
                     </div>
+                    
+
+                    <div style={{flex:"0 0 100%",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",backgroundImage:"linear-gradient(rgba(13, 21, 32, 0.1),rgba(13, 21, 32, 0.9))",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",paddingTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                            
+                            <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                    <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                                                        <div style={{width:"20%",textAlign:"center",borderBottom:"1px solid rgb(240,240,240)"}}>Email</div>
+                                                        <div style={{width:"70%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                            <div style={{width:"80%",textAlign:"center",overflow:"scroll"}}>{localStorage.getItem("email")}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                            <div style={{width:"90%",display:"flex",marginTop:"10px",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <div style={{display:"flex",cursor:"pointer",flexDirection:"row",alignItems:"center",justifyContent:"start",fontSize:"10px",paddingTop:"4px",paddingBottom:"4px",borderRadius:"10px",backgroundColor:"orange",color:"white",paddingLeft:"20px",paddingRight:"20px"}} onClick={()=>{
+                                    navigator.clipboard.writeText(localStorage.getItem("email")).then(()=>{
+                                                                            set_success_message("Successfully copied email address");
+                                                                            set_success(true);
+                                                                            setTimeout(()=>{
+                                                                                set_success(false);
+                                                                            },5000);
+                                                                        }).catch(()=>{
+                                                                            set_fail_message("Failed to copy email address");
+                                                                            set_fail(true);
+                                                                            setTimeout(()=>{
+                                                                                set_fail(false);
+                                                                            },5000);
+                                                                        });
+                                }}>
+                                    <Copy size={10}/><div>Copy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{flex:"0 0 100%",scrollSnapAlign:"center",backgroundColor:"rgba(29, 40, 47, 0.93)",backgroundImage:"linear-gradient(rgba(13, 21, 32, 0.1),rgba(13, 21, 32, 0.9))",boxShadow:"0px 0px 3px rgb(240,240,240)",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",paddingTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                            
+                            <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                    <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                                                        <div style={{width:"20%",textAlign:"center",borderBottom:"1px solid rgb(240,240,240)"}}>Name</div>
+                                                        <div style={{width:"70%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                                            <div style={{width:"80%",textAlign:"center",overflow:"scroll",color:"white"}}>{localStorage.getItem("name")}</div>
+                                                            {/* <FaInfoCircle/> */}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                            <div style={{width:"90%",display:"flex",marginTop:"10px",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <div style={{display:"flex",cursor:"pointer",flexDirection:"row",alignItems:"center",justifyContent:"start",fontSize:"10px",paddingTop:"4px",paddingBottom:"4px",borderRadius:"10px",backgroundColor:"orange",color:"white",paddingLeft:"20px",paddingRight:"20px"}} onClick={()=>{
+                                    navigator.clipboard.writeText(localStorage.getItem("name")).then(()=>{
+                                                                            set_success_message("Successfully copied user's name");
+                                                                            set_success(true);
+                                                                            setTimeout(()=>{
+                                                                                set_success(false);
+                                                                            },5000);
+                                                                        }).catch(()=>{
+                                                                            set_fail_message("Failed to copy user's name");
+                                                                            set_fail(true);
+                                                                            setTimeout(()=>{
+                                                                                set_fail(false);
+                                                                            },5000);
+                                                                        });
+                                }}>
+                                    <Copy size={10}/><div>Copy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
 
                 </div>

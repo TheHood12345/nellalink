@@ -87,30 +87,28 @@ function Large_signup(){
     return (
         <div className="large_main" style={{width:"100%",height:"100%",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgb(255,255,255)",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
 
-            <div className="large_main" style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll",overflowX:"hidden"}}>
-                            <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",marginTop:"20px"}}>
-                                <img src="/nellalink.jpg" style={{width:"20%",aspectRatio:"1/1",borderRadius:"100px"}}/>
-                                <div style={{color:"rgb(0,0,130)",width:"60%"}}>
-                                    <h1>Nellalink Smart</h1><h1>Business Suite</h1><h1>(SBS)</h1> 
-                                </div>
-                            </div>
-                            <div style={{color:"rgb(18,22,28)",width:"90%"}}>
-                                <h1 style={{fontSize:"40px"}}>Elevate your</h1>
-                                <h1 style={{fontSize:"40px"}}>Business experience</h1>
-                                <h1 style={{fontSize:"40px"}}>with SBS</h1>
-                            </div>
-                            <div style={{width:"90%",aspectRatio:"2/1"}}>
-                                <Flip/>
-                            </div>
-                            <div style={{width:"90%",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
-                                <Flip1/>
-                            </div>
-                        </div>
+            <div className="large_main" style={{width:"50%",height:"100%",fontFamily:"poppins-bold",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll",overflowX:"hidden"}}>
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",marginTop:"40px"}}>
+                    <img src="/nellalink.jpg" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px"}}/>
+                    <div style={{color:"rgb(0,0,130)",width:"60%",fontSize:"30px",lineHeight:"40px"}}>Nellalink Smart Business Suite (SBS)</div>
+                </div>
+                <div style={{color:"rgb(18,22,28)",width:"90%",marginTop:"40px"}}>
+                    <div style={{fontSize:"40px"}}>Elevate your</div>
+                    <div style={{fontSize:"40px",marginTop:"10px"}}>Business experience</div>
+                    <div style={{fontSize:"40px",marginTop:"10px"}}>with SBS</div>
+                </div>
+                <div style={{width:"100%",marginTop:"40px",aspectRatio:"2/1"}}>
+                    <Flip/>
+                </div>
+                <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",aspectRatio:"2/1",marginTop:"20px",marginBottom:"20px"}}>
+                    <Flip1/>
+                </div>
+            </div>
 
             <div style={{width:"50%",height:"100%",position:"relative",color:"rgb(50,50,50)",backgroundColor:"rgb(255,255,255)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"90%",overflow:"scroll",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
-                <div style={{fontWeight:"bold",fontSize:"30px",color:"black",fontWeight:"bolder",marginTop:"20px"}}>REGISTER</div>
-                <div style={{fontSize:"20px",marginTop:"10px"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14"}}>Login</Link></div>
+                <div style={{fontFamily:"poppins-bold",width:"90%",fontSize:"25px",color:"black",fontWeight:"bolder",marginTop:"20px"}}>REGISTER</div>
+                <div style={{marginTop:"10px",width:"90%"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14"}}>Login</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
                     <div>User Name</div>
                     <input type="text" required value={username} onChange={(e)=>{

@@ -56,3 +56,10 @@
 .alert{
   animation: alert_anim 3s linear 0s infinite alternate forwards;
 }
+.up{
+  width: 85%;
+}
+.up:hover{
+  width: 90%;
+  background-color: green;
+}

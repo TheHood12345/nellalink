@@ -254,33 +254,20 @@ function Large_nella(){
         <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
             {/* --------------------- */}
             <div style={{width:"20%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(100,100,100)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
-                    <h1 style={{color:"white"}}>Nellalink</h1>
-                    <h1 style={{marginTop:"0px",color:"white"}}>SBS</h1>
-                    <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",borderRadius:"0px",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(200,208,215)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
+                    <h1 style={{color:"black",fontFamily:"poppins-bold"}}>Nellalink</h1>
+                    <h1 style={{marginTop:"0px",color:"black",fontFamily:"poppins-bold"}}>SBS</h1>
+                    <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     
                     set_q(1);
                 }}>
-                    <FaHome color={q==1? "black": "white"} size={25} style={{width:"30%"}}/>
-                    <div style={{color:q==1? "black": "white",width:"70%",fontSize:"12px"}}>Dashboard</div>
+                    <FaHome color={q==1? "black": "gray"} size={25} style={{width:"30%"}}/>
+                    <div style={{color:q==1? "black": "gray",width:"70%",fontSize:"12px"}}>Dashboard</div>
                 </Link>
-                <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
-                    //if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
-                        // set_verify_email_text_top(0);
-                        // setTimeout(()=>{
-                        //     set_verify_email_text_top(-10);
-                        // },2000);
-                    //}else{
-                       // set_q(3);
-                   // }
-                    
-                }}>
-                    <FaBell color={"white"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Notifications</div>
-                </Link>
+                
                 <Link to={
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                    "/home":"/business"} style={{backgroundColor:q==2?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    "/home":"/business"} style={{backgroundColor:q==2?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                         set_verify_email_text_top(0);
                         setTimeout(()=>{
@@ -291,12 +278,12 @@ function Large_nella(){
                     }
                     
                 }}>
-                    <FaBusinessTime color={q==2? "black": "white"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:q==2? "black": "white",width:"70%",fontSize:"12px"}}>Businesses</div>
+                    <FaBusinessTime color={q==2? "black": "gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==2? "black": "gray",width:"70%",fontSize:"12px"}}>Businesses</div>
                 </Link>
                 <Link to={
                     localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")== "" || localStorage.getItem("email_verified_at")=="null"?
-                    "/home":"/menu"} style={{backgroundColor:q==3?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    "/home":"/menu"} style={{backgroundColor:q==3?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                         set_verify_email_text_top(0);
                         setTimeout(()=>{
@@ -307,10 +294,24 @@ function Large_nella(){
                     }
                     
                 }}>
-                    <FaBookOpen color={q==3? "black": "white"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:q==3? "black": "white",width:"70%",fontSize:"12px"}}>QR Menu/Price List</div>
+                    <FaBookOpen color={q==3? "black": "gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:q==3? "black": "gray",width:"70%",fontSize:"12px"}}>QR Menu/Price List</div>
                 </Link>
-                <Link style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                <Link to="/?notification=true" style={{backgroundColor:false?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                    //if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
+                        // set_verify_email_text_top(0);
+                        // setTimeout(()=>{
+                        //     set_verify_email_text_top(-10);
+                        // },2000);
+                    //}else{
+                       // set_q(3);
+                   // }
+                    
+                }}>
+                    <FaBell color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%",fontSize:"12px"}}>Notifications</div>
+                </Link>
+                <Link style={{backgroundColor:false?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                     //     set_verify_email_text_top(0);
                     //     setTimeout(()=>{
@@ -321,10 +322,10 @@ function Large_nella(){
                     // }
                     
                 }}>
-                    <FaTable color={"white"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Analytics</div>
+                    <FaTable color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%",fontSize:"12px"}}>Analytics</div>
                 </Link>
-                <Link  style={{backgroundColor:false?"white":"transparent",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
+                <Link to="/profile" style={{backgroundColor:false?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",border:"0px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
                     // if(localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""){
                     //     set_verify_email_text_top(0);
                     //     setTimeout(()=>{
@@ -335,8 +336,8 @@ function Large_nella(){
                     // }
                     
                 }}>
-                    <FaGear color={"white"} style={{width:"30%"}} size={20}/>
-                    <div style={{color:"white",width:"70%",fontSize:"12px"}}>Settings</div>
+                    <FaGear color={"gray"} style={{width:"30%"}} size={20}/>
+                    <div style={{color:"gray",width:"70%",fontSize:"12px"}}>Settings</div>
                 </Link>
                 </div>
                 <div style={{width:"100%",height:"20%",backgroundColor:"rgb(50,50,50)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",alignSelf:"flex-end",overflow:"scroll"}}>
@@ -353,20 +354,17 @@ function Large_nella(){
             </div>
 
             {/* ------------------------- */}
-            <div style={{width:"80%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"80%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(252,254,255)",alignItems:"center",justifyContent:"space-between"}}>
             <div style={{width:"100%",height:"15%",boxShadow:"0px 3px 3px rgb(230,230,230)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold",color:"black"}}>
-                        <h1 style={{fontSize:"20px"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</h1>
+                        <div style={{fontSize:"20px",fontFamily:"poppins-bold"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
                         {
-                            localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                          // <div style={{display:"flex",fontSize:"12px",alignItems:"center",justifyContent:"center",backgroundColor:v_text=="Kindly verify your email"?"orange":"aqua",color:"white",width:"60%",borderRadius:"2px"}} onClick={()=>{
-                           // set_drawer1(!drawer1);
-                           // set_show_verify_anim(false);
-                        //}}>{v_text}</div>
-                        null
-                        :
-                           <div style={{display:"flex",fontSize:"20px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
+                         //   localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
+                        //  
+                       // null
+                       // :
+                         //  <div style={{display:"flex",fontSize:"20px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     

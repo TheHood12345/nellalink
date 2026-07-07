@@ -1,22 +1,23 @@
+import { CheckCheck, ListCheck, PersonStandingIcon, SquareArrowOutUpRight } from "lucide-react";
 import { useState } from "react";
 import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar } from "react-icons/fa";
 import { FaBoltLightning, FaComputer, FaFileLines, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRightToBracket } from "react-icons/fa6";
 
 function Dashboard(){
 
-        const items = [
+      const items = [
             {
-                icon: <FaCalendar size={30} color={"gray"}/>,
+                icon: <ListCheck size={30} color={"gray"}/>,
                 nil: "_",
                 name: "Total Business (My Business)"
             },
             {
-                icon: <FaPeopleGroup size={30} color={"gray"}/>,
+                icon: <PersonStandingIcon size={30} color={"gray"}/>,
                 nil: "_",
                 name: "Total Number of Users Onboarded"
             },
             {
-                icon: <FaList size={30} color={"gray"}/>,
+                icon: <CheckCheck size={30} color={"gray"}/>,
                 nil: "_",
                 name: "Total number of accepted orders"
             },
@@ -39,21 +40,21 @@ function Dashboard(){
 
         const [up,set_up] = useState(0)
     return (
-        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(250,250,250)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
-            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px"}}>
+        <div id="large_home" style={{width:"100%",height:"80%",backgroundColor:"rgb(252,254,255)",color:"gray",overflow:"scroll",flexDirection:"column",alignItems:"center"}}>
+            <div style={{width:"90%",display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"40px"}}>
                         {
                             items.map((item,index)=>{
                                 return(
-                                <div className="up" key={index} style={{width:"90%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.1s linear",cursor:"pointer",paddingTop:"40px",paddingBottom:"40px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 0px ${up==index?20:3}px rgb(240,240,240)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
+                                <div className="up" key={index} style={{width:"100%",backgroundColor:"white",fontSize:"14px",color:"gray",transition:"all 0.3s linear",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",paddingLeft:"10px",paddingRight:"10px",borderRadius:"10px",boxShadow:`0px 3px ${up==index?10:3}px rgb(220,220,220)`,marginTop:"20px",display:"flex",flexDirection:"column"}} onClick={()=>{
                                     set_up(index);
                                 }} onMouseEnter={(e)=>{
                                     set_up(index);
                                 }}>
                                     <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                         {item.icon}
-                                        <FaArrowUp/>
+                                        <SquareArrowOutUpRight/>
                                     </div>
-                                    <div style={{color:"black",fontWeight:"bold",fontSize:"20px",marginTop:"20px"}}>{item.nil}</div>
+                                    <div style={{color:"black",fontFamily:"poppins-bold",fontSize:"20px",marginTop:"10px"}}>{item.nil}</div>
                                     <div style={{marginTop:"20px"}}>{item.name}</div>
                                 </div>
                             )
