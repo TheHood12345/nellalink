@@ -117,7 +117,7 @@ function Business_large({prop_set_q}){
                 title_name: title_name,
                 description: description,
               //  entity_type: "nellalink_business",
-                entity_featured_url: `https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/${localStorage.getItem("uuid")}/info/logo/${Date.now().toString()}-${encodeURIComponent(file.name.toString().slice(file.name.toString().lastIndexOf(".")))}`,
+                entity_featured_url: `https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/${localStorage.getItem("uuid")}/info/logo/${nw}-${encodeURIComponent(file.name.toString().slice(file.name.toString().lastIndexOf(".")))}`,
                 //entity_featured_url:"https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/6a622d6e-b707-4159-9742-1ad91d4cc620/info/logo/1781952232029-a2.jpg",
                 extra_data: {
                  //   key_name1:"value1",
@@ -157,6 +157,7 @@ function Business_large({prop_set_q}){
                 "x-api-key": import.meta.env.VITE_APP_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
+            console.log(`${encodeURIComponent("***************************8",file.name.toString().slice(file.name.toString().lastIndexOf(".")))}`,"------------------------------------------------------1-1-11--1----");
             if(data.status==true){
                 set_loading(false);
                 set_get_now(!get_now);
@@ -174,6 +175,7 @@ function Business_large({prop_set_q}){
                 setTimeout(() => {
                     set_create_top(-10);
                 }, 3000);
+                console.log("BAD...")
             }
          }).catch((err)=>{
             console.log(`nope: ${err}`);
@@ -209,7 +211,7 @@ function Business_large({prop_set_q}){
            
         ).then(async()=>{
           //  set_file_url(body.file_url);
-            await create_business11(body.file_url);
+            await create_business11(encodeURI(body.file_url));
         })
         }
         

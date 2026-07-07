@@ -210,7 +210,7 @@ function Business({prop_set_q}){
            
         ).then(async()=>{
           //  set_file_url(body.file_url);
-            await create_business11(body.file_url);
+            await create_business11(encodeURI(body.file_url));
         })
         }
         
