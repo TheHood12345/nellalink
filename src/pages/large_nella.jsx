@@ -257,7 +257,7 @@ function Large_nella(){
         <div className="large_main" style={{width:"100%",height:"100%",flexDirection:"row",position:"relative",backgroundColor:"rgb(255,255,255)",alignItems:"center",justifyContent:"space-between"}}>
             {/* --------------------- */}
             <div style={{width:"20%",height:"100%",backgroundColor:"rgb(220,220,220)",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                <div style={{width:"100%",height:"80%",backgroundColor:"red",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
+                <div style={{width:"100%",height:"80%",backgroundColor:"rgb(200,208,215)",display:"flex",flexDirection:"column",alignItems:"center",overflowY:"scroll"}}>
                     <h1 style={{color:"black",fontFamily:"poppins-bold"}}>Nellalink</h1>
                     <h1 style={{marginTop:"0px",color:"black",fontFamily:"poppins-bold"}}>SBS</h1>
                     <Link className="view_large" to={"/home"} style={{backgroundColor:q==1?"white":"transparent",borderTopLeftRadius:"20px",borderBottomLeftRadius:"20px",width:"80%",textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",alignSelf:"flex-end",marginTop:"20px"}} onClick={()=>{
