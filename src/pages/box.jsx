@@ -63,25 +63,25 @@ function Box(){
                 console.log("-----------agent---------",navigator.userAgent);
                 console.log("RESPONSE----: ", data);
                 if(data.status==true){
-                    set_success_message(data.message);
-                    set_success(true);
-                    setTimeout(()=>{
-                        set_success(false);
-                    },5000);
+                    // set_success_message(data.message);
+                    // set_success(true);
+                    // setTimeout(()=>{
+                    //     set_success(false);
+                    // },5000);
                 }else{
-                    set_fail_message(data.message);
-                    set_fail(true);
-                    setTimeout(()=>{
-                        set_fail(false);
-                    },5000);
+                    // set_fail_message(data.message);
+                    // set_fail(true);
+                    // setTimeout(()=>{
+                    //     set_fail(false);
+                    // },5000);
                 }
             }).catch((err)=>{
                 console.log("FAILED TO DO STUFF, DUE TO:    ", err);
-                set_fail_message("Check your internet connection.");
-                set_fail(true);
-                setTimeout(()=>{
-                    set_fail(false);
-                },5000);
+                // set_fail_message("Check your internet connection.");
+                // set_fail(true);
+                // setTimeout(()=>{
+                //     set_fail(false);
+                // },5000);
             });
         }
 
@@ -105,30 +105,30 @@ function Box(){
                 console.log("-----------agent---------",navigator.userAgent);
                 console.log("RESPONSE----: ", data);
                 if(data.status==true){
-                    set_success_message(data.message);
-                    set_success(true);
-                    setTimeout(()=>{
-                        set_success(false);
-                    },5000);
+                    // set_success_message(data.message);
+                    // set_success(true);
+                    // setTimeout(()=>{
+                    //     set_success(false);
+                    // },5000);
                 }else{
-                    set_fail_message(data.message);
-                    set_fail(true);
-                    setTimeout(()=>{
-                        set_fail(false);
-                    },5000);
+                    // set_fail_message(data.message);
+                    // set_fail(true);
+                    // setTimeout(()=>{
+                    //     set_fail(false);
+                    // },5000);
                 }
             }).catch((err)=>{
                 console.log("FAILED TO DO STUFF, DUE TO:    ", err);
-                set_fail_message("Check your internet connection.");
-                set_fail(true);
-                setTimeout(()=>{
-                    set_fail(false);
-                },5000);
+                // set_fail_message("Check your internet connection.");
+                // set_fail(true);
+                // setTimeout(()=>{
+                //     set_fail(false);
+                // },5000);
             });
         }
 
         async function go(){
-            await registerDevice();
+            //await registerDevice();
             await notificationSettings();
         }
 

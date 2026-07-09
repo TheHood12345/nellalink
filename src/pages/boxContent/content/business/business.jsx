@@ -615,7 +615,7 @@ function Business({prop_set_q}){
                             ad&&
                             <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(255,255,255)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
                                 
-                                <div style={{width:"90%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                <div style={{width:"90%",height:"100%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
                                     
                                     <div style={{width:"80%",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                         <div style={{color:"rgb(100,100,100)",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
