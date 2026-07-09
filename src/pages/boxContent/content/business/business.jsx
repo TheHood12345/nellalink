@@ -4,7 +4,7 @@ import { BsViewList } from "react-icons/bs";
 import { FaArrowDown, FaArrowLeft, FaBook, FaCalendar, FaCaretLeft, FaCheckCircle, FaExclamationCircle, FaIcicles, FaImage, FaInfoCircle, FaPiedPiper, FaPlus, FaSearch, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaDownload, FaEarthAfrica, FaEllipsisVertical, FaLocationPin, FaMessage, FaPerson, FaPhotoFilm } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
-import { data, Link, useSearchParams } from "react-router-dom";
+import { data, Link, useOutletContext, useSearchParams } from "react-router-dom";
 import Business_view from "./business_view";
 import Business_edit from "./business_edit";
 import {AlarmCheck, BellCheck, ImageDown, Loader, Loader2, LoaderPinwheel, Upload} from "lucide-react"
@@ -81,10 +81,12 @@ function Business({prop_set_q}){
         // filter1: "none"
     });
 
-    const [ad_success,set_ad_success]=useState(false);
-    const [ad_fail,set_ad_fail]=useState(false);
-    const [ad_success_message,set_ad_success_message]=useState("");
-    const [ad_fail_message,set_ad_fail_message]=useState("");
+    // const [ad_success,set_ad_success]=useState(false);
+    // const [ad_fail,set_ad_fail]=useState(false);
+    // const [ad_success_message,set_ad_success_message]=useState("");
+    // const [ad_fail_message,set_ad_fail_message]=useState("");
+
+    const {set_success,set_success_message,set_fail,set_fail_message} = useOutletContext();
 
     //entity_featured_url: "https://nellalink.s3.eu-west-1.amazonaws.com/entity/nellalink_business/6a622d6e-b707-4159-9742-1ad91d4cc620/info/logo/1781768213528-w.jpg"
 
@@ -252,19 +254,19 @@ function Business({prop_set_q}){
                 //await create_business(file,nw);
                 set_loading(false);
                 console.log("Upload failed:    ",data);
-                set_ad_fail_message(data.message);
-                set_ad_fail(true);
+                set_fail_message(data.message);
+                set_fail(true);
                 setTimeout(()=>{
-                    set_ad_fail(false);
+                    set_fail(false);
                 },5000);
            }
         }).catch((err)=>{
             set_loading(false);
             console.log("Could not make upload request:    ",err);
-            set_ad_fail_message("Check your internet connection");
-            set_ad_fail(true);
+            set_fail_message("Check your internet connection");
+            set_fail(true);
             setTimeout(()=>{
-                set_ad_fail(false);
+                set_fail(false);
             },5000);
         })
   
@@ -322,10 +324,10 @@ function Business({prop_set_q}){
                 // setTimeout(() => {
                 //     set_create_s_top(-10);
                 // }, 3000);
-                set_ad_success_message(data.message);
-                set_ad_success(true);
+                set_success_message(data.message);
+                set_success(true);
                 setTimeout(()=>{
-                    set_ad_success(false);
+                    set_success(false);
                 },5000);
             }else{
                 set_loading(false);
@@ -335,10 +337,10 @@ function Business({prop_set_q}){
                 // setTimeout(() => {
                 //     set_create_top(-10);
                 // }, 3000);
-                set_ad_fail_message(data.message);
-                set_ad_fail(true);
+                set_fail_message(data.message);
+                set_fail(true);
                 setTimeout(()=>{
-                    set_ad_fail(false);
+                    set_fail(false);
                 },5000);
             }
          }).catch((err)=>{
@@ -349,10 +351,10 @@ function Business({prop_set_q}){
             // setTimeout(() => {
             //     set_create_top(-10);
             // }, 3000);
-            set_ad_fail_message("Check your internet connection.");
-            set_ad_fail(true);
+            set_fail_message("Check your internet connection.");
+            set_fail(true);
             setTimeout(()=>{
-                set_ad_fail(false);
+                set_fail(false);
             },5000);
         });
     }
@@ -611,20 +613,20 @@ function Business({prop_set_q}){
 
             {
                             ad&&
-                            <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(250,250,250)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                <div style={{backgroundColor:"orange",width:"80%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                    <div style={{width:"90%",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                        <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
+                            <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(255,255,255)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                <div style={{width:"60%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                    <div style={{width:"90%",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                        <div style={{color:"rgb(100,100,100)",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                             set_ad(false);
                                         }}>
                                         <FaArrowLeft size={30}/>
                                         </div>
-                                        <div style={{marginLeft:"20px"}}>CREATE A NEW BUSINESS</div>
+                                        <div style={{marginLeft:"20px",color:"rgb(100,100,100)"}}>CREATE A NEW BUSINESS</div>
                                     </div>
                                     
                                 </div>
-                                <div style={{width:"80%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                                    <div style={{width:"60%",aspectRatio:"2/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
+                                <div style={{width:"70%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                    <div style={{width:"80%",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
                                         e.preventDefault();
                                         e.target.style.border="0px dashed transparent";
                                     }} onDragOver={(e)=>{
@@ -640,13 +642,13 @@ function Business({prop_set_q}){
                                     {
                                         sc==""?
                                         <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                            <ImageDown size={100} color="gray"/>
-                                            <div style={{marginTop:"10px"}}>Drag & Drop Image File here</div>
+                                            <ImageDown size={40} color="gray"/>
+                                            <div style={{marginTop:"10px",fontSize:"10px"}}>Drag & Drop Image File here</div>
                                         </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",aspectRatio:"2/1"}}/>
                                     }
                                     </div>
                                     <div>OR</div>
-                                    <label style={{width:"80%",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                    <label style={{width:"80%",fontSize:"12px",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                         <Upload size={20}/>
                                         <div>Click here to upload image</div>
                                         <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
@@ -700,24 +702,25 @@ function Business({prop_set_q}){
                                             }}/>
                                         </div>
             
-                                        <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px"}} onClick={async()=>{
+                                        <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px",display:"flex",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
                                             if(loading==false){
                                                // await create_business11();
                                               await file_upload(sc);
                                             }
                                             
-                                        }}>{loading?"Loading...":"Register"}</div>
+                                        }}>{loading&&<Loader className="loading"  size={20} color="white"/>}{loading?"Loading...":"Register"}</div>
                                     </div>
                                     
                                 
                                 </div>
                                 
-                                {ad_fail&&
-                                <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                                    <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                        <FaExclamationCircle size={30}/> {ad_fail_message} 
-                                    </div>
-                                </div>
+                                {
+                                // fail&&
+                                // <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                                //     <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                //         <FaExclamationCircle size={30}/> {fail_message} 
+                                //     </div>
+                                // </div>
                                 }
                                 
                             </div>
@@ -727,15 +730,16 @@ function Business({prop_set_q}){
                 <Business_view set_view={set_view} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
             }
             {   edit&&
-                <Business_edit set_ad_success={set_ad_success} set_ad_success_message={set_ad_success_message} set_get_now={set_get_now} get_now={get_now} set_edit={set_edit} business_owned_by={business_owned_by} short_name1={short_name} business_uuid={business_uuid} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
+                <Business_edit set_ad_success={set_success} set_success_message={set_success_message} set_get_now={set_get_now} get_now={get_now} set_edit={set_edit} business_owned_by={business_owned_by} short_name1={short_name} business_uuid={business_uuid} business_name_v={business_name_v} business_address_v={business_address_v} business_email_v={business_email_v} business_desc_v={business_desc_v} business_country_v={business_country_v} business_status_v={business_status_v} business_logo_v={business_logo_v}/>
             }
 
-            {ad_success&&
-                    <div style={{position:"absolute",backgroundColor:"orange",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                        <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                            <FaCheckCircle size={30}/> {ad_success_message}
-                        </div>
-                    </div>
+            {
+            // success&&
+            //         <div style={{position:"absolute",backgroundColor:"orange",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+            //             <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            //                 <FaCheckCircle size={30}/> {success_message}
+            //             </div>
+            //         </div>
             }
         </div>
     )

@@ -23,12 +23,12 @@ function App() {
     <Routes>
       {/* <Route path="/login" element={<Login_box/>}/> */}
       {/* <Route path="/signup" element={<Signup_box/>}/> */}
-      <Route path="/" element={<Box/>}>
+      
         {/* <Route index element={<Home/>}/>
         <Route path="home" element={<Home/>}/> */}
         {/* <Route path="business" element={<Business/>}/> */}
         {/* <Route path="menu" element={<Menu/>}/> */}
-
+      <Route path="/" element={<Box/>}>
         <Route index element={<Home/>}/>
         <Route path="home" element={<Home/>}/>
         <Route path="business" element={<Business/>}/>
@@ -38,7 +38,7 @@ function App() {
       </Route>
       <Route path="/login" element={<BoxLogin/>}/>
       <Route path="/signup" element={<BoxSignup/>}/>
-      {/* <Route path="/profile" element={<Main_profile/>}/> */}
+  
     </Routes>
   )
 }
