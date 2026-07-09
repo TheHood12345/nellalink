@@ -614,19 +614,23 @@ function Business({prop_set_q}){
             {
                             ad&&
                             <div style={{width:"100%",height:"100%",fontSize:"14px",overflow:"scroll",backgroundColor:"rgb(255,255,255)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                <div style={{width:"60%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                    <div style={{width:"90%",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                
+                                <div style={{width:"90%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                    
+                                    <div style={{width:"80%",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                         <div style={{color:"rgb(100,100,100)",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                             set_ad(false);
                                         }}>
                                         <FaArrowLeft size={30}/>
                                         </div>
-                                        <div style={{marginLeft:"20px",color:"rgb(100,100,100)"}}>CREATE A NEW BUSINESS</div>
+                                        <div style={{marginLeft:"20px",fontSize:"12px",color:"rgb(100,100,100)"}}>CREATE A NEW BUSINESS</div>
                                     </div>
-                                    
-                                </div>
-                                <div style={{width:"70%",height:"80%",backgroundColor:"white",position:"relative",marginBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                                    <div style={{width:"80%",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
+                                    <label style={{width:"80%",fontSize:"12px",backgroundColor:"rgb(252,252,252)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        
+                                        <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
+                                            set_sc(e.target.files[0]);
+                                        }}/>
+                                    <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",position:"relative"}} onDragLeave={(e)=>{
                                         e.preventDefault();
                                         e.target.style.border="0px dashed transparent";
                                     }} onDragOver={(e)=>{
@@ -641,75 +645,80 @@ function Business({prop_set_q}){
                                     }}>
                                     {
                                         sc==""?
-                                        <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                        <div style={{width:"100px",height:"100px",borderRadius:"100px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                             <ImageDown size={40} color="gray"/>
-                                            <div style={{marginTop:"10px",fontSize:"10px"}}>Drag & Drop Image File here</div>
-                                        </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100%",aspectRatio:"2/1"}}/>
+                                        </div>:<img src={URL.createObjectURL(sc)} alt="qwe" style={{width:"100px",height:"100px",borderRadius:"100px"}}/>
                                     }
                                     </div>
-                                    <div>OR</div>
-                                    <label style={{width:"80%",fontSize:"12px",backgroundColor:"rgb(230,230,230)",cursor:"pointer",borderRadius:"10px",marginTop:"10px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                        <Upload size={20}/>
-                                        <div>Click here to upload image</div>
-                                        <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
-                                            set_sc(e.target.files[0]);
-                                        }}/>
+                                    
                                     </label>
                                     <div style={{width:"80%",paddingTop:"3px",paddingBottom:"3px",display:"flex",flexDirection:"row",alignItems:"center",fontSize:"10px"}}>Max: 2MB. PNG, JPEG only.</div>
-                                    <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                    <div className="profile_card" style={{display:"grid",gap:"10px",width:"90%"}}>
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Business Name</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                             <FaBook size={20}/>
-                                            <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                            <input type="text" value={title_name} placeholder="Smart Business Suite" style={{width:"100%",border:"0px"}} onChange={(e)=>{
                                                 set_title_name(e.target.value);
                                             }}/>
                                         </div>
-            
+                                        </div>
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Short Name</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                             <FaPerson size={20}/>
-                                            <input type="text" placeholder="SBS" style={{width:"90%",border:"0px"}}/>
+                                            <input type="text" placeholder="SBS" style={{width:"100%",border:"0px"}}/>
                                         </div>
-            
+                                        </div>
+                                        
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Description</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}}>
-                                            <input type="text" value={description} placeholder="Add description here" style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
+                                            <input type="text" value={description} placeholder="Add description here" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"transparent",border:"0px"}} onChange={(e)=>{
                                                 set_description(e.target.value);
                                             }}/>
                                         </div>
+                                        </div>
             
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Business Address</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                             <FaLocationPin size={20}/>
-                                            <input type="text" value={business_address} placeholder="Abuja" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                            <input type="text" value={business_address} placeholder="Abuja" style={{width:"100%",border:"0px"}} onChange={(e)=>{
                                                 set_business_address(e.target.value);
                                             }}/>
                                         </div>
+                                        </div>
             
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Contact Email</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                             <FaMessage size={20}/>
-                                            <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                            <input type="text" value={contact_email} placeholder="Business contact email" style={{width:"100%",border:"0px"}} onChange={(e)=>{
                                                 set_contact_email(e.target.value);
                                             }}/>
                                         </div>
+                                        </div>
             
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"100%",marginTop:"10px"}}>Country</div>
                                         <div style={{width:"100%",boxShadow:"0px 0px 3px rgb(200,200,200)",borderRadius:"4px",marginBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box"}}>
                                             <FaEarthAfrica size={20}/>
-                                            <input type="text" value={country} placeholder="" style={{width:"90%",border:"0px"}} onChange={(e)=>{
+                                            <input type="text" value={country} placeholder="" style={{width:"100%",border:"0px"}} onChange={(e)=>{
                                                 set_country(e.target.value);
                                             }}/>
                                         </div>
+                                        </div>
             
-                                        <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px",display:"flex",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
+                                        
+                                    </div>
+                                    <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer",backgroundColor:"orange",marginTop:"10px",textAlign:"center",borderRadius:"4px",marginBottom:"10px",color:"white",fontSize:"14px",display:"flex",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
                                             if(loading==false){
                                                // await create_business11();
                                               await file_upload(sc);
                                             }
                                             
                                         }}>{loading&&<Loader className="loading"  size={20} color="white"/>}{loading?"Loading...":"Register"}</div>
-                                    </div>
                                     
                                 
                                 </div>
