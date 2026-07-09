@@ -5,9 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { Bell, CheckCircle2, Copy, IdCard, LockKeyhole, Send, Verified } from "lucide-react";
 import { FaAngleDown, FaAngleUp, FaArrowLeft, FaBell, FaCaretDown, FaCaretUp, FaCertificate, FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaLock, FaRegBell } from "react-icons/fa";
 import { FaCircleXmark, FaRightToBracket } from "react-icons/fa6";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import { BsFillArrowLeftCircleFill, BsPerson } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import BottomNav from "./boxContent/nav/bottomNav";
+import TopNav from "./boxContent/nav/topNav";
+import LeftNav from "./boxContent/nav/leftNav";
 
 function Box(){
 
@@ -44,6 +47,15 @@ function Box(){
 
     const [notif_num,set_notif_num] = useState(0);
     const [notif_items,set_notif_items] = useState([]);
+
+    const [seek,set_seek] = useState({
+        bottom_nav: 1
+    })
+    const [seek_nav,set_seek_nav] = useState("home");
+    const [seek_top_bar,set_seek_top_bar] = useState("");
+    //const [seek_left_nav,set_seek_left_nav] = useState("");
+
+    const [seek_logout,set_seek_logout] = useState(false);
 
     const [query]=useSearchParams();
 
@@ -245,6 +257,7 @@ function Box(){
                 console.log("OneSignal initialized: ",res);
             }).catch((err)=>{
                 console.log("OneSignal failed to initialize:    ",err);
+                // set_notif_num((num)=>num+=1);
             });
             await OneSignal.Notifications.requestPermission().then((res)=>{
                 console.log("OneSignal requested permission successfully: ",res);
@@ -265,32 +278,134 @@ function Box(){
 
     return (
         <div className="box">
-            <Small_nella/>
-            <Large_nella/>
-            {
-                <div id="note_main" style={{position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                    <div style={{display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
-                        <Link to="profile" style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                            <img src="/35.png" alt="" style={{width:"80%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
-                        </Link>
-                        <div style={{width:"20%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                            set_notif(true);
-                        }}>
-                            <FaRegBell size={25} className={notif_num>0?"alert":null}/>
-                            {notif_num>0&&
-                            <div style={{position:"absolute",top:"0%",right:"10%"}}>
-                                <div style={{color:"white",backgroundColor:"rgba(255,0,0,0.8)",width:"20px",aspectRatio:"1/1",borderRadius:"100px",textAlign:"center",fontWeight:"bolder",fontSize:"7px"}}>{notif_num>0?notif_num:null}</div>
-                            </div>
-                            }
+            {/* <Small_nella/>
+            <Large_nella/> */}
+
+            <div style={{width:"100%",height:"100%",color:"rgb(40,40,40)",backgroundColor:"white",display:"flex",flexDirection:"row",alignItems:"start",justifyContent:"start"}}>
+
+                {/* *****LEFT BAR******** */}
+                <div className="left_bar" style={{height:"100%",display:"flex",backgroundColor:"rgb(200,208,215)",transition:"all 0.3s linear",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                    <div style={{height:"80%",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                        <div style={{fontSize:"30px",gap:"10px",fontFamily:"poppins-bold",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",marginTop:"30px"}}>
+                            <div>Nellalink</div>
+                            <div>SBS</div>
                         </div>
-                        <div style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
-                            set_logout(true);
-                        }}>
-                            <FaRightToBracket size={25}/>
+                        {/* *****LEFT NAV***** */}
+                        <div style={{alignSelf:"end",width:"100%"}}>
+                        <LeftNav seek_nav={seek_nav} set_seek_nav={set_seek_nav}/>
+                        </div>
+                        
+                    </div>
+                    <div style={{width:"100%",height:"20%",backgroundColor:"rgb(51, 73, 92)",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",height:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <img src="/35.png" style={{width:"20%",aspectRatio:"1/1"}}/>
+                            <div style={{width:"70%",height:"100%",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"end"}}>
+                                <div style={{fontFamily:"poppins-bold",height:"20%"}}>{localStorage.getItem("name")}</div>
+                                <div style={{fontFamily:"poppins-light",fontSize:"10px",height:"60%",overflow:"scroll"}}>MerchanT ID: {localStorage.getItem("uuid")}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* *******BODY******* */}
+                <div className="body" style={{backgroundColor:"rgb(252,252,253)",height:"100%"}}>
+                    {/* *******TOP***** */}
+                    <div style={{width:"100%",height:"15%",backgroundColor:"white",boxShadow:"0px 3px 3px rgb(200,200,200)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        <div style={{width:"90%",height:"90%",backgroundColor:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                            <TopNav seek_nav={seek_nav} set_seek_logout={set_seek_logout} seek_top_bar={seek_top_bar} set_seek_top_bar={set_seek_top_bar} notif_num={notif_num} notif_items={notif_items}/>
                         </div>
                     </div>
 
+                    
+                    <div style={{width:"100%",height:"85%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                        
+                        {/* *******B CONTENT******** */}
+                        <div className="body_content" style={{position:"relative",width:"100%",height:"100%",overflow:"scroll",transition:"all 0.3s linear"}}>
+                            <Outlet context={{notif_num:notif_num,notif_items:notif_items,set_success,set_success_message,set_fail,set_fail_message}}/>
+
+                             {
+                                seek_logout&&
+                                <div className="seek_logout" style={{display:"flex",boxSizing:"border-box",borderRadius:"10px",position:"absolute",top:"30%",left:"20%",paddingLeft:"10px",paddingRight:"10px",flexDirection:"column",alignItems:"center",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"white",boxShadow:"0px 10px 17px rgb(220,220,220)"}}>
+                                    <div style={{textAlign:"center"}}>Confirm Logout</div>
+                                    <div style={{width:"90%",fontSize:"12px",textAlign:"center"}}>You will be logged out of your current account</div>
+                                    <div style={{width:"90%",fontSize:"12px",display:"flex",marginTop:"20px",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                        <div style={{width:"40%",paddingTop:"10px",paddingBottom:"10px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",cursor:"pointer"}} onClick={()=>{
+                                            set_seek_logout(false);
+                                        }}>
+                                                <div>Cancel</div>
+                                        </div>
+                                        <div style={{width:"40%",paddingTop:"10px",paddingBottom:"10px",borderRadius:"10px",backgroundColor:"red",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",cursor:"pointer"}} onClick={()=>{
+                                            localStorage.clear();
+                                            navigate(`/login`,{replace: true});
+                                        }}>
+                                                <div>Logout</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            {
+                                success&&
+                                <div className="success" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <FaCheckCircle size={30}/> {success_message}
+                                </div>
+                            }
+                            {
+                                fail&&
+                                <div className="fail" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                    <FaExclamationCircle color={"white"} size={30}/> <div style={{width:"60%"}}>{fail_message}</div>
+                                </div>
+                            }
+
+                        </div>
+
+
+                        {/* *******BOTTOM******** */}
+                        <div className="body_bottom_bar" style={{width:"100%",transition:"all 0.3s linear",backgroundColor:"white",boxShadow:"0px -3px 3px rgb(200,200,200)"}}>
+                            <BottomNav seek_nav={seek_nav} set_seek_nav={set_seek_nav}  set_seek_logout={set_seek_logout}/>
+                        </div>
+
+                    </div>
+
                 </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            {/* -------------------------ROLE----------- */}
+            {/* -------------------------ROLE----------- */}
+            {/* -------------------------ROLE----------- */}
+            {/* -------------------------ROLE----------- */}
+            {/* -------------------------ROLE----------- */}
+            {
+                // <div id="note_main" style={{position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                //     <div style={{display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly"}}>
+                //         <Link to="profile" style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                //             <img src="/35.png" alt="" style={{width:"80%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(100,100,100)"}}/>
+                //         </Link>
+                //         <div style={{width:"20%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
+                //             set_notif(true);
+                //         }}>
+                //             <FaRegBell size={25} className={notif_num>0?"alert":null}/>
+                //             {notif_num>0&&
+                //             <div style={{position:"absolute",top:"0%",right:"10%"}}>
+                //                 <div style={{color:"white",backgroundColor:"rgba(255,0,0,0.8)",width:"20px",aspectRatio:"1/1",borderRadius:"100px",textAlign:"center",fontWeight:"bolder",fontSize:"7px"}}>{notif_num>0?notif_num:null}</div>
+                //             </div>
+                //             }
+                //         </div>
+                //         <div style={{width:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={()=>{
+                //             set_logout(true);
+                //         }}>
+                //             <FaRightToBracket size={25}/>
+                //         </div>
+                //     </div>
+
+                // </div>
             }
             {
                 logout&&
@@ -740,19 +855,21 @@ function Box(){
                     
             }
 
-            {success&&
-                        <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                            <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                <FaCheckCircle size={30}/> {success_message}
-                            </div>
-                        </div>
+            {
+            // success&&
+            //             <div style={{position:"fixed",backgroundColor:"orange",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+            //                 <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            //                     <FaCheckCircle size={30}/> {success_message}
+            //                 </div>
+            //             </div>
                         }
-                        {fail&&
-                        <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                            <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                <FaExclamationCircle size={30}/> {fail_message} 
-                            </div>
-                        </div>
+                        {
+                        // fail&&
+                        // <div style={{position:"fixed",backgroundColor:"red",color:"white",top:"0%",right:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                        //     <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                        //         <FaExclamationCircle size={30}/> {fail_message} 
+                        //     </div>
+                        // </div>
                         }
         </div>
     )

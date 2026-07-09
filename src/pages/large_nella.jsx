@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable, FaExclamationCircle } from "react-icons/fa";
+import { FaHome, FaBusinessTime, FaBookOpen, FaOutdent, FaBell, FaList, FaOpencart, FaListOl, FaArrowUp, FaArrowDown, FaCalendar, FaUserCircle, FaTable, FaExclamationCircle, FaArrowRight } from "react-icons/fa";
 import { FaBoltLightning, FaCertificate, FaCircleXmark, FaComputer, FaFileLines, FaGear, FaI, FaMessage, FaPeopleGroup, FaPerson, FaRegBell, FaRightToBracket } from "react-icons/fa6";
 // import Business from "./small_screen/nella_content/business/business";
 // import Home from "./small_screen/nella_content/home/home";
@@ -21,6 +21,10 @@ function Large_nella(){
     const [show_c1,set_show_c1] = useState(false);
 
     const [c_token,set_c_token] = useState("");
+
+    const [seek,set_seek] = useState({
+        show_verify_popup1: true
+    });
 
     const navigate = useNavigate();
 
@@ -360,16 +364,25 @@ function Large_nella(){
 
             {/* ------------------------- */}
             <div style={{width:"80%",fontSize:"10px",height:"100%",flexDirection:"column",position:"relative",backgroundColor:"rgb(252,254,255)",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"100%",height:"15%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",height:"15%",position:"relative",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                 <div style={{width:"90%",height:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{width:"60%",height:"100%",fontWeight:"bold",display:"flex",flexDirection:"Column",alignItems:"start",justifyContent:"center",fontWeight:"bold"}}>
-                        <div style={{fontSize:"14px",fontFamily:"poppins-bold"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
+                        <div style={{fontSize:"16px",fontFamily:"poppins-bold",color:"rgb(50,50,50)"}}>{q==1?"Dashboard":q==2?"Businesses":q==3?"QR Menu & Pricing":"Dashboard"}</div>
                         {
-                         //   localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
-                        //  
-                       // null
-                       // :
-                         //  <div style={{display:"flex",fontSize:"20px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={24} color={"gray"}/> VERIFIED</div>
+                            localStorage.getItem("email_verified_at")==null || localStorage.getItem("email_verified_at")=="null" || localStorage.getItem("email_verified_at")==""?
+                         seek.show_verify_popup1&&
+                            <div style={{display:"flex",flexDirection:"column",alignItems:"start",borderRadius:"10px",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",boxSizing:"border-box",backgroundColor:"pink",top:"100%",position:"absolute",color:"orangered"}}>
+                                <FaCircleXmark style={{cursor:"pointer"}} size={20} onClick={(e)=>{
+                                   set_seek((sk)=>sk.show_verify_popup1=false);
+                                }}/>
+                                <div style={{marginTop:"10px"}}><span style={{fontFamily:"poppins-bold"}}>Hello {localStorage.getItem("name")}</span>, your account has been created successfully.</div>
+                                <div>Click below to complete your signup process.</div>
+                                <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
+                                    <Link to="/profile" style={{textDecoration:"none",paddingTop:"10px",paddingBottom:"10px",paddingLeft:"10px",paddingRight:"10px",backgroundColor:"white",fontFamily:"poppins-bold",borderRadius:"10px",cursor:"pointer"}}>Complete signup</Link><FaArrowRight size={20} color="white"/>
+                                </div>
+                            </div>
+                       :
+                          <div style={{display:"flex",fontSize:"12px",color:"rgb(70,70,70)",alignItems:"center",justifyContent:"center"}}><FaCertificate size={14} color={"gray"}/> VERIFIED</div>
                         }
                     </div>
                     

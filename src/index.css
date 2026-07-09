@@ -77,6 +77,7 @@ html,body{
   font-family: "poppins-bold";
   src: url("./assets/POPPINS-BOLD.TTF");
 }
+/* ------------------------------------SMALL---------------------------------- */
 @media screen and (max-width: 700px) {
   .small_main{
     display: flex;
@@ -137,7 +138,99 @@ html,body{
   .logout1{
     width: 70%;
   }
+  .left_bar{
+    width: 0%;
+    /* display: none; */
+  }
+  .auth_left_bar{
+    width: 0%;
+  }
+  .auth_body{
+    width: 100%;
+  }
+  .body{
+    width: 100%;
+  }
+    .body_content{
+    height: 85%
+  }
+  .body_bottom_bar{
+    height: 15%;
+  }
+  .box_grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .box_bottom_card_small{
+    display: flex;
+  }
+  .box_bottom_card_large{
+    display: none;
+  }
+  .bus_header{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30%;
+    width: 98%;
+  } 
+  .bus_header1{
+    width: 100%;
+    height: 40%
+  }
+  .bus_header2{
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+    align-items: start;
+    justify-content: space-around;
+  }
+
+  .bus_search1{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(220,220,220);
+  }
+  .bus_search2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    color: rgb(100,100,100);
+    font-size: 10px;
+  }
+  .bus_body{
+    height: 69%;
+  }
+  .filter-bus1{
+    width: 100px;
+  }
+  .bus_small_table_header{
+    display: flex;
+  }
+  .bus_large_table_header{
+    display: none;
+  }
+  .menu_small_table_header{
+    width: 30%;
+  }
+  .menu_large_table_header{
+    display: none;
+    width: 0%;
+  }
+  .menu_th{
+    width: 20%;
+  }
+  .profile_card{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .seek_logout{
+    width: 60%;
+
+  }
 }
+/* ----------------------------BIG------------------------------------------ */
 @media screen and (min-width: 701px) {
   .small_main{
     display: none;
@@ -195,11 +288,105 @@ html,body{
   .logout1{
     width: 40%;
   }
+  .left_bar{
+    /* width: 20%; */
+    width: 260px;
+    /* display: flex; */
+  }
+  .auth_left_bar{
+    width: 50%;
+  }
+  .auth_body{
+    width: 50%;
+  }
+  .body{
+    width: 80%;
+  }
+  .body_content{
+    height: 100%
+  }
+  .body_bottom_bar{
+    height: 0%;
+  }
+  .box_grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .box_bottom_card_small{
+    display: none;
+  }
+  .box_bottom_card_large{
+    display: flex;
+  }
+  .bus_header{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+    width: 90%;
+  }
+  .bus_header1{
+    width: 30%;
+    height: 80%;
+  }
+  .bus_header2{
+    flex-direction: row;
+    width: 50%;
+    height: 80%;
+    align-items: center;
+    justify-content: start;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow-x: clip;
+  }
+  .bus_search1{
+    width: 60%;
+    height: 100%;
+    font-size: 10px;
+    background-color: transparent;
+  }
+  .bus_search2{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    text-wrap: nowrap;
+    overflow: scroll;
+    font-size: 10px;
+  }
+  .bus_body{
+    height: 90%;
+  }
+  .filter-bus1{
+    width: 200px;
+  }
+  .bus_small_table_header{
+    display: none;
+  }
+  .bus_large_table_header{
+    display: flex;
+  }
+  .menu_small_table_header{
+    width: 20%;
+  }
+  .menu_large_table_header{
+    display: flex;
+    width: 20%;
+  }
+  .menu_th{
+    width: 10%;
+  }
+  .profile_card{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 ::-webkit-scrollbar{
   width: 0%;
   height: 0%;
 }
+
  input{
   background-color: transparent;
   border-color: transparent;
@@ -216,8 +403,20 @@ html,body{
 }
 input:focus{
   outline: none;
-  border: 2px solid #fd7d14cc;
+  /* border: 2px solid #fd7d14cc; */
   border-radius: 7px;
   box-shadow: 0px 0px 2px rgba(200,200,200,0);
 }
-
+.box_card{
+    box-shadow: 0px 10px 2px rgb(220,220,220),0px 0px 4px rgb(220,220,220);
+    cursor: pointer;
+    width: 95%;
+    /* aspect-ratio: 2/1; */
+    /* height: 90px;
+    overflow: auto; */
+}
+.box_card:hover{
+    box-shadow: 0px 10px 17px rgb(220,220,220);
+    width: 100%;
+    /* height: 100px; */
+}
