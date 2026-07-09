@@ -1,4 +1,4 @@
-import { ImageDown } from "lucide-react";
+import { ArrowLeft, ImageDown, Loader } from "lucide-react";
 import { useState } from "react";
 import { FaArrowLeft, FaExclamationCircle, FaImages, FaUpload } from "react-icons/fa";
 import { FaCircleXmark, FaPlus } from "react-icons/fa6";
@@ -100,21 +100,26 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
         })
     }
     return (
-        <div style={{width:"100%",height:"100%",fontSize:"12px",backgroundColor:"white",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-            <div style={{backgroundColor:"transparent",width:"80%",height:"10%",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",color:"rgb(100,100,100)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                        <div style={{width:"90%",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+        <div style={{width:"100%",height:"100%",fontSize:"12px",backgroundColor:"white",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
+            
+            <div style={{width:"80%",height:"100%",color:"rgb(100,100,100)",boxShadow:"-10px 0px 14px rgba(220,220,220,0)",borderRadius:"10px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <div style={{width:"100%",marginTop:"40px",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                             <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_edit(false);
                             }}>
-                            <FaArrowLeft color="black" size={30}/>
+                            <ArrowLeft color="rgb(100,100,100)" size={30}/>
                             </div>
-                            <div style={{marginLeft:"20px",fontFamily:"poppins-bold"}}>EDIT BUSINESS</div>
+                            <div style={{marginLeft:"20px",fontFamily:"poppins-bold",color:"rgb(100,100,100)"}}>EDIT BUSINESS</div>
                         </div>
-                        
-            </div>
-            <div style={{width:"80%",hight:"90%",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
+    
+            
             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgb(240,240,240)",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
+            
+            <label style={{width:"100%",backgroundColor:"rgb(250,250,250)",fontSize:"12px",cursor:"pointer",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                    <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
+                        set_im(e.target.files[0]);
+                    }}/>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -129,75 +134,69 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             }}>
                 {
                     im==""?
-                    // <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                    //                                 <FaUpload size={100} color="gray"/>
-                    //                                 <div>Drag & Drop Image File here</div>
-                    // </div>:
-                    // <img src={URL.createObjectURL(im)} alt="image" style={{width:"90%",aspectRatio:"3/1"}}/>
-                    <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                    <div style={{display:"flex",borderRadius:"100px",padding:"20px",backgroundColor:"rgb(240,240,240)",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
                                 <ImageDown size={50} color="gray"/>
-                                <div style={{marginTop:"10px",fontSize:"12px"}}>Drag & Drop Image File here</div>
-                            </div>:<img src={URL.createObjectURL(im)} alt="" style={{width:"100%",aspectRatio:"3/1"}}/>
+                            </div>:<img src={URL.createObjectURL(im)} alt="" style={{width:"100px",aspectRatio:"1/1",borderRadius:"100px"}}/>
                 }
                 
             </div>
-            <div>OR</div>
-            <label style={{width:"90%",fontSize:"12px",marginTop:"5px",paddingTop:"13px",paddingBottom:"13px",cursor:"pointer",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}><FaPlus/> Click to upload business logo
-                    <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
-                        set_im(e.target.files[0]);
-                    }}/>
             </label>
             </div>
-            <div style={{fontFamily:"arial",fontSize:"12px",width:"90%",textAlign:"end"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            
+            <div style={{fontFamily:"arial",fontSize:"12px",width:"90%",textAlign:"end"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
+            {/* ---------------start------------------- */}
+            <div className="profile_card" style={{display:"grid",gap:"30px",width:"100%"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Name</div>
-                <input type="text" value={business_name} placeholder="Enter your business name..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={business_name} placeholder="Enter your business name..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_business_name(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Short Name</div>
-                <input type="text" value={short_name} placeholder="..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={short_name} placeholder="..." style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_short_name(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Description</div>
-                <input type="text" value={desc} placeholder="Add description here" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={desc} placeholder="Add description here" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_desc(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Business Address</div>
-                <input type="text" value={address} placeholder="e.g. Abuja" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={address} placeholder="e.g. Abuja" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_address(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Contact Email</div>
-                <input type="text" value={email} placeholder="Business Contact Email" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={email} placeholder="Business Contact Email" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_email(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Country</div>
-                <input type="text" value={country} placeholder="e.g. Nigeria" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
+                <input type="text" value={country} placeholder="e.g. Nigeria" style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onChange={(e)=>{
                     set_country(e.target.value);
                 }}/>
             </div>
+            </div>
+            {/* ------------------------end---------------- */}
 
-            <div style={{width:"90%",marginTop:"20px",marginBottom:"20px",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
+            <div style={{width:"100%",marginTop:"20px",marginBottom:"20px",paddingTop:"20px",paddingBottom:"20px",borderRadius:"10px",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}} onClick={async()=>{
                 if(loading==false){
                     await make_edit();
                 }
             }}>
-                {loading==false?<div>Update</div>:<div>Loading...</div>}
+                {loading&&<Loader className="loading"  size={20} color="white"/>}{loading==false?<div>Update</div>:<div>Loading...</div>}
             </div>
 
             <div style={{position:"absolute",fontFamily:"arial",backgroundColor:"red",color:"honeydew",top:`${failed_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 0.4s linear",textAlign:"center"}}>

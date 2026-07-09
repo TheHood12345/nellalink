@@ -177,6 +177,10 @@ html,body{
     width: 100%;
     height: 40%
   }
+  .menu_header1{
+    width: 100%;
+    height: 40%;
+  }
   .bus_header2{
     flex-direction: column;
     width: 100%;
@@ -325,6 +329,10 @@ html,body{
     width: 90%;
   }
   .bus_header1{
+    width: 30%;
+    height: 80%;
+  }
+  .menu_header1{
     width: 30%;
     height: 80%;
   }

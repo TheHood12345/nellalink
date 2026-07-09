@@ -4,7 +4,7 @@ import { BsViewList } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp, FaArrowDown, FaArrowLeft, FaBusinessTime, FaCaretDown, FaCheckCircle, FaDollarSign, FaDownload, FaEuroSign, FaExclamationCircle, FaIcicles, FaInfoCircle, FaPlus, FaRegImages, FaSearch, FaUpload } from "react-icons/fa";
 import { FaArrowRight, FaCediSign, FaCircleXmark, FaDeleteLeft, FaEllipsisVertical, FaImage, FaNairaSign, FaSpinner, FaX } from "react-icons/fa6";
 import { MdManageAccounts } from "react-icons/md";
-import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 import Menu_qr_code from "./menu_qr_code";
 import Menu_del from "./menu_del";
 import Menu_edit from "./menu_edit";
@@ -16,6 +16,8 @@ function Menu(){
     const location = useLocation();
     const navigate = useNavigate();
     const [query] = useSearchParams();
+
+    const {set_success,set_success_message,set_fail,set_fail_message} = useOutletContext();
 
     const [business_id,set_business_id] = useState("");
     const [copy_item,set_copy_item] = useState({});
@@ -36,10 +38,10 @@ function Menu(){
     const [q,set_q]=useState(false);
     const [show_menu,set_show_menu] = useState("");
 
-    const [success,set_success]=useState(false);
-    const [success_message,set_success_message]=useState("");
-    const [fail,set_fail]=useState(false);
-    const [fail_message,set_fail_message]=useState("");
+    // const [success,set_success]=useState(false);
+    // const [success_message,set_success_message]=useState("");
+    // const [fail,set_fail]=useState(false);
+    // const [fail_message,set_fail_message]=useState("");
 
     const [title,set_title] = useState("");
     const [description,set_description] = useState("");
@@ -323,7 +325,7 @@ function Menu(){
     return (
         <div style={{width:"100%",height:"100%",fontSize:"12px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center",position:"relative",color:"black"}}>
           <div className="bus_header" style={{width:"90%",transition:"all 0.3s linear",display:"flex"}}>
-            <div className="bus_header1" style={{fontSize:"14px",transition:"all 0.3s linear",paddingLeft:"10px",color:"white",display:"flex",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
+            <div className="menu_header1" style={{fontSize:"14px",transition:"all 0.3s linear",paddingLeft:"10px",color:"white",display:"flex",alignItems:"center",justifyContent:"start",backgroundColor:"#fd7e14",borderRadius:"10px"}} onClick={()=>{
                 if(!location.state){
                     //navigate("/business");
                     if(all_b_data){
@@ -425,7 +427,7 @@ function Menu(){
             <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
                 <FaInfoCircle size={30}/>
                 <div style={{color:"black"}}>No menu data available</div>
-                <div>Please add new items to see them listed here.</div>
+                <div style={{color:"gray"}}>Please add new items to see them listed here.</div>
             </div>:
             // <div style={{width:"90%",backgroundColor:"white",marginTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
             <>
@@ -501,7 +503,7 @@ function Menu(){
                                     }}>       
                             <div className="menu_th" style={{textAlign:"center",fontSize:"12px",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{index+1}</div>
                             <div className="menu_small_table_header" style={{textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",color:en==parentId&&i==index?"white":"rgb(30,30,30)",alignItems:"center",justifyContent:"start"}}>
-                                <img src={item.entity_featured_url} alt="" style={{width:"30%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
+                                <img src={item.entity_featured_url} alt="" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
                             <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.extra_data.contact_info.email_address}</div></div>
@@ -681,7 +683,7 @@ function Menu(){
                                     }}>       
                             <div className="menu_th" style={{textAlign:"center",fontSize:"12px",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{index+1}</div>
                             <div className="menu_small_table_header" style={{textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",color:en==parentId&&i==index?"white":"rgb(30,30,30)",alignItems:"center",justifyContent:"start"}}>
-                                <img src={item.entity_featured_url} alt="" style={{width:"30%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
+                                <img src={item.entity_featured_url} alt="" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
                                 <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
                             <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.extra_data.contact_info.email_address}</div></div>
@@ -1086,12 +1088,13 @@ function Menu(){
                                 </div>
             
                                
-                                {fail&&
-                                                        <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                                                            <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                                                <FaExclamationCircle size={30}/> {fail_message} 
-                                                            </div>
-                                                        </div>
+                                {
+                                // fail&&
+                                //                         <div style={{position:"absolute",backgroundColor:"red",color:"white",top:"0%",left:"0%",width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+                                //                             <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                //                                 <FaExclamationCircle size={30}/> {fail_message} 
+                                //                             </div>
+                                //                         </div>
                                                         }
                                 
                             </div>
@@ -1118,7 +1121,7 @@ function Menu(){
                                                 <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
                                                     <FaInfoCircle size={30}/>
                                                     <div style={{color:"black"}}>No menu data available</div>
-                                                    <div>Please add new items to see them listed here.</div>
+                                                    <div style={{color:"gray"}}>Please add new items to see them listed here.</div>
                                                 </div>:
                                                 <div style={{width:"90%",marginTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
                                                 <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"orange"}}>
@@ -1197,17 +1200,18 @@ function Menu(){
             }
             {
                 show_menu_edit&&
-                <Menu_edit qr_nm={qr_nm} edit_uuid={edit_uuid} edit_owned_by={edit_owned_by}/>
+                <Menu_edit  get_now={get_now} set_get_now={set_get_now} set_show_menu_edit={set_show_menu_edit} qr_nm={qr_nm} edit_uuid={edit_uuid} edit_owned_by={edit_owned_by}/>
             }
            
 
 
-            {success&&
-                        <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
-                            <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                <FaCheckCircle size={30}/> {success_message}
-                            </div>
-                        </div>
+            {
+            // success&&
+            //             <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",backgroundColor:"orange",color:"white",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center",fontSize:"16px"}}>
+            //                 <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            //                     <FaCheckCircle size={30}/> {success_message}
+            //                 </div>
+            //             </div>
                         }
                         
                     

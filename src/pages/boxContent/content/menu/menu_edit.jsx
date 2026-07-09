@@ -1,8 +1,10 @@
+import { ArrowLeft } from "lucide-react";
 import { use, useEffect, useState } from "react";
 import { FaUpload } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import { useOutletContext } from "react-router-dom";
 
-function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
+function Menu_edit({set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,get_now,set_get_now}){
     const url=`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu/${edit_uuid}`;
     const api = "nll_95ea8f6437ee8358a029ac4da016b71e5a94";
     const [im,set_im]=useState("");
@@ -11,9 +13,11 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
     const [f,set_f]=useState(false);
     const [b,set_b]=useState(false);
 
+    const {set_success,set_success_message,set_fail,set_fail_message} = useOutletContext();
+
     const [loading_save,set_loading_save]=useState(false);
 
-    const [title_name,set_title_name]=useState("");
+    const [title_name,set_title_name]=useState(qr_nm);
     const [desc,set_desc]=useState("");
     const [color,set_color]=useState("");
     const [status,set_status]=useState("");
@@ -132,50 +136,70 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
         .then((data)=>{
             set_loading_save(false);
             if(data.ok==true){
+                set_get_now(!get_now);
                 console.log("Success:  ",data);
+                set_show_menu_edit(false);
+                set_success_message("Successful");
+                set_success(true);
+                setTimeout(()=>{
+                    set_success(false);
+                },2000);
             }else{
                 console.log("Made request but failed:  ",data);
+                //set_fail_message(data.message);
+                set_fail_message("Operation failed");
+                set_fail(true);
+                setTimeout(()=>{
+                    set_fail(false);
+                },2000);
             }
         }).catch((err)=>{
             set_loading_save(false);
             console.log("Could not make request:    ",err);
+            set_fail_message("Check your internet connection.");
+            set_fail(true);
+            setTimeout(()=>{
+                set_fail(false);
+            },2000);
         });
     }
     
     return (
         <div style={{width:"100%",height:"100%",fontSize:"16px",position:"absolute",top:"0%",left:"0%",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",paddingTop:"5px",paddingBottom:"5px"}}>
-                <img src="/35.png" alt="..." style={{width:"20%",aspectRatio:"1/1",alignSelf:"center"}}/>
-                <div>{qr_nm}</div>
+            <div style={{width:"90%",paddingTop:"5px",paddingBottom:"5px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                {/* <img src="/35.png" alt="..." style={{width:"20%",aspectRatio:"1/1",alignSelf:"center"}}/> */}
+                <ArrowLeft/>
+                <div style={{fontFamily:"poppins-bold"}}>EDIT MENU for {qr_nm}</div>
             </div>
+            <div className="profile_card" style={{display:"grid",gridAutoFlow:"row",gridTemplateColumns:"1fr",gap:"10px",width:"90%",overflow:"scroll"}}>
 
             <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Name</div>
-                <input type="text" value={title_name} placeholder="Enter menu name" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
+                <input type="text" disabled value={title_name} placeholder="Enter menu name" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
                     set_title_name(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Description</div>
-                <textarea type="text" value={desc} placeholder="Enter description" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
+                <textarea type="text" value={desc} placeholder="Enter description" style={{paddingTop:"13px",backgroundColor:"transparent",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
                     set_desc(e.target.value);
                 }}></textarea>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Category</div>
                 <input type="text" placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}/>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Primary Color</div>
                 <input type="color" value={color} placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%",border:"4px solid black",borderRadius:"10px",backgroundColor:color}}  onChange={(e)=>{
                     set_color(e.target.value);
                 }}/>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Status</div>
                 <select type="color" value={status} placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
                         set_status(e.target.value);
@@ -185,30 +209,30 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                 </select>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"orange",color:"white",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px",backgroundColor:"orange",color:"white",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                Support Information
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Support Tab Title</div>
                 <input type="text" placeholder="e.g. Need Help?" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}/>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Navigation Button Text</div>
                 <input type="text" placeholder="e.g. Contact Us" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}/>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Support Tab Description</div>
                 <textarea type="text" placeholder="Enter support info with HTML tags if needed" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}></textarea>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"orange",color:"white",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px",backgroundColor:"orange",color:"white",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                 Checkout Payment Providers
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"20px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 Payment Providers
             </div>
 
@@ -219,14 +243,14 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                 <div>Paystack</div>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",marginTop:"0px"}}>
                 <input type="checkbox" onChange={(e)=>{
                     set_f(!f);
                 }}/>
                 <div>Flutterwave</div>
             </div>
 
-            <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",marginTop:"10px"}}>
+            <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",marginTop:"0px"}}>
                 <input type="checkbox" onChange={(e)=>{
                     set_b(!b);
                 }}/>
@@ -350,15 +374,22 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                                 }}/>
                         </label>
 
-            <div style={{width:"90%",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",marginTop:"20px",backgroundColor:"orange",color:"white",paddingTop:"10px",paddingBottom:"10px",textAlign:"center"}} onClick={save_edit}>
+            </div>   
+
+            <div style={{width:"90%",borderRadius:"10px",marginBottom:"40px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",marginTop:"20px",backgroundColor:"orange",color:"white",paddingTop:"10px",paddingBottom:"10px",textAlign:"center"}} onClick={save_edit}>
                 {!loading_save?<FaUpload/>:null} {loading_save?"Loading...":"Save"}
             </div>
 
-            <div style={{width:"90%",display:"flex",fontFamily:"arial",flexDirection:"column",marginTop:"20px",boxShadow:"0px 0px 3px black",borderRadius:"10px",paddingTop:"10px",paddingBottom:"10px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+
+
+
+            {/* ---------END ONE SAVE. LOOK UP!, YOU JUST PASSED ! --------------------- */}
+
+            {/* <div style={{width:"90%",display:"flex",fontFamily:"arial",flexDirection:"column",marginTop:"20px",boxShadow:"0px 0px 3px black",borderRadius:"10px",paddingTop:"10px",paddingBottom:"10px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <div style={{color:"black"}}>No menu item data available</div>
                 <div style={{color:"gray",width:"90%"}}>Please add new items to seee them listed here.</div>
-            </div>
-
+            </div> */}
+{/* 
             <div style={{width:"90%",display:"flex",fontFamily:"arial",flexDirection:"column",marginTop:"20px",marginBottom:"20px",boxShadow:"0px 0px 3px black",borderRadius:"10px",paddingTop:"10px",paddingBottom:"10px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                 
                 <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"10px"}}>
@@ -407,7 +438,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                     </select>
                 </div>
 
-                {/* -----------------image------------ */}
+                
 
                 <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"rgb(240,240,240)",paddingTop:"10px",paddingBottom:"10px",marginTop:"20px"}} onDragLeave={(e)=>{
                                         e.preventDefault();
@@ -432,6 +463,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
                             }
                             
                         </div>
+                        
                         <div style={{marginTop:"5px"}}>OR</div>
                         <label style={{width:"90%",fontSize:"12px",marginTop:"5px",paddingTop:"17px",paddingBottom:"17px",cursor:"pointer",borderRadius:"10px",backgroundColor:"rgb(240,240,240)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}><FaPlus/> Click to upload business logo
                                 <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
@@ -454,7 +486,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
             
             </div>
 
-                {/* ------------------item end---------------- */}
+                
 
                 
             
@@ -463,7 +495,7 @@ function Menu_edit({qr_nm,edit_uuid,edit_owned_by}){
 
                 }}>
                     <FaPlus/> Add menu item
-                </div>
+                </div> */}
             
 
         </div>

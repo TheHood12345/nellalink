@@ -68,33 +68,42 @@
   color: orange;
 }
 @keyframes fail_anim1 {
-  from{
-    width: 0%;
-    opacity: 0;
-  }
-  to{
-    width: 80%;
+  0%{
+    /* width: 0px; */
+    right: -100%;
     opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    /* width: 200px; */
+    right: 0px;
   }
 }
 @keyframes fail_anim2 {
-  from{
-    width: 80%;
-    opacity: 1;
+  0%{
+    right: 0px;
   }
-  to{
-    width: 0%;
+  10%{
+    right: 100px;
+  }
+  50%{
+    right: -100%;
+    opacity: 0;
+  }
+  100%{
     opacity: 0;
   }
 }
 
 .fail{
-  animation: fail_anim1 0.6s linear 0s 1 alternate forwards,fail_anim2 1s linear 4s 1 alternate forwards;
+  animation: fail_anim1 0.3s linear 0s 1 alternate forwards,fail_anim2 1s linear 4s 1 alternate forwards;
   position: absolute;
   top: 0%;
   right: 0%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: red;
@@ -104,23 +113,38 @@
   align-items: center;
   justify-content: center;
   color: white;
-  text-wrap: nowrap;
+  /* text-wrap: nowrap; */
+  width: 200px;
+  border-radius: 10px;
+  font-size: 10px;
+  text-align: justify;
+  line-height: 1;
+  border: 3px solid rgb(18,24,28);
+  box-shadow: 0px 0px 3px rgb(18,24,28);
+  
 }
 .success{
   animation: fail_anim1 0.6s linear 0s 1 alternate forwards,fail_anim2 1s linear 4s 1 alternate forwards;
   position: absolute;
   top: 0%;
   right: 0%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: orange;
+  background-color: aquamarine;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: white;
-  text-wrap: nowrap;
+  color: rgb(100,100,100);
+  /* text-wrap: nowrap; */
+    width: 200px;
+  border-radius: 10px;
+  font-size: 10px;
+  text-align: justify;
+  line-height: 1;
+  border: 3px solid rgb(18,24,28);
+  box-shadow: 0px 0px 3px rgb(18,24,28);
 }
