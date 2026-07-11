@@ -220,7 +220,7 @@ function Menu_edit({set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,get_now,set
 
             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Primary Color</div>
-                <input type="color" value={color} placeholder="Add category" style={{width:"10%",aspectRatio:"1/1",border:"4px solid orange",borderRadius:"100px",backgroundColor:color}}  onChange={(e)=>{
+                <input type="color" value={color} style={{width:"10%",aspectRatio:"1/1",border:"4px solid orange",borderRadius:"100px",backgroundColor:color}}  onChange={(e)=>{
                     set_color(e.target.value);
                 }}/>
             </div>
@@ -244,11 +244,11 @@ function Menu_edit({set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,get_now,set
                 }}></textarea>
             </div>
 
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",display:"flex",marginBottom:"20px",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                Support Information
             </div>
 
-             <div className="profile_card" style={{display:"grid",gap:"20px",width:"90%"}}>
+            <div className="profile_card" style={{display:"grid",gap:"20px",width:"90%"}}>
 
             <div style={{width:"90%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Support Tab Title</div>
@@ -266,7 +266,7 @@ function Menu_edit({set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,get_now,set
             </div>
             
 
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",display:"flex",marginBottom:"20px",flexDirection:"column",alignItems:"start",marginTop:"0px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                 Checkout Payment Providers
             </div>
 
@@ -341,7 +341,7 @@ function Menu_edit({set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,get_now,set
             }
             </div>
 
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div style={{width:"100%",display:"flex",marginBottom:"20px",flexDirection:"column",alignItems:"start",marginTop:"20px",backgroundColor:"rgb(220,220,220)",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center"}}>
                 Contact Information
             </div>
 
