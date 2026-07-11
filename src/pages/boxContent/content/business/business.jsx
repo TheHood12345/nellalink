@@ -613,9 +613,9 @@ function Business({prop_set_q}){
 
             {
                             ad&&
-                            <div style={{width:"100%",height:"100%",fontSize:"12px",color:"rgb(100,100,100)",overflow:"scroll",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(60px)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                            <div style={{width:"100%",height:"100%",fontSize:"12px",color:"rgb(100,100,100)",overflow:"scroll",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(10px)",position:"absolute",top:"0%",left:"0%",display:"flex",flexDirection:"column",alignItems:"center"}}>
                                 
-                                <div className="box_card" style={{width:"80%",height:"100%",position:"relative",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                <div className="box_card" style={{width:"80%",height:"100%",position:"relative",backgroundColor:"white",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
                                     
                                     <div style={{width:"90%",marginTop:"40px",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                         <div style={{color:"rgb(100,100,100)",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{

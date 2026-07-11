@@ -45,6 +45,9 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
 
     const [all_created,set_all_created] = useState(null);
 
+    const [en,set_en] = useState("");
+    const [del,set_del] = useState("");
+
     useEffect(()=>{
         switch(wallet_currency){
                         case "Nigerian Naira (NGN)":
@@ -61,6 +64,51 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                             break;
                     }
     },[wallet_currency]);
+
+    //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu_item/trash/1684b9d0-aa61-4478-9ea3-149b74265fa4
+
+        const [loading_del,set_loading_del] = useState(false);
+        async function do_del(i_d){
+        set_loading_del(true);
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu_item/trash/${i_d}`,
+            {
+                method: 'delete',
+                headers: {
+                    "content-type": "application/json",
+                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                }
+            }
+        )
+        //.then((res)=>res.json())
+        .then((data)=>{
+            set_loading_del(false);
+            // if(data.ok==true){
+                console.log("Success:  ",data);
+                set_reload(!reload)
+                set_success_message("Successfully deleted item");
+                set_success(true);
+                setTimeout(()=>{
+                    set_success(false);
+                },2000);
+            // }else{
+            //     console.log("Made request but failed:  ",data);
+            //     set_fail_message(data.message);
+            //     set_fail(true);
+            //     setTimeout(()=>{
+            //         set_fail(false);
+            //     },2000);
+            // }
+        }).catch((err)=>{
+            set_loading_del(false);
+            console.log("Could not make request:    ",err);
+            set_fail_message(err);
+            set_fail(true);
+            setTimeout(()=>{
+                set_fail(false);
+            },2000);
+        });
+    }
+
 
     async function save_edit(){
         set_loading_save(true);
@@ -171,7 +219,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
         });
     }
 
-
+    const [reload,set_reload] = useState(false);
     const [create_title_name,set_create_title_name] = useState("");
     const [create_desc,set_create_desc] = useState("");
     const [create_status,set_create_status] = useState("enabled");
@@ -215,6 +263,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
             set_loading_addItem(false);
             if(data.status==true){
                 console.log("Success:  ",data.message);
+                set_reload(!reload);
                 set_success_message("Successful");
                 set_success(true);
                 setTimeout(()=>{
@@ -230,6 +279,76 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
             }
         }).catch((err)=>{
             set_loading_addItem(false);
+            console.log("Could not make request:    ",err);
+            set_fail_message(err);
+            set_fail(true);
+            setTimeout(()=>{
+                set_fail(false);
+            },2000);
+        });
+    }
+//https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu_item/730182a7-c77d-4def-861e-8d298bb501ca
+const [loading_enabled_to_disabled,set_loading_enabled_to_disabled] = useState(false);
+        async function enabled_to_disabled(u){
+        set_loading_enabled_to_disabled(true);
+        await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu_item/${u.uuid}`,{
+            method: "put",
+            headers: {
+                "content-type": "application/json",
+                "x-api-key": import.meta.env.VITE_APP_API_KEY,
+               // "authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+
+    "uuid": u.uuid,
+    "request_id": u.request_id,
+    "meta_key": u.meta_key,
+    "meta_value": u.meta_value,
+    "title_name": u.title_name,
+    "description": u.description,
+    "entity_featured_url": u.entity_featured_url,
+    "extra_data": {
+        "tag": u.extra_data.tag,
+        "category": u.extra_data.category,
+        "unit_price_amount": u.extra_data.unit_price_amount,
+        "maximum_quantity_per_order": u.extra_data.maximum_quantity_per_order,
+        "minimum_quantity_per_order": u.extra_data.minimum_quantity_per_order
+    },
+    "parent_entity_type": u.parent_entity_type,
+    "parent_entity": u.parent_entity??"",
+    "owned_by": u.owned_by,
+    "added_by": "1",
+    "data_type": null,
+    "status": u.status == "enabled"?"disabled":"enabled",
+    "created_at": u.created_at,
+    "updated_at": Date.now().toString(),
+    "deleted_at": null,
+    "created_by": null,
+    "sort_position": "2554",
+    "parent_entity_uuid": u.parent_entity_uuid
+
+            })
+        }).then((res)=>res.json())
+        .then((data)=>{
+            set_loading_enabled_to_disabled(false);
+            if(data.status==true){
+                console.log("Success:  ",data.message);
+                set_reload(!reload);
+                set_success_message("Successful");
+                set_success(true);
+                setTimeout(()=>{
+                    set_success(false);
+                },2000);
+            }else{
+                console.log("Made request but failed:  ",data);
+                set_fail_message(data.message);
+                set_fail(true);
+                setTimeout(()=>{
+                    set_fail(false);
+                },2000);
+            }
+        }).catch((err)=>{
+           set_loading_enabled_to_disabled(false);
             console.log("Could not make request:    ",err);
             set_fail_message(err);
             set_fail(true);
@@ -281,11 +400,13 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
         });
         }
         get_all_menu_items();
-    },[])
+    },[reload])
+
+    //https://backend-sbs.nellalink.com/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business_menu_item/730182a7-c77d-4def-861e-8d298bb501ca
     
     return (
-        <div style={{width:"100%",height:"100%",color:"rgb(40,40,40)",fontSize:"12px",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(255,255,255,1)",backdropFilter:"blur(0px)",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-            <div className="box_card" style={{width:"80%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+        <div style={{width:"100%",height:"100%",color:"rgb(40,40,40)",fontSize:"12px",position:"absolute",top:"0%",left:"0%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(10px)",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+            <div className="box_card" style={{width:"80%",height:"100%",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
             <div style={{width:"90%",paddingTop:"5px",paddingBottom:"5px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                 {/* <img src="/35.png" alt="..." style={{width:"20%",aspectRatio:"1/1",alignSelf:"center"}}/> */}
                 <ArrowLeft style={{cursor:"pointer"}} onClick={()=>{
@@ -322,7 +443,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                         
                         </label>
             {/* <div className="profile_card" style={{display:"grid",gridAutoFlow:"row",gridTemplateColumns:"1fr",gap:"10px",width:"90%",overflow:"scroll"}}> */}
-            <div className="profile_card1" style={{display:"grid",gap:"20px",width:"90%"}}>
+            <div className="profile_card" style={{display:"grid",gap:"20px",width:"90%"}}>
             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
                 <div>Name</div>
                 <input type="text" value={title_name} placeholder="Enter menu name" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
@@ -337,12 +458,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                 <input type="text" placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}/>
             </div>
 
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
-                <div>Primary Color</div>
-                <input type="color" value={color} style={{width:"10%",aspectRatio:"1/1",border:"4px solid orange",borderRadius:"100px",backgroundColor:color}}  onChange={(e)=>{
-                    set_color(e.target.value);
-                }}/>
-            </div>
+           
 
             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
                 <div>Status</div>
@@ -353,13 +469,21 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                     <option>Disable</option>
                 </select>
             </div>
-            <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
-                <div>Description</div>
-                <textarea type="text" value={desc} placeholder="Enter description" style={{paddingTop:"20px",borderRadius:"10px",borderColor:"rgb(240,240,240)",backgroundColor:"transparent",color:"rgb(100,100,100)",fontFamily:"poppins-light",paddingBottom:"20px",width:"100%"}} onChange={(e)=>{
-                    set_desc(e.target.value);
-                }}></textarea>
+             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
+                <div>Primary Color</div>
+                <input type="color" value={color} style={{width:"10%",aspectRatio:"1/1",border:"4px solid orange",borderRadius:"100px",backgroundColor:color}}  onChange={(e)=>{
+                    set_color(e.target.value);
+                }}/>
+            </div>
+            
+
             </div>
 
+            <div style={{width:"90%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                <div>Description</div>
+                <textarea type="text" value={desc} placeholder="Enter description" style={{paddingTop:"20px",borderRadius:"10px",borderColor:"rgb(220,220,220)",backgroundColor:"transparent",color:"rgb(100,100,100)",fontFamily:"poppins-light",paddingBottom:"20px",width:"100%"}} onChange={(e)=>{
+                    set_desc(e.target.value);
+                }}></textarea>
             </div>
 
             
@@ -527,7 +651,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
             {/* </div>    */}
 
             <div style={{width:"100%",marginBottom:"40px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",marginTop:"20px"}} onClick={save_edit}>
-                <div style={{width:"40%",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",cursor:"pointer",justifyContent:"center",backgroundColor:"orange",color:"white",paddingTop:"10px",paddingBottom:"10px",textAlign:"center"}} onClick={save_edit}>
+                <div style={{width:"90%",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",cursor:"pointer",justifyContent:"center",backgroundColor:"orange",color:"white",paddingTop:"10px",paddingBottom:"10px",textAlign:"center"}} onClick={save_edit}>
                     {!loading_save?<FaUpload/>:<Loader className="loading"  size={20} color="white"/>} {loading_save?"Loading...":"Save"}
                 </div>
             </div>
@@ -578,7 +702,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                             <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                 <div style={{width:"60%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                     <List/>
-                                    <img src="" alt="" style={{width:"10%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(220,220,220)",marginLeft:"10px"}}/>
+                                    <img alt="" style={{width:"10%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(220,220,220)",marginLeft:"10px"}}/>
                                     <div style={{width:"50%",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"start",marginLeft:"10px"}}>
                                         <div style={{fontFamily:"poppins-bold"}}>{item.title_name}</div>
                                         <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center"}}>
@@ -590,8 +714,19 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                                 </div>
                                 <div style={{width:"40%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                     <Edit color="rgb(52,199,89)"/>
-                                    <Trash2Icon color="rgb(183,28,28)"/>
-                                    <div style={{width:"40%",fontFamily:"poppins-bold",paddingTop:"5px",paddingBottom:"5px",overflow:"scroll",backgroundColor:"rgb(52,199,89)",color:"white",textAlign:"center",borderRadius:"10px",fontSize:"8px"}}>Enabled</div>
+                                    {loading_del && del==item.uuid?
+                                    <Loader className="loading"  size={20} color="rgb(183,28,28)"/>
+                                    :<Trash2Icon color="rgb(183,28,28)" style={{cursor:"pointer"}} onClick={async()=>{
+                                        set_del(item.uuid);
+                                        await do_del(item.uuid);
+                                    }}/>}
+                                    <div style={{width:"40%",fontFamily:"poppins-bold",paddingTop:"5px",paddingBottom:"5px",overflow:"scroll",backgroundColor:item.status=="enabled"?"rgb(52,199,89)":"rgb(240,240,240)",color:item.status=="enabled"?"white":"rgb(40,40,40)",textAlign:"center",borderRadius:"10px",fontSize:"8px"}} onClick={async()=>{
+                                        set_en(item.uuid);
+                                        // if(item.status=="enabled"){
+                                           await enabled_to_disabled(item);  
+                                        // }
+                                       
+                                    }}>{loading_enabled_to_disabled && en==item.uuid?<Loader className="loading"  size={20} color="white"/>: item.status}</div>
                                 </div>
                             </div>
                         </div>
@@ -643,8 +778,8 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                     <select value={create_category} placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",backgroundColor:"transparent",borderRadius:"10px",borderColor:"rgb(220,220,220)",color:"rgb(40,40,40)",width:"100%"}} onChange={(e)=>{
                         set_create_category(e.target.value);
                     }}>
-                        <option>Enable</option>
-                        <option>Disable</option>
+                        <option>enabled</option>
+                        <option>disabled</option>
                     </select>
                 </div>
 
@@ -724,7 +859,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
             <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"end",marginBottom:"100px",color:"orange",width:"90%"}}>
             <div style={{display:"flex",cursor:"pointer",flexDirection:"row",alignItems:"center",color:"orange",fontFamily:"poppins-light",marginTop:"0px",backgroundColor:"#fd7e14",color:"white",borderRadius:"10px",paddingLeft:"10px",paddingRight:"10px",paddingTop:"10px",paddingBottom:"10px"}} onClick={()=>{
                 set_added_menu_items(!added_menu_items);
-            }}>{added_menu_items?<Minus/>:<Plus/>} {added_menu_items?"Remove Menu Item": "Add Menu Item"}</div>
+            }}>{added_menu_items?<Minus/>:<Plus/>} {added_menu_items?"Remove Form": "Add Menu Item"}</div>
             </div>
 
             

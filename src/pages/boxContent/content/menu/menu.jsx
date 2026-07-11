@@ -9,7 +9,6 @@ import Menu_qr_code from "./menu_qr_code";
 import Menu_del from "./menu_del";
 import Menu_edit from "./menu_edit";
 import { ArrowLeft, ImageDown, Loader, Upload } from "lucide-react";
-import Menu_large from "../../../large_screen/menu_large";
 
 function Menu(){
 
@@ -1112,8 +1111,8 @@ function Menu(){
                             
                         }
             {show_business&&
-                            <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",height:"100%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(30px)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <div className="box_card" style={{position:"relative",overflow:"scroll",width:"80%",height:"100%",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                            <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",height:"100%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(10px)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                <div className="box_card" style={{position:"relative",backgroundColor:"white",overflow:"scroll",width:"80%",height:"100%",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
                                 <div style={{position:"relative",overflow:"scroll",width:"90%",height:"80%",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
                                     <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                     <ArrowLeft size={25} color={"rgb(100,100,100)"} style={{cursor:"pointer"}} onClick={()=>{

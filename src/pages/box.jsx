@@ -21,12 +21,6 @@ function Box(){
     const [success_message,set_success_message] = useState("");
     const [fail_message,set_fail_message] = useState("");
 
-    // const [feedbacks,set_feedbacks] = useState([]);
-
-    // useEffect(()=>{
-    //     set_feedbacks((prev)=> [0,...prev]);
-    // },[success,fail]);
-
     const [notif_num,set_notif_num] = useState(0);
     const [notif_items,set_notif_items] = useState([]);
 
@@ -35,15 +29,53 @@ function Box(){
 
     const [seek_logout,set_seek_logout] = useState(false);
 
-    const platform = useMemo(()=> /Android/i.test(navigator.userAgent)? "android": /iPhone|iPad|iPod/i.test(navigator.userAgent)? "ios": "web");
+    const label = useMemo(()=> /Android/i.test(navigator.userAgent)? "android": /iPhone|iPad|iPod/i.test(navigator.userAgent)? "ios": "web");
 
     const [query]=useSearchParams();
 
-        useEffect(()=>{
+    const main_box_ref = useRef(null);
+    const success_ref = useRef(null);
+    const fail_ref = useRef(null);
+
+    useEffect(()=>{
         if(query.get("notification")=="true"){
             set_notif(true);
         }
     },[query]);
+
+    // useEffect(()=>{
+    //     const handleClick = ()=>{
+    //         const div = document.createElement("div");
+    //         div.className = "success";
+    //         div.innerHTML = `${<FaCheckCircle size={30} style={{marginRight:"10px"}}/>} ${success_message}`
+    //         div.style.display = "flex";
+    //         div.style.flexDirection = "row";
+    //         div.style.alignItems = "center";
+    //         div.style.justifyContent = "start";
+    //         main_box_ref.current.prepend(success_ref.current);
+    //         setTimeout(()=>{
+    //             success_ref.current.remove();
+    //         },10000);
+    //     }
+    //     handleClick();
+    // },[success]);
+
+    // useEffect(()=>{
+    //     const handleClick = ()=>{
+    //         const div = document.createElement("div");
+    //         div.className = "fail";
+    //         div.innerHTML = `${<FaExclamationCircle color={"white"} size={20} style={{marginRight:"10px"}}/>} ${<div style={{marginLeft:"10px"}}>{fail_message}</div>}`
+    //         div.style.display = "flex";
+    //         div.style.flexDirection = "row";
+    //         div.style.alignItems = "center";
+    //         div.style.justifyContent = "start";
+    //         main_box_ref.current.prepend(fail_ref.current);
+    //         setTimeout(()=>{
+    //             fail_ref.current.remove();
+    //         },10000);
+    //     }
+    //    // handleClick();
+    // },[fail]);
 
     useEffect(()=>{
         if(!localStorage.getItem("login")){
@@ -56,310 +88,9 @@ function Box(){
         }
     },[]);
 
-    // useEffect(()=>{
-        // async function registerDevice(){
-        //     await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/device`, {
-        //         method: "post",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             "x-api-key": import.meta.env.VITE_APP_API_KEY
-        //         },
-        //         body: JSON.stringify({
-        //             "device_id": `d_${platform}_${localStorage.getItem("uuid")}`,
-        //             "platform":  platform,      //"web", "android" , "ios"
-        //             "label": Date.now().toString(),
-        //             "enable_notification": true
-        //         })
-        //     }).then((res)=>res.json()).then((data)=>{
-        //         console.log("-----------agent---------",navigator.userAgent);
-        //         console.log("RESPONSE----: ", data);
-        //         if(data.status==true){
-        //             // set_success_message(data.message);
-        //             // set_success(true);
-        //             // setTimeout(()=>{
-        //             //     set_success(false);
-        //             // },5000);
-        //         }else{
-        //             // set_fail_message(data.message);
-        //             // set_fail(true);
-        //             // setTimeout(()=>{
-        //             //     set_fail(false);
-        //             // },5000);
-        //         }
-        //     }).catch((err)=>{
-        //         console.log("FAILED TO DO STUFF, DUE TO:    ", err);
-        //         // set_fail_message("Check your internet connection.");
-        //         // set_fail(true);
-        //         // setTimeout(()=>{
-        //         //     set_fail(false);
-        //         // },5000);
-        //     });
-        // }
 
-        // async function notificationSettings(){
-        //     await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting`, {
-        //         method: "post",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             "x-api-key": import.meta.env.VITE_APP_API_KEY
-        //         },
-        //         body: JSON.stringify({
-        //             "platform": platform,
-        //             "device_id": `d_${platform}_${localStorage.getItem("uuid")}`,
-        //             "providers": {
-        //                 "onesignal": {
-        //                     token: "5950f0e8-e8f0-4e6b-be72-26f7266d155d"
-        //                 }
-        //             }
-        //         })
-        //     }).then((res)=>res.json()).then((data)=>{
-        //         console.log("-----------agent---------",navigator.userAgent);
-        //         console.log("RESPONSE----: ", data);
-        //         if(data.status==true){
-        //             set_success_message(data.message);
-        //             set_success(true);
-        //             setTimeout(()=>{
-        //                 set_success(false);
-        //             },5000);
-        //         }else{
-        //             set_fail_message(data.message);
-        //             set_fail(true);
-        //             setTimeout(()=>{
-        //                 set_fail(false);
-        //             },5000);
-        //         }
-        //     }).catch((err)=>{
-        //         console.log("FAILED TO DO STUFF, DUE TO:    ", err);
-        //         set_fail_message("Check your internet connection.");
-        //         set_fail(true);
-        //         setTimeout(()=>{
-        //             set_fail(false);
-        //         },5000);
-        //     });
-        // }
-
-        // async function go(){
-        //     //await registerDevice();
-        //     await notificationSettings();
-        // }
-
-       // go();
-
-    // }, []);
-
-
-        async function notificationSettings(id){
-            await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting`, {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
-                },
-                body: JSON.stringify({
-                    
-                    "platform": platform,
-                    "device_id": `d_${platform}_${localStorage.getItem("uuid")}`,
-                    "providers": {
-                        "onesignal": {
-                            "appId": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
-                            "subscription_id": id,
-
-                        }
-                    }
-                })
-            }).then((res)=>res.json()).then((data)=>{
-                console.log("LOADED!!!!!!!!!!!");
-                console.log("-----------agent---------",navigator.userAgent);
-                console.log("RESPONSE----: ", data);
-                if(data.status==true){
-                    set_success_message(data.message);
-                    set_success(true);
-                    setTimeout(()=>{
-                        set_success(false);
-                    },5000);
-                }else{
-                    // set_fail_message(data.message);
-                    // set_fail(true);
-                    // setTimeout(()=>{
-                    //     set_fail(false);
-                    // },5000);
-                }
-            }).catch((err)=>{
-                console.log("FAILED TO DO set notification:    ", err);
-                // set_fail_message("An error occured.");
-                // set_fail(true);
-                // setTimeout(()=>{
-                //     set_fail(false);
-                // },5000);
-            });
-         }
-    useEffect(()=>{
-
-        async function init(){
-            await OneSignal.init({
-                appId: "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
-                //import.meta.env.VITE_ONESIGNAL_APP_ID,
-                allowLocalhostAsSecureOrigin: true
-            })
-            // .then(async(res)=>{
-            //     console.log("OneSignal initialized: ",res);
-            //     console.log("Subscription ID =", OneSignal.User.PushSubscription.id);
-            //      //const subscriptionId = await OneSignal.User.PushSubscription.id;
-            // console.log("Sub ID--****************-----------:   ",subscriptionId);
-            //     //await notificationSettings(OneSignal.User.PushSubscription.id);
-            // }).catch((err)=>{
-            //     console.log("OneSignal failed to initialize:    ",err);
-            //     // set_notif_num((num)=>num+=1);
-            // });
-            await OneSignal.Notifications.requestPermission();
-            // await OneSignal.Notifications.requestPermission().then((res)=>{
-            //     console.log("OneSignal requested permission successfully: ",res);
-
-
-            // }).catch((err)=>{
-            //     console.log("OneSignal failed to request permission:    ",err)
-            // });
-            const subscriptionId = OneSignal.User.PushSubscription.id;
-            console.log("Subscription ID:   ", subscriptionId);
-            console.log("Permission:    ",OneSignal.Notifications.permission);
-
-            //console.log("PERMISSION:   +++++ ", Notification.permission);
-
-            // OneSignal.Notifications.addEventListener("foregroundWillDisplay", (event)=>{
-            //     event.preventDefault();
-            //     set_notif_num((num)=>num+=1);
-            //     set_notif_items(prev => [{title:event.notification.title,id:event.notification.notificationId,body:event.notification.body},...prev]);
-            //     console.log("New Notification:  ",event.notification);
-            //     event.notification.display();
-            // });
-            // const subscriptionId = OneSignal.User.PushSubscription.id;
-            // console.log("Sub ID-------------:   ",subscriptionId);
-
-            // const playerId = await OneSignal.User.getO;
-            // console.log("Player ID: ",playerId);
-
-
-            // async function notificationSettings(){
-            // await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting`, {
-            //     method: "post",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         "x-api-key": import.meta.env.VITE_APP_API_KEY
-            //     },
-            //     body: JSON.stringify({
-            //        "platform": platform,
-            //         "device_id": `d_${platform}_${localStorage.getItem("uuid")}`,
-            //         "providers": {
-            //             "onesignal": {
-            //                 "app_id": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
-            //                 "subscription_id": subscriptionId,
-
-            //             }
-            //         }
-            //     })
-            // }).then((res)=>res.json()).then((data)=>{
-            //     console.log("-----------agent---------",navigator.userAgent);
-            //     console.log("RESPONSE----: ", data);
-            //     if(data.status==true){
-            //         set_success_message(data.message);
-            //         set_success(true);
-            //         setTimeout(()=>{
-            //             set_success(false);
-            //         },5000);
-            //     }else{
-            //         set_fail_message(data.message);
-            //         set_fail(true);
-            //         setTimeout(()=>{
-            //             set_fail(false);
-            //         },5000);
-            //     }
-            // }).catch((err)=>{
-            //     console.log("FAILED TO DO set notification:    ", err);
-            //     // set_fail_message("An error occured.");
-            //     // set_fail(true);
-            //     // setTimeout(()=>{
-            //     //     set_fail(false);
-            //     // },5000);
-            // });
-            // }
-            //  notificationSettings();
-        }
-       // init();
-    },[]);
-
-    // const [subscriptionId, setSubscriptionId] = useState(null);
-    // const [isSubscribed, setIsSubscribed] = useState(false);
-    // const [initialized, setInitialized] = useState(false);
-    // const initStarted = useRef(false);
-
-    // useEffect(()=>{
-    //     if(initStarted.current) return; //prevent double init
-    //     initStarted.current = true;
-
-    //     const initOneSignal = async () => {
-    //         try{
-    //         await OneSignal.init({
-    //             appId: "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
-    //             allowLocalhostAsSecureOrigin: true,
-    //             //notifyButton: {enable:true},
-    //         });
-
-    //         console.log("OneSignal object after init:   ",OneSignal);
-    //         if(OneSignal.User && OneSignal.User.PushSubscription){
-    //             const id = OneSignal.User.PushSubscription.id;
-    //             const optedIn = OneSignal.User.PushSubscription.optedIn;
-    //             setSubscriptionId(id ?? null);
-    //             setIsSubscribed(!!optedIn);
-    //             OneSignal.User.PushSubscription.addEventListener("change",(event) => {
-    //                 setSubscriptionId(event.current.id ?? null);
-    //                 setIsSubscribed(!!event.current.optedIn);
-    //                 console.log("Subscription changed:  ",event.current);
-    //             });
-
-    //         } else {
-    //             console.warn("OneSignal.User.PushSubscription not available. Check your react-onesignal version (needs v1.4.0+ for this API.");
-    //         }
-    //         //Foreground notification handler
-    //         if(OneSignal.Notifications){
-    //             OneSignal.Notifications.addEventListener("foregroundWillDisplay", (event) => {
-    //             const { notification } = event;
-    //             alert(`${notification.title}\n\n${notification.body}`);
-    //         });
-    //         OneSignal.Notifications.addEventListener("click", (event) => {
-    //             console.log("Notification clicked:  ",event);
-    //         });
-    //         }
-    //         setInitialized(true);
-    //     }catch(err){
-    //         console.error("OneSignal init error:",err);
-    //     }
-
-    //        // setInitialized(true);
-
-            
-    //         //setSubscriptionId(id);
-
-            
-            
-            
-
-            
-
-            
-    //     };
-
-    //     initOneSignal();
-
-    // },[]);
-
-    // const requestPermission = async () => {
-    //     if(OneSignal.Notifications){
-    //         await OneSignal.Notifications.requestPermission();
-    //     }else{
-    //         console.warn("OneSignal.Notifications not available");
-    //     }
-    // };
-
+//https://backend-test.nellalink.com/public/api
+///v1/nellalink/notification-setting/user/{user_uuid}
 
   const [subscriptionId, setSubscriptionId] = useState(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -372,21 +103,24 @@ function Box(){
 
     const MAX_DELAY = 30000; // cap backoff at 30s
     const delay = Math.min(1000 * 2 ** (attempt - 1), MAX_DELAY); // 1s, 2s, 4s, 8s... capped
-
+///public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting
+//new
+///public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}
     try {
-      const response = await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting`, {
-        method: "POST",
+      const response = await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}`, {
+        method: "put",
         headers: { 
             "Content-Type": "application/json",
             "x-api-key": import.meta.env.VITE_APP_API_KEY
         },
         body: JSON.stringify({ 
            // subscriptionId: id 
-            "platform": platform,
-            "device_id": `d_${platform}_${localStorage.getItem("uuid")}`,
+            "platform": "web",
+            "label": `${label}`,
+            "device_id": `d_${label}_${localStorage.getItem("uuid")}`,
             "providers": {
                 "onesignal": {
-                    "appId": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
+                    "app_id": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
                     "subscription_id": id,
 
                 }
@@ -475,7 +209,7 @@ function Box(){
                 <div className="left_bar" style={{height:"100%",display:"flex",backgroundColor:"rgb(200,208,215)",transition:"all 0.3s linear",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{height:"80%",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
                         <div style={{fontSize:"30px",gap:"10px",fontFamily:"poppins-bold",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",marginTop:"30px"}}>
-                            <div>Nellalink{platform}</div>
+                            <div>Nellalink{label}</div>
                             <div>SBS</div>
                             
                         </div>
@@ -514,7 +248,7 @@ function Box(){
                     <div style={{width:"100%",height:"85%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
                         
                         {/* *******B CONTENT******** */}
-                        <div className="body_content" style={{position:"relative",width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",overflow:"scroll",transition:"all 0.3s linear"}}>
+                        <div ref={main_box_ref} className="body_content" style={{position:"relative",width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",overflow:"scroll",transition:"all 0.3s linear"}}>
                             <Outlet context={{notif_num:notif_num,notif_items:notif_items,set_success,set_success_message,set_fail,set_fail_message}}/>
 
                              {
@@ -539,13 +273,13 @@ function Box(){
                             }
                             {
                                 success&&
-                                <div className="success" style={{display:"flex",backdropFilter:"blur(30px)",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <div ref={success_ref} className="success" style={{display:"flex",backdropFilter:"blur(30px)",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                 <FaCheckCircle size={30} style={{marginRight:"10px"}}/> {success_message}
                                 </div>
                             }
                             {
                                 fail&&
-                                <div className="fail" style={{display:"flex",backdropFilter:"blur(60px)",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                <div ref={fail_ref} className="fail" style={{display:"flex",backdropFilter:"blur(60px)",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                     <FaExclamationCircle color={"white"} size={20} style={{marginRight:"10px"}}/> <div style={{marginLeft:"10px"}}>{fail_message}</div>
                                 </div>
                             }

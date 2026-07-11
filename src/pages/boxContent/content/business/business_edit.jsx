@@ -100,9 +100,9 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
         })
     }
     return (
-        <div style={{width:"100%",height:"100%",fontSize:"12px",backgroundColor:"white",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
+        <div style={{width:"100%",height:"100%",fontSize:"12px",backgroundColor:"rgba(255,255,255,0.3)",backdropFilter:"blur(10px)",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
             
-            <div className="box_card" style={{width:"80%",height:"100%",color:"rgb(100,100,100)",paddingLeft:"20px",paddingRight:"20px",boxSizing:"border-box",borderRadius:"10px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <div className="box_card" style={{width:"80%",height:"100%",color:"rgb(100,100,100)",backgroundColor:"white",paddingLeft:"20px",paddingRight:"20px",boxSizing:"border-box",borderRadius:"10px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
             <div style={{width:"100%",marginTop:"40px",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                             <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_edit(false);
