@@ -107,7 +107,7 @@ function Box(){
 //new
 ///public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}
     try {
-      const response = await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}`, {
+      const response = await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}`, {
         method: "put",
         headers: { 
             "Content-Type": "application/json",
