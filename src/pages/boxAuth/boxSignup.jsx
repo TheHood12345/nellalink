@@ -9,7 +9,7 @@ function BoxSignup(){
         <div style={{width:"98%",height:"98%",backgroundColor:"white",borderRadius:"10px",overflow:"hidden",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
 
             {/* ---------------SIDE PAGE--------------- */}
-            <div className="auth_left_bar" style={{height:"100%",transition:"all 0.3s linear",backgroundColor:"lightblue",display:"flex",flexDirection:"column",overflow:"scroll",alignItems:"center"}}>
+            <div className="auth_left_bar" style={{height:"100%",transition:"all 0.3s linear",backgroundColor:"rgb(200,208,215)",display:"flex",flexDirection:"column",overflow:"scroll",alignItems:"center"}}>
 
                 <Ad1/>
         

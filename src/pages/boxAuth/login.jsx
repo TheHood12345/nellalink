@@ -308,23 +308,24 @@ function Login(){
             </div>}
             {show_token_email==true&&
             <div style={{width:"100%",height:"100%",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",top:"0%",left:"0%",backgroundColor:"rgba(255,255,255,1)"}}>
-                <div style={{width:"70%",height:"30%",boxShadow:"0px 3px 6px rgb(220,220,220)",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgba(255,255,255,1)",borderRadius:"10px"}}>
+                <div className="box_card" style={{width:"70%",height:"30%",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",backgroundColor:"rgba(255,255,255,1)",borderRadius:"10px"}}>
                     <div style={{width:"90%",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"center"}}>
                         <div style={{width:"90%"}}>Email Address</div>
                         <input type="email" value={token_email} onChange={(e)=>{
                             set_token_email(e.target.value)
                         }} placeholder="email@example.com" style={{width:"90%"}}/>
                     </div>
-                    {/* <div style={{position:"absolute",right:"1%",top:"0%"}} onClick={()=>{set_show_token_email(false)}}><FaCircleXmark size={30}/></div> */}
-                </div>
-                <div style={{width:"70%",display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+
+                    <div style={{width:"80%",display:"flex",fontSize:"12px",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     <div style={{color:"rgb(100,100,100)",display:"flex",flexDirection:"row",alignItems:"center",borderRadius:"10px",marginTop:"0px",paddingTop:"20px",paddingBottom:"20px",cursor:"pointer"}} onClick={()=>{
                         set_show_token_email(false);
                     }
                         }><ArrowLeft/>Cancel</div>
-                    <div style={{color:"orangered",borderRadius:"10px",marginTop:"0px",fontFamily:"poppins-bold",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",cursor:"pointer"}} onClick={async()=>{if(sending_token_email==false){await send_token_email()}}}>{!sending_token_email&&<Send size={10}/>} {sending_token_email==false?"Send Token":<Loader className="loading"  size={20} color="#fd7e14"/>}</div>
+                    <div style={{color:"orange",borderRadius:"10px",marginTop:"0px",fontFamily:"poppins-bold",paddingTop:"20px",paddingBottom:"20px",textAlign:"center",cursor:"pointer"}} onClick={async()=>{if(sending_token_email==false){await send_token_email()}}}>{!sending_token_email&&<Send size={10}/>} {sending_token_email==false?"Send Token":<Loader className="loading"  size={20} color="#fd7e14"/>}</div>
                 
                 </div>
+                </div>
+                
                   <div style={{position:"absolute",backgroundColor:"red",color:"honeydew",top:`${token_top}%`,width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",transition:"all 1s linear",textAlign:"center"}}>
                     {/*FAILED TO SEND TOKEN*/}<Send size={30}/> {fp_text}
                 </div>
@@ -347,13 +348,13 @@ function Login(){
             {
                 success&&
                 <div className="success" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                <FaCheckCircle size={30}/> {success_message}
+                <FaCheckCircle size={30} style={{marginRight:"10px"}}/> {success_message}
                 </div>
             }
             {
                 fail&&
                 <div className="fail" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                    <FaExclamationCircle color={"white"} size={30}/> <div style={{width:"60%"}}>{fail_message}</div>
+                    <FaExclamationCircle color={"white"} size={30} style={{marginRight:"10px"}}/> <div style={{width:"60%"}}>{fail_message}</div>
                 </div>
             }
         </div>

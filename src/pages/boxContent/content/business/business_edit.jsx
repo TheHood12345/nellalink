@@ -102,7 +102,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
     return (
         <div style={{width:"100%",height:"100%",fontSize:"12px",backgroundColor:"white",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
             
-            <div style={{width:"80%",height:"100%",color:"rgb(100,100,100)",boxShadow:"-10px 0px 14px rgba(220,220,220,0)",borderRadius:"10px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <div className="box_card" style={{width:"80%",height:"100%",color:"rgb(100,100,100)",paddingLeft:"20px",paddingRight:"20px",boxSizing:"border-box",borderRadius:"10px",overflow:"scroll",display:"flex",flexDirection:"column",alignItems:"center"}}>
             <div style={{width:"100%",marginTop:"40px",textAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                             <div style={{color:"white",cursor:"pointer",textAlign:"center",borderRadius:"4px",display:"flex",flexDirection:"row",alignItems:"center"}} onClick={()=>{
                                 set_edit(false);
@@ -113,13 +113,13 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
                         </div>
     
             
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
             
-            <label style={{width:"100%",backgroundColor:"rgb(250,250,250)",fontSize:"12px",cursor:"pointer",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+            <label style={{width:"100%",backgroundColor:"transparent",fontSize:"12px",cursor:"pointer",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                     <input type="file" accept="image/*" style={{display:"none"}} onChange={(e)=>{
                         set_im(e.target.files[0]);
                     }}/>
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center",aspectRatio:"10/1",paddingTop:"10px",paddingBottom:"10px"}} onDragLeave={(e)=>{
                             e.preventDefault();
                             e.target.style.border="0px dashed transparent";
                         }} onDragOver={(e)=>{
@@ -144,7 +144,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             </div>
 
             
-            <div style={{fontFamily:"arial",fontSize:"12px",width:"90%",textAlign:"end"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
+            <div style={{fontFamily:"arial",fontSize:"12px",width:"100%",textAlign:"start"}}><sub>Max: 2MB. PNG, JPEG only.</sub></div>
             {/* ---------------start------------------- */}
             <div className="profile_card" style={{display:"grid",gap:"30px",width:"100%"}}>
             <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>

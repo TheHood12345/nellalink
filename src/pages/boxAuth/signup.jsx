@@ -85,7 +85,7 @@ function Signup(){
     return (
         <div style={{width:"100%",height:"100%",position:"relative",backgroundColor:"white",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <div style={{width:"100%",height:"90%",overflow:"scroll",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"start"}}>
-                <div style={{fontFamily:"poppins-bold",width:"90%",fontSize:"25px",color:"black",fontWeight:"bolder",marginTop:"100px"}}>REGISTER</div>
+                <div style={{fontFamily:"poppins-bold",width:"90%",fontSize:"23px",color:"rgb(30,30,30)",marginTop:"100px"}}>Register</div>
                 <div style={{marginTop:"10px",width:"90%"}}>Already have an account? <Link to={"/login"} style={{color:"#fd7e14",textDecoration:"none"}}>Login</Link></div>
                 <div style={{width:"90%",marginTop:"20px",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"start"}}>
                     <div>User Name</div>
@@ -156,13 +156,13 @@ function Signup(){
             {
                 success&&
                 <div className="success" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                <FaCheckCircle size={30}/> {success_message}
+                <FaCheckCircle size={30} style={{marginRight:"10px"}}/> {success_message}
                 </div>
             }
             {
                 fail&&
                 <div className="fail" style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                    <FaExclamationCircle color={"white"} size={30}/> <div style={{width:"60%"}}>{fail_message}</div>
+                    <FaExclamationCircle color={"white"} size={30} style={{marginRight:"10px"}}/> <div style={{width:"60%"}}>{fail_message}</div>
                 </div>
             }
         </div>

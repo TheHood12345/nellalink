@@ -5,7 +5,7 @@ import { FaBoltLightning, FaI, FaMessage, FaRightToBracket } from "react-icons/f
 function Home(){
 
     return(
-        <div style={{width:"100%",height:"100%",display:"flex",color:"gray",flexDirection:"column",alignItems:"center"}}>
+        <div style={{width:"100%",height:"100%",overflow:"scroll",display:"flex",color:"gray",flexDirection:"column",alignItems:"center"}}>
 
             <div className="box_grid" style={{width:"90%",marginTop:"20px",display:"grid",fontSize:"14px",gap:"20px",justifyItems:"center",alignItems:"center"}}>
 

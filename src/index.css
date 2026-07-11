@@ -417,7 +417,7 @@ input:focus{
 }
 .box_card{
     box-shadow: 0px 10px 2px rgb(220,220,220),0px 0px 4px rgb(220,220,220);
-    cursor: pointer;
+    /* cursor: pointer; */
     width: 95%;
     /* aspect-ratio: 2/1; */
     /* height: 90px;

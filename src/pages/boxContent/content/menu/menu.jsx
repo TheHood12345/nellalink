@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate, useOutletContext, useSearchParams } fro
 import Menu_qr_code from "./menu_qr_code";
 import Menu_del from "./menu_del";
 import Menu_edit from "./menu_edit";
-import { Loader, Upload } from "lucide-react";
+import { ArrowLeft, ImageDown, Loader, Upload } from "lucide-react";
 import Menu_large from "../../../large_screen/menu_large";
 
 function Menu(){
@@ -426,8 +426,8 @@ function Menu(){
                 
             <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
                 <FaInfoCircle size={30}/>
-                <div style={{color:"black"}}>No menu data available</div>
-                <div style={{color:"gray"}}>Please add new items to see them listed here.</div>
+                <div style={{color:"black",textAlign:"center"}}>No menu data available</div>
+                <div style={{color:"gray",textAlign:"center"}}>Please add new items to see them listed here.</div>
             </div>:
             // <div style={{width:"90%",backgroundColor:"white",marginTop:"10px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
             <>
@@ -863,39 +863,77 @@ function Menu(){
                         {/* ----------------------------------------------------------------------------------- */}
             {
                             show_menu&&
-                            <div style={{width:"100%",height:"100%",fontSize:"12px",overflow:"scroll",top:"0%",left:"0%",backgroundColor:"rgba(250,250,250,1)",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <div style={{width:"90%",height:"100%",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
-                                    <div style={{width:"100%",backgroundColor:"rgb(200,200,200)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-                                        <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",backgroundColor:"rgb(200,200,200)",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                        <FaArrowLeft size={20} style={{cursor:"pointer",marginLeft:"10px"}} onClick={()=>{
+                            <div style={{width:"100%",height:"100%",color:"rgb(40,40,40)",fontSize:"12px",overflow:"scroll",top:"0%",left:"0%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(60px)",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                <div className="box_card" style={{width:"80%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                    <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+                                        <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                        <ArrowLeft size={20} style={{cursor:"pointer"}} onClick={()=>{
                                             set_show_menu(false);
                                             navigate(location.pathname+location.search,{replace:true,state:null});
                                         }}/>
-                                        <div style={{fontSize:"15px",marginLeft:"10px"}}>Add Menu</div>
+                                        <div style={{fontSize:"14px",marginLeft:"10px",fontFamily:"poppins-bold"}}>Add Menu</div>
                                         </div>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px   ",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"90%"}}>Title</div>
-                                        <input type="text" value={title} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter menu title" onChange={(e)=>{
+                                    <div style={{width:"90%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <label style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                            
+                                        <input type="file" accept="image/*" style={{width:"85%",display:"none"}} onChange={(e)=>{
+                                            set_im_menu(e.target.files[0]);
+                                        }}/>
+                                        <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",justifyContent:"center"}} onDragLeave={(e)=>{
+                                                        e.preventDefault();
+                                                        e.target.style.border="0px dashed transparent";
+                                                    }} onDragOver={(e)=>{
+                                                        e.preventDefault();
+                                                        e.target.style.border="2px dashed orange";
+                                                    }} onDrop={(e)=>{
+                                                        e.preventDefault();
+                                                        if(e.dataTransfer.files[0].type.startsWith("image/")){
+                                                            set_im_menu(e.dataTransfer.files[0]); 
+                                                        }
+                                                        e.target.style.border="0px dashed transparent";
+                                                    }}>
+                                            {
+                                                im_menu==""?
+                                                <div style={{display:"flex",width:"100px",height:"100px",borderRadius:"100px",backgroundColor:"rgb(225,225,225)",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                                    <ImageDown size={40}/>
+                                                </div>
+                                                :
+                                            <img src={URL.createObjectURL(im_menu)} alt={"image"} style={{width:"100px",height:"100px",borderRadius:"100px"}}/>
+                                            }
+                                           
+                                        </div>
+                                    </label>
+                                    </div>
+                                    <div className="profile_card" style={{display:"grid",gap:"10px",width:"90%"}}>
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                        <div style={{width:"100%"}}>Title</div>
+                                        <input type="text" value={title} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter menu title" onChange={(e)=>{
                                             set_title(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         <div style={{width:"80%"}}>Description</div>
-                                        <input type="text" value={description} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description" onChange={(e)=>{
+                                        <input type="text" value={description} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description" onChange={(e)=>{
                                             set_description(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Menu Link</div>
-                                        <div style={{width:"80%",overflow:"scroll",mask:"linear-gradient(to left, transparent, white)",color:"gray",paddingTop:"10px",paddingBottom:"10px"}}>https://business.nellalink.com/app/menu/</div>
-                                        <input type="text" value={slug} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="your-slug" onChange={(e)=>{
-                                            set_slug(e.target.value);
+                                    
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Categories for Menu Items</div>
+                                        <input type="text" value={category} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add category..." onChange={(e)=>{
+                                            set_category(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Wallet Ticker</div>
-                                        <select type="text" value={currency} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Select a currency" onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                        <div style={{width:"100%"}}>Primary color</div>
+                                        <input className="box_card" type="color" value={color} style={{width:"10%",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",backgroundColor:color,border:"3px solid orange",borderRadius:"100px"}} placeholder="Add category..." onChange={(e)=>{
+                                            set_color(e.target.value);
+                                        }}/>
+                                    </div>
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Wallet Ticker</div>
+                                        <select type="text" value={currency} style={{width:"100%",color:"rgb(30,30,30)",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(225,225,225)"}} placeholder="Select a currency" onChange={(e)=>{
                                             set_slug(e.target.value);
                                         }} onChange={(e)=>{
                                             set_currency(e.target.value);
@@ -907,77 +945,79 @@ function Menu(){
                                             <option>Ghanaian Cedi (GHS)</option>
                                         </select>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Ticker Symbol</div>
-                                        <div style={{width:"80%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(240,240,240)"}} onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Ticker Symbol</div>
+                                        <div style={{width:"100%",paddingTop:"10px",paddingBottom:"10px"}} onChange={(e)=>{
                                             set_description(e.target.value);
                                         }}>{currency=="Nigerian Naira (NGN)"?<FaNairaSign/>:currency=="US Dollar (USD)"?<FaDollarSign/>:currency=="EURO (EUR)"?<FaEuroSign/>:currency=="Ghanaian Cedi (GHS)"?<FaCediSign/>:null}</div>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Categories for Menu Items</div>
-                                        <input type="text" value={category} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add category..." onChange={(e)=>{
-                                            set_category(e.target.value);
+
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                        <div style={{width:"80%"}}>Menu Link</div>
+                                        <div style={{width:"80%",overflow:"scroll",color:"gray"}}>https://business.nellalink.com/app/menu/</div>
+                                        <input type="text" value={slug} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="your-slug" onChange={(e)=>{
+                                            set_slug(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Primary color</div>
-                                        <input type="color" value={color} style={{width:"80%",cursor:"pointer",paddingTop:"20px",paddingBottom:"20px",backgroundColor:color,border:"10px solid rgb(23, 43, 71)",borderRadius:"10px"}} placeholder="Add category..." onChange={(e)=>{
-                                            set_color(e.target.value);
-                                        }}/>
                                     </div>
+
                                     <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
                                         <div style={{width:"90%"}}>SUPPORT INFORMATION</div>
                                         
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Support Tab Title</div>
-                                        <input type="text" value={s_title} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="e.g. Need Help?" onChange={(e)=>{
+                                    <div className="profile_card" style={{display:"grid",gap:"10px",width:"90%"}}>
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Support Tab Title</div>
+                                        <input type="text" value={s_title} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="e.g. Need Help?" onChange={(e)=>{
                                             set_s_title(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Navigation Button Text</div>
-                                        <input type="text" value={n_tx} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="e.g. Contact Us" onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Navigation Button Text</div>
+                                        <input type="text" value={n_tx} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="e.g. Contact Us" onChange={(e)=>{
                                             set_n_tx(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Support Tab Description</div>
-                                        <input type="text" value={t_desc} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter support info with HTML tags if needed" onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Support Tab Description</div>
+                                        <input type="text" value={t_desc} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter support info with HTML tags if needed" onChange={(e)=>{
                                             set_t_desc(e.target.value);
                                         }}/>
+                                    </div>
                                     </div>
                                     <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
                                         <div style={{width:"90%"}}>Contact Information</div>
                                        
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Contact Email</div>
-                                        <input type="text" value={con_email} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add email here" onChange={(e)=>{
+                                    <div className="profile_card" style={{display:"grid",gap:"10px",width:"90%"}}>
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Contact Email</div>
+                                        <input type="text" value={con_email} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add email here" onChange={(e)=>{
                                             set_con_email(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Contact Address</div>
-                                        <input text="text" value={con_address} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add address here" onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Contact Address</div>
+                                        <input text="text" value={con_address} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Add address here" onChange={(e)=>{
                                             set_con_address(e.target.value);
                                         }}/>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Phone Number</div>
-                                        <input type="text" value={phone_num} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="080x xxx xxxx" onChange={(e)=>{
+                                    <div style={{width:"100%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%"}}>Phone Number</div>
+                                        <input type="text" value={phone_num} style={{width:"100%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="080x xxx xxxx" onChange={(e)=>{
                                             set_phone_num(e.target.value);
                                         }}/>
+                                    </div>
                                     </div>
                                     <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
                                         <div style={{width:"90%"}}>Checkout Payment Providers</div>
                                         
                                     </div>
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%",fontWeight:"bolder"}}>Payment Providers</div>
+                                    <div style={{width:"90%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                        <div style={{width:"100%",fontWeight:"bolder"}}>Payment Providers</div>
                                         
                                     </div>
-                                    <div style={{width:"80%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                    <div style={{width:"90%",marginTop:"0px",display:"flex",flexDirection:"column",alignItems:"start"}}>
                                         
                                         <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                             <input type="checkbox" value={p} onChange={(e)=>{
@@ -998,83 +1038,50 @@ function Menu(){
                                             <div>Bank Transfer</div>
                                         </div>
                                     </div>
+                                    <div className="profile_card" style={{display:"grid",gap:"10px",width:"90%"}}>
                                     {p&&
-                                        <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                            <div style={{width:"80%"}}>Paystack</div>
-                                            <input type="text" value={p_title} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title" onChange={(e)=>{
+                                        <div className="box_card" style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                            <div style={{width:"90%",textAlign:"center",fontFamily:"poppins-bold"}}>Paystack</div>
+                                            <input type="text" value={p_title} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title..." onChange={(e)=>{
                                                 set_p_title(e.target.value);
                                             }}/>
-                                            <input type="text" value={p_desc} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description" onChange={(e)=>{
+                                            <input type="text" value={p_desc} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description..." onChange={(e)=>{
                                                 set_p_desc(e.target.value);
                                             }}/>
-                                            <input type="text" value={p_fee} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Fee" onChange={(e)=>{
+                                            <input type="text" value={p_fee} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Fee..." onChange={(e)=>{
                                                 set_p_fee(e.target.value);
                                             }}/>
                                         </div>
                                         
                                     }
                                     {f&&
-                                        <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                            <div style={{width:"80%"}}>Flutterwave</div>
-                                            <input type="text" value={f_title} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title" onChange={(e)=>{
+                                        <div className="box_card" style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                            <div style={{width:"90%",textAlign:"center",fontFamily:"poppins-bold"}}>Flutterwave</div>
+                                            <input type="text" value={f_title} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title..." onChange={(e)=>{
                                                 set_f_title(e.target.value);
                                             }}/>
-                                            <input type="text" value={f_desc} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description" onChange={(e)=>{
+                                            <input type="text" value={f_desc} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Enter description..." onChange={(e)=>{
                                                 set_f_desc(e.target.value);
                                             }}/>
-                                            <input type="text" value={f_fee} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Fee" onChange={(e)=>{
+                                            <input type="text" value={f_fee} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Fee..." onChange={(e)=>{
                                                 set_f_fee(e.target.value);
                                             }}/>
                                         </div>
                                     }
                                     {b&&
-                                        <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                            <div style={{width:"80%"}}>Bank Transfer</div>
-                                            <input type="text" value={b_title} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title" onChange={(e)=>{
+                                        <div className="box_card" style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                            <div style={{width:"90%",textAlign:"center",fontFamily:"poppins-bold"}}>Bank Transfer</div>
+                                            <input type="text" value={b_title} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Title..." onChange={(e)=>{
                                                 set_b_title(e.target.value);
                                             }}/>
-                                            <input type="text" value={b_desc} style={{width:"80%",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Description" onChange={(e)=>{
+                                            <input type="text" value={b_desc} style={{width:"100%",border:"0px",paddingTop:"20px",paddingBottom:"20px"}} placeholder="Description..." onChange={(e)=>{
                                                 set_b_desc(e.target.value);
                                             }}/>
                                         </div>
                                     }
-                                    <div style={{width:"100%",marginTop:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                        <div style={{width:"80%"}}>Select Menu Image</div>
-                                        <div style={{width:"80%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(250,250,250)"}} onDragLeave={(e)=>{
-                                                        e.preventDefault();
-                                                        e.target.style.border="0px dashed transparent";
-                                                    }} onDragOver={(e)=>{
-                                                        e.preventDefault();
-                                                        e.target.style.border="2px dashed orange";
-                                                    }} onDrop={(e)=>{
-                                                        e.preventDefault();
-                                                        if(e.dataTransfer.files[0].type.startsWith("image/")){
-                                                            set_im_menu(e.dataTransfer.files[0]); 
-                                                        }
-                                                        e.target.style.border="0px dashed transparent";
-                                                    }}>
-                                            {
-                                                im_menu==""?
-                                                <div style={{display:"flex",paddingTop:"20px",paddingBottom:"20px",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                                    <Upload size={80} color="gray"/>
-                                                    <div>Drag & Drop Image File here</div>
-                                                </div>
-                                                :
-                                            <img src={URL.createObjectURL(im_menu)} alt={"image"} style={{width:"80%",aspectRatio:"2/1"}}/>
-                                            }
-                                           
-                                        </div>
-                                        <div style={{marginTop:"5px"}}>OR</div>
-            
-                                        <label style={{width:"80%",backgroundColor:"rgb(240,240,240)",border:"1px solid orange",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                            
-                                        <input type="file" accept="image/*" style={{width:"85%",paddingTop:"10px",paddingBottom:"10px",display:"none"}} onChange={(e)=>{
-                                            set_im_menu(e.target.files[0]);
-                                        }}/>
-                                         <div>Click to upload image</div>
-                                    </label>
                                     </div>
-                                    <div style={{width:"80%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                    
+                                    <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",marginBottom:"40px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                         <div style={{width:"45%",textAlign:"center",cursor:"pointer",backgroundColor:"rgb(200,200,200)",borderRadius:"10px",paddingTop:"10px",paddingBottom:"10px"}} onClick={()=>{
                                             set_show_menu(false);
                                         }}>Cancel</div>
@@ -1101,53 +1108,58 @@ function Menu(){
                             
                         }
             {show_business&&
-                            <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",height:"100%",backgroundColor:"rgb(250,250,250)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <div style={{position:"relative",overflow:"scroll",width:"90%",height:"80%",backgroundColor:"rgb(255,255,255)",borderRadius:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-                                    <div style={{width:"90%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
-                                    <FaArrowLeft size={30} style={{cursor:"pointer"}} onClick={()=>{
+                            <div style={{position:"absolute",top:"0%",left:"0%",width:"100%",height:"100%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(30px)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                                <div className="box_card" style={{position:"relative",overflow:"scroll",width:"80%",height:"100%",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                <div style={{position:"relative",overflow:"scroll",width:"90%",height:"80%",borderRadius:"0px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+                                    <div style={{width:"100%",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                    <ArrowLeft size={25} color={"rgb(100,100,100)"} style={{cursor:"pointer"}} onClick={()=>{
                                         set_show_business(false);
                                         navigate(location.pathname+location.search,{replace:true,state:null});
                                     }}/>
-                                    <div style={{fontSize:"20px"}}>SELECT BUSINESS</div>
+                                    <div style={{fontSize:"14px"}}>SELECT BUSINESS</div>
                                     </div>
             
                                                 {
                                                     all_b_data==null?
                                                     loading_b_get_now==true?
-                                                    <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
+                                                    <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"0px"}}>
                                                         <Loader className="loading"  size={90} color="#fd7e14"/>
                                                     </div>:
                                                     
-                                                <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",boxShadow:"-3px 3px 3px gray",borderRadius:"10px"}}>
+                                                <div style={{width:"90%",color:"rgb(100,100,100)",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
                                                     <FaInfoCircle size={30}/>
-                                                    <div style={{color:"black"}}>No menu data available</div>
-                                                    <div style={{color:"gray"}}>Please add new items to see them listed here.</div>
+                                                    <div style={{fontFamily:"poppins-bold",textAlign:"center"}}>No menu data available</div>
+                                                    <div style={{fontFamily:"poppins-light",textAlign:"center"}}>Please add new items to see them listed here.</div>
                                                 </div>:
-                                                <div style={{width:"90%",marginTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
-                                                <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"orange"}}>
-                                                    <div style={{width:"90%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",backgroundColor:"orange"}}>
+                                                <div style={{width:"100%",marginTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"0px"}}>
+                                                {/* <div style={{width:"100%",fontSize:"14px",overflow:"hidden",borderRadius:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"orange"}}>
+                                                    <div style={{width:"90%",fontWeight:"bolder",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                                             
                                                         <div style={{width:"10%",textAlign:"end"}}>S/N</div>
                                                         <div style={{width:"80%",textAlign:"start"}}>Business</div>
                                                     </div>
-                                                </div>
+                                                </div> */}
+                                                <div className="profile_card" style={{display:"grid",gap:"40px",width:"100%"}}>
                                                 {all_b_data.map((item,index)=>{
                                                     return (
-                                                        <div key={index} style={{width:"100%",position:"relative",marginTop:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
-                                                            <div style={{width:"90%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                                        <div className="box_card" key={index} style={{width:"100%",backgroundColor:"rgb(255,255,255)",color:"rgb(100,100,100)",position:"relative",marginTop:"0px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
+                                                            <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                     
-                                                                <div style={{width:"10%",fontSize:"14px",display:"column",alignItems:"start",justifyContent:"start",textAlign:"center",fontSize:"20px"}}>{index+1}</div>
+                                                                <div style={{width:"10%",fontSize:"14px",fontFamily:"poppins-bold",display:"column",alignItems:"start",justifyContent:"start",textAlign:"center"}}>{index+1}</div>
                                                                 
-                                                                <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                                                <div style={{width:"80%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",fontSize:"12px"}}>
                                                                     {/* <div style={{paddingRight:"10px",backgroundColor:"rgb(200,200,200)",borderRadius:"20px",display:"flex",flexDirection:"column",alignItems:"flex-start",justifyContent:"center",textAlign:"center"}}> */}
                                                                         {/* <FaImage size={30} color={"gray"} style={{paddingRight:"10px"}}/> */}
                                                                     {/* </div> */}
                                                                     <div style={{width:"100%",fontSize:"14px"}}>
-                                                                        <div style={{fontSize:"14px",colo:"black",fontWeight:"bolder"}}>{item.title_name}</div>
-                                                                        <div style={{fontSize:"12px"}}>{item.extra_data.contact_email}</div>
-                                                                        <div style={{fontSize:"12px"}}>{item.extra_data.business_address}</div>
-                                                                        <div style={{fontStyle:"italic"}}>{item.status}</div>
-                                                                        <Link to={"/menu?q=create_menu"} state={item} style={{textDecoration:"none",paddingTop:"20px",paddingBottom:"20px",width:"100%",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",backgroundColor:"orange",color:"white"}} onClick={()=>{
+                                                                        {/* <div style={{fontSize:"14px",fontFamily:"poppins-bold",width:"70%",overflow:"scroll"}}>{index+1}</div> */}
+                                                                        <div style={{display:"flex",flexDirection:"row",width:"100%",alignItems:"center",justifyContent:"space-between"}}>
+                                                                           <div style={{fontSize:"12px",fontFamily:"poppins-bold",width:"70%",overflow:"scroll"}}>{item.title_name}</div> 
+                                                                           <div style={{fontSize:"7px",width:"20%",fontFamily:"poppins-light",overflow:"scroll"}}>{item.status}</div> 
+                                                                        </div>
+                                                                        
+                                                                        <div style={{fontSize:"12px",width:"70%",overflow:"scroll"}}>{item.extra_data.contact_email}</div>
+                                                                        <Link to={"/menu?q=create_menu"} state={item} style={{textDecoration:"none",fontSize:"12px",paddingTop:"5px",paddingBottom:"5px",borderRadius:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"orange"}} onClick={()=>{
                                                                             set_show_business(false);
                                                                             navigate(location.pathname+location.search,{replace:true,state:null});
                                                                         }}><MdManageAccounts size={20}/> Select</Link>
@@ -1174,19 +1186,21 @@ function Menu(){
                                                         
                                                     )
                                                 })}
+                                                </div>
                                                 
                                                 </div>
                                                 }
                                                 
                                                 
                                 </div>
-                                <div style={{width:"80%",height:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
+                                <div style={{width:"100%",overflow:"scroll",fontFamily:"poppins-light",height:"20%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
                                     <div>OR</div>
-                                    <div style={{width:"90%",height:"60%",borderRadius:"10px",backgroundColor:"orange",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",color:"white",cursor:"pointer"}} onClick={()=>{
+                                    <div style={{width:"90%",paddingTop:"5px",paddingBottom:"5px",borderRadius:"10px",backgroundColor:"#fd7e14",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",color:"white",cursor:"pointer"}} onClick={()=>{
                                             navigate("/business?q=create");
                                         }}>
-                                            <FaBusinessTime size={30}/> CREATE A BUSINESS
+                                            <FaBusinessTime size={20} style={{marginRight:"20px"}}/> CREATE A NEW BUSINESS
                                     </div>
+                                </div>
                                 </div>
                                 </div>
                         }
@@ -1211,7 +1225,7 @@ function Menu(){
             //                 <div style={{paddingTop:"20px",paddingBottom:"20px",width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
             //                     <FaCheckCircle size={30}/> {success_message}
             //                 </div>
-            //             </div>
+            //             </div> Th successful message to be deleted
                         }
                         
                     
