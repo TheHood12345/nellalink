@@ -83,9 +83,9 @@ function Notification(){
 
                     <div style={{backgroundColor:"rgb(100,100,100)",color:"white",width:"100%",display:"flex",flexDirection:"column",alignItems:"end"}}>
                         {
-                            all_data.map((item,index)=>(
-                                <div>New..</div>
-                            ))
+                            // all_data.map((item,index)=>(
+                            //     <div>New..</div>
+                            // ))
                         }
                     </div>
                   
