@@ -107,6 +107,8 @@ function Menu(){
 
     const [show_menu_edit,set_show_menu_edit]=useState(false);
 
+    const [edit_item,set_edit_item] = useState(null);
+
     const [ht,set_ht]=useState({
         first:30,second:70,add1:30,search1:"flex",filter1:"flex"
         // first:10,
@@ -504,10 +506,10 @@ function Menu(){
                             <div className="menu_th" style={{textAlign:"center",fontSize:"12px",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{index+1}</div>
                             <div className="menu_small_table_header" style={{textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",color:en==parentId&&i==index?"white":"rgb(30,30,30)",alignItems:"center",justifyContent:"start"}}>
                                 <img src={item.entity_featured_url} alt="" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
-                                <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
+                                <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",textWrap:"nowrap",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
                             </div>
-                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.extra_data.contact_info.email_address}</div></div>
-                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.description}</div></div>
+                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll",textWrap:"nowrap"}}>{item.extra_data.contact_info.email_address}</div></div>
+                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll",textWrap:"nowrap"}}>{item.description}</div></div>
                             <div className="menu_small_table_header" href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"start",fontSize:"12px",fontWeight:"bolder",color:"gray"}} onClick={async()=>{
             await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
                 method: "get",
@@ -634,6 +636,7 @@ function Menu(){
                                         set_qr_nm(item.title_name);
                                         set_edit_uuid(item.uuid);
                                         set_edit_owned_by(item.owned_by);
+                                        set_edit_item(item);
                                         set_show_menu_edit(true);
                                     }}><BiEdit size={20}/> Edit</div>
                                     <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
@@ -684,10 +687,10 @@ function Menu(){
                             <div className="menu_th" style={{textAlign:"center",fontSize:"12px",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{index+1}</div>
                             <div className="menu_small_table_header" style={{textAlign:"center",fontSize:"12px",display:"flex",flexDirection:"row",color:en==parentId&&i==index?"white":"rgb(30,30,30)",alignItems:"center",justifyContent:"start"}}>
                                 <img src={item.entity_featured_url} alt="" style={{width:"15%",aspectRatio:"1/1",borderRadius:"100px",backgroundColor:"rgb(200,200,200)"}}/>
-                                <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:en==parentId&&i==index?"white":"rgb(30,30,30)"}}>{item.title_name}</div>
+                                <div style={{width:"60%",overflow:"scroll",marginLeft:"5px",textAlign:"start",fontSize:"12px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:en==parentId&&i==index?"white":"rgb(30,30,30)",textWrap:"nowrap"}}>{item.title_name}</div>
                             </div>
-                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.extra_data.contact_info.email_address}</div></div>
-                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll"}}>{item.description}</div></div>
+                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll",textWrap:"nowrap"}}>{item.extra_data.contact_info.email_address}</div></div>
+                            <div className="menu_large_table_header" style={{overflow:"scroll",flexDirection:"row",alignItems:"center",justifyContent:"start"}}><div style={{width:"80%",overflow:"scroll",textWrap:"nowrap"}}>{item.description}</div></div>
                             <div className="menu_small_table_header" href={`${import.meta.env.VITE_FRONT_FACING_URL}/app/mb/menu/${item.title_name}/`} target="_blank"  style={{opacity:(i==index && en==item.parent_entity_uuid)?"0":"1",textAlign:"start",fontSize:"12px",fontWeight:"bolder",color:"gray"}} onClick={async()=>{
             await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/smart-meta-manager/entity/nellalink_business?owned_by=${localStorage.getItem("uuid")}&page=1&parent_entity_type=&parent_entity_uuid=&per_page=${1000000}&sort_by=uuid&sort_order=asc`,{
                 method: "get",
@@ -814,6 +817,7 @@ function Menu(){
                                         set_qr_nm(item.title_name);
                                         set_edit_uuid(item.uuid);
                                         set_edit_owned_by(item.owned_by);
+                                        set_edit_item(item);
                                         set_show_menu_edit(true);
                                     }}><BiEdit size={20}/> Edit</div>
                                     <div className="view" style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start",color:"rgb(30,30,30)",backgroundColor:"rgba(0,0,0,0)"}} onClick={()=>{
@@ -1214,7 +1218,7 @@ function Menu(){
             }
             {
                 show_menu_edit&&
-                <Menu_edit  get_now={get_now} set_get_now={set_get_now} set_show_menu_edit={set_show_menu_edit} qr_nm={qr_nm} edit_uuid={edit_uuid} edit_owned_by={edit_owned_by}/>
+                <Menu_edit edit_item={edit_item}  get_now={get_now} set_get_now={set_get_now} set_show_menu_edit={set_show_menu_edit} qr_nm={qr_nm} edit_uuid={edit_uuid} edit_owned_by={edit_owned_by}/>
             }
            
 
