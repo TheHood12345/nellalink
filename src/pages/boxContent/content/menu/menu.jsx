@@ -63,7 +63,7 @@ function Menu(){
 
     const [loading_get_now,set_loading_get_now]=useState(false);
     const [get_now,set_get_now]=useState(false);
-    const [all_data,set_all_data]=useState(null);
+    const [all_data,set_all_data]=useState([]);
     const [i,set_i]=useState(null);
     const [en,set_en]=useState(null);
 
@@ -419,7 +419,7 @@ function Menu(){
                 // }
              }}>
                         {
-                all_data==null?
+                all_data.length<=0?
                 loading_get_now==true?
                 <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
                     <Loader className="loading"  size={90} color="#fd7e14"/>
