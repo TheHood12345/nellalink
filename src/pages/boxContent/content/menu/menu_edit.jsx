@@ -1,4 +1,4 @@
-import { ArrowLeft, Delete, Edit, ImageDown, List, Loader, Minus, Plus, Trash, Trash2Icon } from "lucide-react";
+import { ArrowLeft, Delete, Edit, ImageDown, List, Loader, Minus, Plus, Trash, Trash2Icon, X } from "lucide-react";
 import { use, useEffect, useState } from "react";
 import { FaAngleDoubleRight, FaTrash, FaUpload } from "react-icons/fa";
 import { FaAngleDown, FaAngleUp, FaPlus } from "react-icons/fa6";
@@ -47,6 +47,9 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
 
     const [en,set_en] = useState("");
     const [del,set_del] = useState("");
+
+    const [cat,set_cat] = useState("");
+    const [all_categories,set_all_categories] = useState([]);
 
     useEffect(()=>{
         switch(wallet_currency){
@@ -453,9 +456,29 @@ const [loading_enabled_to_disabled,set_loading_enabled_to_disabled] = useState(f
 
             
 
-            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px"}}>
+            <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"start",marginTop:"0px",overflow:"scroll"}}>
                 <div>Category</div>
-                <input type="text" placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}}/>
+                <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",scrollSnapType:"x mandatory",overflow:"scroll",gap:"10px"}}>
+                    {
+                        all_categories.map((item,index)=>(
+                            <div style={{paddingLeft:"10px",marginBottom:"3px",paddingRight:"10px",paddingTop:"5px",paddingBottom:"5px",borderRadius:"10px",background:"rgb(232,241,252)",color:"rgb(29,78,216)",scrollSnapAlign:"center",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>{item}<X color="red" style={{marginLeft:"10px",cursor:"pointer"}} onClick={()=>{
+                                set_all_categories((prev)=>{
+                                    const copy = [...prev];
+                                    copy.splice(index, 1);
+                                    return copy;
+                                });
+                            }}/></div>
+                        ))
+                    }
+                </div>
+                <input type="text" value={cat} placeholder="Add category" style={{paddingTop:"13px",paddingBottom:"13px",width:"100%"}} onChange={(e)=>{
+                    set_cat(e.target.value);
+                }} onKeyDown={(e)=>{
+                    if(e.key === "Enter" && cat !== ""){
+                        set_all_categories((prev)=> [cat,...prev]);
+                        set_cat("");
+                    }
+                }}/>
             </div>
 
            

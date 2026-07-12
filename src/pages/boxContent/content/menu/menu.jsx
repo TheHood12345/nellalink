@@ -422,7 +422,7 @@ function Menu(){
                 all_data.length<=0?
                 loading_get_now==true?
                 <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"10px"}}>
-                    <Loader className="loading"  size={90} color="#fd7e14"/>
+                    <Loader className="loading"  size={40} color="#fd7e14"/>
                 </div>:
                 
             <div style={{width:"90%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
@@ -1126,7 +1126,7 @@ function Menu(){
                                                     all_b_data==null?
                                                     loading_b_get_now==true?
                                                     <div style={{width:"90%",height:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",borderRadius:"0px"}}>
-                                                        <Loader className="loading"  size={90} color="#fd7e14"/>
+                                                        <Loader className="loading"  size={40} color="#fd7e14"/>
                                                     </div>:
                                                     
                                                 <div style={{width:"90%",color:"rgb(100,100,100)",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",borderRadius:"10px"}}>
