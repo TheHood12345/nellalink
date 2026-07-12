@@ -75,7 +75,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                 method: 'delete',
                 headers: {
                     "content-type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }
         )
@@ -117,7 +117,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
                 method: 'put',
                 headers: {
                     "content-type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 },
                 body: JSON.stringify(
                     {
@@ -235,7 +235,7 @@ function Menu_edit({edit_item,set_show_menu_edit,qr_nm,edit_uuid,edit_owned_by,g
             method: "post",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY,
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY,
                 "authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
@@ -295,7 +295,7 @@ const [loading_enabled_to_disabled,set_loading_enabled_to_disabled] = useState(f
             method: "put",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY,
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY,
                // "authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
@@ -368,7 +368,7 @@ const [loading_enabled_to_disabled,set_loading_enabled_to_disabled] = useState(f
                 method: "get",
                 headers:{
                     "content-type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then((data)=>{
             set_loading_created_menu_item(false);

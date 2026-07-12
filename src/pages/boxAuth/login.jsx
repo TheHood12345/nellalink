@@ -56,7 +56,7 @@ function Login(){
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
             body: JSON.stringify({
                 email: email.toString(),
@@ -113,7 +113,7 @@ function Login(){
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
             body: JSON.stringify({
                 email_address: token_email
@@ -175,7 +175,7 @@ function Login(){
             method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
             body: JSON.stringify({
                 email_address: token_email,

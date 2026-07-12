@@ -53,7 +53,7 @@ function Business_edit({set_ad_success,set_ad_success_message,set_get_now,get_no
             ),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_loading(false);

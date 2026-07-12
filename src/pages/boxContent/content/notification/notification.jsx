@@ -39,7 +39,7 @@ formatRelativeDate("2026-07-12T11:44:59+00:00"); // "Today"
                 method: "get",
                 headers: {
                      "Content-Type": "application/json",
-                     "x-api-key": import.meta.env.VITE_APP_API_KEY
+                     "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then((data)=>{
                 set_loading(false);
