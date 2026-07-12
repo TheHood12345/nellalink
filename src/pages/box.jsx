@@ -156,9 +156,10 @@ function Box(){
     const initOneSignal = async () => {
       try {
         await OneSignal.init({
-          appId: "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
+          appId: "f8710d34-957b-48d3-b17c-bac5b22a486c",
+          //"5950f0e8-e8f0-4e6b-be72-26f7266d155d",
           allowLocalhostAsSecureOrigin: true,
-        });
+        }).then((data)=>console.log("OneSignal initialized successfully:",data)).catch((err)=>{console.log("Failed to initialize OneSignal:",err)});
 
         if (!OneSignal.User || !OneSignal.User.PushSubscription) {
           console.warn("OneSignal.User.PushSubscription not available.");

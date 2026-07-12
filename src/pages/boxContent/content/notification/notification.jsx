@@ -11,6 +11,27 @@ function Notification(){
     const [loading,set_loading] = useState(false);
     const [all_data,set_all_data] = useState([]);
 
+    function formatRelativeDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+
+        // Strip time for day-level comparison
+        const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        const diffDays = Math.round((startOfDay(now) - startOfDay(date)) / 86400000);
+
+        if (diffDays === 0) return "Today";
+        if (diffDays === 1) return "Yesterday";
+        if (diffDays > 1 && diffDays <= 6) return `${diffDays} days ago`;
+
+        // Older (or future) dates: "11 July" (add year if not current year)
+        const options = { day: "numeric", month: "long" };
+        if (date.getFullYear() !== now.getFullYear()) options.year = "numeric";
+        return date.toLocaleDateString("en-GB", options);
+    }
+
+// Example
+formatRelativeDate("2026-07-12T11:44:59+00:00"); // "Today"
+
     useEffect(()=>{
         async function fetchAll(){
             set_loading(true);
@@ -47,7 +68,7 @@ function Notification(){
                 },2000);
             })
         }
-      //  fetchAll();
+        fetchAll();
     },[])
 
 
@@ -66,7 +87,7 @@ function Notification(){
                             <div>All</div><FaAngleDown/>
                         </div> 
                   </div>
-
+                    
                   
                   </div>
 
@@ -80,19 +101,38 @@ function Notification(){
                             <div>-</div>
                         </div>
                     </div>
-
-                    <div style={{backgroundColor:"rgb(100,100,100)",color:"white",width:"100%",display:"flex",flexDirection:"column",alignItems:"end"}}>
-                        {
+                    </div>
+                    <div style={{backgroundColor:"transparent",marginTop:"20px",color:"white",width:"100%",display:"flex",flexDirection:"column",alignItems:"end"}}>
+                        {/* {
                             all_data!==null || all_data.length>0&&
                             all_data.map((item,index)=>(
                                 <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(220,220,200)",marginTop:"20px"}}>{index}</div>
                             ))
-                        }
+                        } */}
+                        <div className="box_card" style={{backgroundColor:"rgb(255,255,255)",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                            <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",color:"rgb(100,100,100)"}}>
+                                <div style={{width:"10%"}}>{1}</div>
+                                <div style={{width:"90%",backgroundColor:"transparent",display:"flex",flexDirection:"column",alignItems:"start"}}>
+                                    <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                                        <div style={{width:"70%",overflow:"scroll",textWrap:"nowrap",backgroundColor:"transparent",fontFamily:"poppins-bold"}}>title</div>
+                                        <div style={{fontSize:"12px",width:"20%",textAlign:"end",fontStyle:"italic",fontFamily:"poppins-light"}}>unread</div>
+                                    </div>
+                                    <div style={{width:"100%",textAlign:"justify",backgroundColor:"transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
+                                        <div style={{fontSize:"12px"}}>body sssssssss  ssass sds  sds sds dsd sd sds ds dsd sd sd s dsd sdsd sd sds d sdsds dsd sdsd sds d</div>
+                                        <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
+                                            <div style={{paddingLeft:"4px",paddingRight:"4px",paddingTop:"4px",paddingBottom:"4px",fontSize:"10px",borderRadius:"8px",textAlign:"center",overflow:"scroll",textWrap:"nowrap",backgroundColor:"rgb(255,243,224)",color:"rgb(230,126,34)"}}>enabled</div>
+                                            <div style={{fontSize:"10px",textAlign:"end",marginLeft:"10px",paddingLeft:"10px",borderLeft:"1px solid rgb(230,126,34)",fontFamily:"poppins-bold"}}>{formatRelativeDate("2026-07-11T11:44:59+00:00")}</div>
+                                        </div>
+                                        {/* <div>View</div> */}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                   
                   
                      
-                    </div>
+                    
                 
 
             </div>

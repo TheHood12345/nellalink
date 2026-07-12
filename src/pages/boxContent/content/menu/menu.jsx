@@ -867,7 +867,7 @@ function Menu(){
             {
                             show_menu&&
                             <div style={{width:"100%",height:"100%",color:"rgb(40,40,40)",fontSize:"12px",overflow:"scroll",top:"0%",left:"0%",backgroundColor:"rgba(255,255,255,0)",backdropFilter:"blur(60px)",position:"absolute",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-                                <div className="box_card" style={{width:"80%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
+                                <div className="box_card" style={{width:"80%",height:"100%",backgroundColor:"white",display:"flex",flexDirection:"column",alignItems:"center",overflow:"scroll"}}>
                                     <div style={{width:"90%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
                                         <div style={{width:"100%",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                         <ArrowLeft size={20} style={{cursor:"pointer"}} onClick={()=>{
@@ -964,7 +964,7 @@ function Menu(){
                                     </div>
                                     </div>
 
-                                    <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
+                                    <div style={{width:"100%",marginTop:"20px",marginBottom:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"rgb(240,240,240)",color:"rgb(40,40,40)",fontFamily:"poppins-bold"}}>
                                         <div style={{width:"90%"}}>SUPPORT INFORMATION</div>
                                         
                                     </div>
@@ -988,7 +988,7 @@ function Menu(){
                                         }}/>
                                     </div>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
+                                    <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"rgb(240,240,240)",color:"rgb(40,40,40)",fontFamily:"poppins-bold",marginBottom:"20px"}}>
                                         <div style={{width:"90%"}}>Contact Information</div>
                                        
                                     </div>
@@ -1012,7 +1012,7 @@ function Menu(){
                                         }}/>
                                     </div>
                                     </div>
-                                    <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"orange",color:"white"}}>
+                                    <div style={{width:"100%",marginTop:"20px",paddingTop:"20px",paddingBottom:"20px",display:"flex",flexDirection:"column",alignItems:"center",backgroundColor:"rgb(240,240,240)",color:"rgb(40,40,40)",fontFamily:"poppins-bold"}}>
                                         <div style={{width:"90%"}}>Checkout Payment Providers</div>
                                         
                                     </div>
