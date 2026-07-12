@@ -25,7 +25,7 @@ function ChangePassword({set_show_cp,set_success,set_success_message,set_fail,se
             }),
             headers: {
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_cp_loading(false);
@@ -71,7 +71,7 @@ function ChangePassword({set_show_cp,set_success,set_success_message,set_fail,se
             }),
             headers: {
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_cp1_loading(false);

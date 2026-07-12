@@ -111,7 +111,7 @@ function Box(){
         method: "post",
         headers: { 
             "Content-Type": "application/json",
-            "x-api-key": import.meta.env.VITE_APP_API_KEY
+            "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
         },
         body: JSON.stringify({ 
             "device_id": `d_${label}_${localStorage.getItem("uuid")}`,
@@ -120,7 +120,7 @@ function Box(){
             "enable_notification": true,
             "providers": {
                 "onesignal": {
-                    "app_id": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
+                    "app_id": import.meta.env.VITE_ONE_SIGNAL_APP_ID,
                     "subscription_id": id,
 
                 }
@@ -156,7 +156,7 @@ function Box(){
     const initOneSignal = async () => {
       try {
         await OneSignal.init({
-          appId: "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
+          appId: import.meta.env.VITE_ONE_SIGNAL_APP_ID,
           allowLocalhostAsSecureOrigin: true,
         });
 

@@ -231,7 +231,7 @@ function Menu(){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -272,7 +272,7 @@ function Menu(){
                     method: "get",
                     headers:{
                         "Content-Type": "application/json",
-                        "x-api-key": import.meta.env.VITE_APP_API_KEY
+                        "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                     }
                 }).then((res)=>res.json()).then((data)=>{
                     set_loading_get_now(false);
@@ -297,7 +297,7 @@ function Menu(){
                         method: "get",
                         headers:{
                             "Content-Type": "application/json",
-                            "x-api-key": import.meta.env.VITE_APP_API_KEY
+                            "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                         }
                     }).then((res)=>res.json()).then((data)=>{
                         set_loading_b_get_now(false);
@@ -514,7 +514,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");
@@ -559,7 +559,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");
@@ -590,7 +590,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");
@@ -695,7 +695,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");
@@ -740,7 +740,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");
@@ -771,7 +771,7 @@ function Menu(){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then(async(data)=>{
                 console.log("-----------2");

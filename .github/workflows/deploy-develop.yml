@@ -28,13 +28,16 @@ jobs:
 
       - name: Inject Environment Variables (ENV)
         run: |
-          echo "VITE_CORE_BACKEND_BASE_API_URL=https://backend-dev.nellalink.com" >> .env
+          echo "VITE_APP_DOMAIN=https://app-dev.nellalink.com" >> .env
           echo "VITE_MIDDLEWARE_API_URL=https://middleware-dev.nellalink.com" >> .env
           echo "VITE_FRONT_FACING_URL=https://business-dev.nellalink.com" >> .env
-          echo "VITE_APP_DOMAIN=https://app-dev.nellalink.com" >> .env
+          echo "VITE_CORE_BACKEND_BASE_API_URL=https://backend-dev.nellalink.com" >> .env
+          echo "VITE_CORE_BACKEND_BASE_API_KEY=nll_b4e86bc0db90475b3272642a20b2656ddbd1" >> .env
           echo "VITE_SECRET_KEY='NELLALINK_%%/*'" >> .env
-          echo "VITE_APP_PAYSTACK_URL=https://api.paystack.co" >> .env
-          echo "VITE_APP_API_KEY=nll_b4e86bc0db90475b3272642a20b2656ddbd1" >> .env
+          echo "VITE_ONE_SIGNAL_APP_ID=5950f0e8-e8f0-4e6b-be72-26f7266d155d" >> .env
+          echo "VITE_AWS_REGION=eu-west-1" >> .env
+          echo "VITE_AWS_BUCKET_NAME=nellank-dev" >> .env
+          echo "VITE_AWS_ACCESS_KEY=AKIAQ7A56CNBN65N3TWM" >> .env
           echo "VITE_GOOGLE_CLIENT_ID=35682479272-d1n4b0tngv07ak3i2ejg4h7ooumt68ac.apps.googleusercontent.com" >> .env
           echo "VITE_GOOGLE_REDIRECT_URI=https://app-dev.nellalink.com/oauth/google/callback" >> .env
 

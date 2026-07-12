@@ -21,7 +21,7 @@ function Menu_del({set_show_del,qr_nm,set_get_now,get_now,uuid_del}){
         await fetch(url,{
             method: "delete",
             headers: {
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             }
         }).then((res)=>res.json()).then((data)=>{
             set_loading(false);

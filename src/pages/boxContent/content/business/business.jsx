@@ -157,7 +157,7 @@ function Business({prop_set_q}){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -227,7 +227,7 @@ function Business({prop_set_q}){
             method:"post",
             headers:{
                 "Content-Type": "application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY,
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY,
                "authorization":`Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
@@ -312,7 +312,7 @@ function Business({prop_set_q}){
             }),
             headers:{
                 "Content-Type":"application/json",
-                "x-api-key": import.meta.env.VITE_APP_API_KEY
+                "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
             },
          }).then((res)=> res.json()).then((data)=>{
             if(data.status==true){
@@ -367,7 +367,7 @@ function Business({prop_set_q}){
                 method: "get",
                 headers:{
                     "Content-Type": "application/json",
-                    "x-api-key": import.meta.env.VITE_APP_API_KEY
+                    "x-api-key": import.meta.env.VITE_CORE_BACKEND_BASE_API_KEY
                 }
             }).then((res)=>res.json()).then((data)=>{
                 set_loading_get_now(false);
