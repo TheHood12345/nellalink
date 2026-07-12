@@ -6,7 +6,7 @@ import { useLocation, useOutletContext } from "react-router-dom";
 function Notification(){
 
     const {state} = useLocation();
-    const {notif_num,notif_items} = useOutletContext();
+    const {notif_num,notif_items,set_fail_message,set_success_message,set_success,set_fail} = useOutletContext();
 
     const [loading,set_loading] = useState(false);
     const [all_data,set_all_data] = useState([]);
@@ -47,7 +47,7 @@ function Notification(){
                 },2000);
             })
         }
-        fetchAll();
+      //  fetchAll();
     },[])
 
 
@@ -83,9 +83,10 @@ function Notification(){
 
                     <div style={{backgroundColor:"rgb(100,100,100)",color:"white",width:"100%",display:"flex",flexDirection:"column",alignItems:"end"}}>
                         {
-                            // all_data.map((item,index)=>(
-                            //     <div>New..</div>
-                            // ))
+                            all_data!==null || all_data.length>0&&
+                            all_data.map((item,index)=>(
+                                <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(220,220,200)",marginTop:"20px"}}>{index}</div>
+                            ))
                         }
                     </div>
                   
