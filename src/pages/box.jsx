@@ -105,19 +105,19 @@ function Box(){
     const delay = Math.min(1000 * 2 ** (attempt - 1), MAX_DELAY); // 1s, 2s, 4s, 8s... capped
 ///public/api/v1/nellalink/user/${localStorage.getItem("uuid")}/notification-setting
 //new
-///public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}
+///public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}  https://backend-test.nellalink.com/public/api/v1/nellalink/notification/user/{user_uuid}
     try {
       const response = await fetch(`${import.meta.env.VITE_CORE_BACKEND_BASE_API_URL}/public/api/v1/nellalink/notification-setting/user/${localStorage.getItem("uuid")}`, {
-        method: "put",
+        method: "post",
         headers: { 
             "Content-Type": "application/json",
             "x-api-key": import.meta.env.VITE_APP_API_KEY
         },
         body: JSON.stringify({ 
-           // subscriptionId: id 
+            "device_id": `d_${label}_${localStorage.getItem("uuid")}`,
             "platform": "web",
             "label": `${label}`,
-            "device_id": `d_${label}_${localStorage.getItem("uuid")}`,
+            "enable_notification": true,
             "providers": {
                 "onesignal": {
                     "app_id": "5950f0e8-e8f0-4e6b-be72-26f7266d155d",
@@ -145,6 +145,9 @@ function Box(){
       }, delay);
     }
   };
+//   useEffect(()=>{
+//     sendSubscriptionToServer("123");
+//   },[]);
 
   useEffect(() => {
     if (initStarted.current) return;
