@@ -118,7 +118,7 @@ formatRelativeDate("2026-07-12T11:44:59+00:00"); // "Today"
                                         <div style={{fontSize:"12px",width:"20%",textAlign:"end",fontStyle:"italic",fontFamily:"poppins-light"}}>unread</div>
                                     </div>
                                     <div style={{width:"100%",textAlign:"justify",backgroundColor:"transparent",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-                                        <div style={{fontSize:"12px"}}>body sssssssss  ssass sds  sds sds dsd sd sds ds dsd sd sd s dsd sdsd sd sds d sdsds dsd sdsd sds d</div>
+                                        <div style={{fontSize:"12px",WebkitLineClamp:2,WebkitBoxOrient:2,overflow:"hidden"}}>body sssssssss  ssass sds  sds sds dsd sd sds ds dsd sd sd s dsd sdsd sd sds d sdsds dsd sdsd sds d</div>
                                         <div style={{width:"100%",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"start"}}>
                                             <div style={{paddingLeft:"4px",paddingRight:"4px",paddingTop:"4px",paddingBottom:"4px",fontSize:"10px",borderRadius:"8px",textAlign:"center",overflow:"scroll",textWrap:"nowrap",backgroundColor:"rgb(255,243,224)",color:"rgb(230,126,34)"}}>enabled</div>
                                             <div style={{fontSize:"10px",textAlign:"end",marginLeft:"10px",paddingLeft:"10px",borderLeft:"1px solid rgb(230,126,34)",fontFamily:"poppins-bold"}}>{formatRelativeDate("2026-07-11T11:44:59+00:00")}</div>
