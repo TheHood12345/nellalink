@@ -140,9 +140,9 @@ function Box(){
     } catch (err) {
       console.warn(`Attempt ${attempt} failed, retrying in ${delay / 1000}s..., err`);
 
-      retryTimeoutRef.current = setTimeout(() => {
-        sendSubscriptionToServer(id, attempt + 1);
-      }, delay);
+    //   retryTimeoutRef.current = setTimeout(() => {
+    //     sendSubscriptionToServer(id, attempt + 1);
+    //   }, delay);
     }
   };
 //   useEffect(()=>{

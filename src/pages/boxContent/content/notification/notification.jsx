@@ -83,10 +83,10 @@ function Notification(){
 
                     <div style={{backgroundColor:"rgb(100,100,100)",color:"white",width:"100%",display:"flex",flexDirection:"column",alignItems:"end"}}>
                         {
-                            all_data!==null || all_data.length>0&&
-                            all_data.map((item,index)=>(
-                                <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(220,220,200)",marginTop:"20px"}}>{index}</div>
-                            ))
+                            // all_data!==null || all_data.length>0&&
+                            // all_data.map((item,index)=>(
+                            //     <div style={{width:"90%",paddingTop:"10px",paddingBottom:"10px",backgroundColor:"rgb(220,220,200)",marginTop:"20px"}}>{index}</div>
+                            // ))
                         }
                     </div>
                   
